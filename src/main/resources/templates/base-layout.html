@@ -1,0 +1,40 @@
+<th:block th:fragment="layout (viewName)">
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+		<head lang="en">
+		
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+			<!-- Libraries --> 	
+		 		
+			<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+			
+			<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"/>
+				 
+			<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+			
+			<!-- Style -->
+
+			<link href="../../static/css/main.css" th:href="@{css/main.css}" rel="stylesheet" media="screen" />
+			
+			<!-- JavaScript -->
+			
+			<script src="../static/js/jquery.extend.js" th:src="@{/js/jquery.extend.js}"></script>
+			
+			<script src="../static/js/sibedar.js" th:src="@{/js/sibedar.js}"></script>
+		
+			
+		</head>
+		<body>
+
+			<th:block th:include="fragments/sidebar :: sidebar"></th:block>
+			
+			<div class="container">
+			
+				 <div th:replace="${viewName} :: content">Page Content</div>
+				 
+			</div>
+			
+		</body>
+	</html>
+</th:block>

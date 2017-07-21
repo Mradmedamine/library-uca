@@ -9,8 +9,7 @@ public class IndexController extends BaseController {
 
 	@RequestMapping("/")
 	String index(Model model) {
-		addViewTemplate(model, "index");
-		return BASE_LAYOUT_VIEW;
+		return "base :: index";
 	}
 
 }
