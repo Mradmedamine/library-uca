@@ -5,20 +5,26 @@
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
 				<li data-toggle="collapse" data-target="#products" class="collapsed active"><a href="#">
-				<i class="fa fa-dashboard fa-lg"></i> 
-					Gestion de expedientes
+					<i class="fa fa-dashboard fa-lg"></i> 
+					<th:block th:text="#{desktop.records.title.label}"></th:block>
 					<span class="arrow"></span></a>
 				</li>
 				<ul class="sub-menu" id="products">
-					<li class="active"><a href="#">CSS3 Animation</a></li>
-					<li><a href="#">General</a></li>
-					<li><a href="#">Buttons</a></li>
-					<li><a href="#">Tabs Accordions</a></li>
+					<li class="active"><a href="#" th:text="#{desktop.records.list.all}"></a></li>
+					<li><a href="#" th:text="#{desktop.records.list.per.type}"></a></li>
+					<li><a href="#" th:text="#{desktop.records.new}"></a></li>
 				</ul>
+				<li>
+					<a href="#"> 
+						<i class="fa fa-user fa-lg"></i>
+						<th:block th:text="#{desktop.catalogs.title.label}"></th:block> 
+					</a>
+				</li>
 				<li data-toggle="collapse" data-target="#service" class="collapsed">
 					<a href="#">
-					<i class="fa fa-globe fa-lg"></i> 
-						Consulta al catalogo <span class="arrow"></span>
+						<i class="fa fa-globe fa-lg"></i> 
+						<th:block th:text="#{desktop.records.title.label}"></th:block>
+						<span class="arrow"></span>
 					</a>
 				</li>
 				<ul class="sub-menu collapse" id="service">
@@ -36,10 +42,7 @@
 					<li>New New 3</li>
 				</ul>
 				<li><a href="#"> 
-					<i class="fa fa-user fa-lg"></i> Profile</a>
-				</li>
-				<li><a href="#"> 
-					<i class="fa fa-users fa-lg"></i> Users</a>
+					<i class="fa fa-users fa-lg"></i>Users</a>
 				</li>
 			</ul>
 		</div>
