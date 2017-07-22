@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>library_uca</name>
-	<description>Library of Cadiz university</description>
+	<description>Cadiz University Library</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
