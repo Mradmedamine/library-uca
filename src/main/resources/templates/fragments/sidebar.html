@@ -36,7 +36,9 @@
 				</ul>
 				<li data-toggle="collapse" data-target="#new" class="collapsed">
 					<a href="#">
-					<i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+					<i class="fa fa-car fa-lg"></i> 
+					<th:block th:text="#{desktop.warehouse.title.label}"></th:block>
+					<span class="arrow"></span></a>
 				</li>
 				<ul class="sub-menu collapse" id="new">
 					<li>New New 1</li>
@@ -44,7 +46,14 @@
 					<li>New New 3</li>
 				</ul>
 				<li><a href="#"> 
-					<i class="fa fa-users fa-lg"></i>Users</a>
+					<i class="fa fa-users fa-lg"></i>
+					<th:block th:text="#{desktop.exchanges.title.label}"></th:block>
+					</a>
+				</li>
+				<li><a href="#"> 
+					<i class="fa fa-users fa-lg"></i>
+					<th:block th:text="#{desktop.utilities.title.label}"></th:block>
+					</a>
 				</li>
 			</ul>
 		</div>
