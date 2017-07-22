@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,10 +21,10 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 public class ThymeleafConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
-	
+
 	@Value("${language.key}")
 	private String language;
-	
+
 	@Value("${thymeleaf.templates.cache}")
 	private String thymeleafCache;
 
@@ -66,7 +67,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter implements Applicat
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver slr = new SessionLocaleResolver();
-		slr.setDefaultLocale(new Locale(language));
+		slr.setDefaultLocale(StringUtils.isEmpty(language) ? Locale.ENGLISH : new Locale(language));
 		return slr;
 	}
 
