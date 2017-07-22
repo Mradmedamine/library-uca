@@ -1,6 +1,4 @@
-<div th:fragment="header">
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-		</div>
-	</nav>
-</div>
+<th:block>
+	<th:block th:include="fragments/navbar"></th:block>
+	<th:block th:include="fragments/sidebar"></th:block>
+</th:block> 

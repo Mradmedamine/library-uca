@@ -1,6 +1,6 @@
-
 <!-- Templates -->
 
-<th:block th:fragment="records">
-	<div th:replace="base-layout :: layout (records)"></div>
+<th:block th:fragment="records" th:include="base-layout :: layout ('fragments/header',
+																   'modules/records',
+																   'fragments/empty')">
 </th:block> 
