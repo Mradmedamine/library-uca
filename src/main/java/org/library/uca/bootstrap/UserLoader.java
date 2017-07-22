@@ -17,10 +17,11 @@ import org.springframework.stereotype.Component;
 public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	private static Logger log = Logger.getLogger(UserLoader.class);
-
+	
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 
 	@Autowired
 	public void setUserRepository(UserRepository userRepository) {
@@ -57,6 +58,5 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 		role.setUsers(Collections.singleton(user));
 		roleRepository.save(role);
 
-		log.info("Saved Role : user_role  id: " + role.getId());
 	}
 }

@@ -3,17 +3,17 @@
         <h3 class="form-signin-heading" th:text="#{common.registration.account.create}"></h3>
         
             <div th:class="|form-group ${#fields.hasErrors('username') ? 'has-error' : ''}|">
-                <input type="text" th:field="*{username}" class="form-control" placeholder="Username" autofocus="true"></input>
+                <input type="text" th:field="*{username}" class="form-control" th:placeholder="#{common.login.username}" autofocus="true"></input>
                 <errors th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></errors>
             </div>
 
             <div th:class="|form-group ${#fields.hasErrors('password') ? 'has-error' : ''}|">
-                <input type="password" th:field="*{password}" class="form-control" placeholder="Password"></input>
+                <input type="password" th:field="*{password}" class="form-control" th:placeholder="#{common.login.password}"></input>
                 <errors th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></errors>
             </div>
 
             <div th:class="|form-group ${#fields.hasErrors('passwordConfirm') ? 'has-error' : ''}|">
-                <input type="password" th:field="*{passwordConfirm}" class="form-control" placeholder="Confirm your password"></input>
+                <input type="password" th:field="*{passwordConfirm}" class="form-control" th:placeholder="#{common.registration.password.confirm}"></input>
                 <errors th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></errors>
             </div>
 

@@ -1,37 +1,34 @@
 <th:block th:fragment="layout (header, template, footer)">
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head lang="en">
+	<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+		<head lang="en">
+		
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+		    
+			<!-- Style -->
 	
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-	    
-		<!-- Style -->
-
-		<link rel="stylesheet" type="text/css" th:href="@{/css/library/bootstrap.min.css}" />
-		<link rel="stylesheet" type="text/css" th:href="@{/css/library/font-awesome.min.css}" />
-		
-		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
-		
-		<!-- JavaScript -->
-		
-		<script th:src="@{/js/library/jquery.min.js}" ></script>
-		<script th:src="@{/js/jquery.extend.js}" ></script>
-		
-	</head>
-	<body>
-	
-		<div class="uca-site">
+			<link rel="stylesheet" type="text/css" th:href="@{/css/library/bootstrap.min.css}" />
+			<link rel="stylesheet" type="text/css" th:href="@{/css/library/font-awesome.min.css}" />
 			
-			<div th:replace="${header}"></div>
-			<div class="container">
-				<div th:replace="${template}"></div>
+			<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+			
+			<!-- JavaScript -->
+			
+			<script th:src="@{/js/library/jquery.min.js}" ></script>
+			<script th:src="@{/js/jquery.extend.js}" ></script>
+			
+		</head>
+		<body>
+			<div class="uca-site">
+				<th:block th:replace="${header}"></th:block>
+				<div class="container">
+					<th:block th:replace="${template}"></th:block>
+				</div>
 			</div>
-		</div>
-
-	</body>
-</html>
+		</body>
+	</html>
 	
 </th:block>

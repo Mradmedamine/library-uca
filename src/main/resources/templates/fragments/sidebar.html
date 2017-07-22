@@ -2,14 +2,14 @@
 	<div class="nav-side-menu">
 		<div class="menu-list">
 			<ul id="menu-content" class="menu-content collapse out">
-				<li data-toggle="collapse" data-target="#products" class="composite collapsed">
+				<li data-toggle="collapse" class="composite">
 					<a href="#">
 						<i class="fa fa-files-o fa-lg"></i> 
 						<th:block th:text="#{desktop.records.title.label}"></th:block>
 						<span class="arrow"></span>
 					</a>
 				</li>
-				<ul class="sub-menu" id="products">
+				<ul class="sub-menu collapse" id="records">
 					<li><a href="#" th:text="#{desktop.records.list.all.label}"></a></li>
 					<li><a href="#" th:text="#{desktop.records.list.per.type.label}"></a></li>
 					<li><a href="#" th:text="#{desktop.records.new.label}"></a></li>
@@ -20,7 +20,7 @@
 						<th:block th:text="#{desktop.catalogs.title.label}"></th:block> 
 					</a>
 				</li>
-				<li data-toggle="collapse" data-target="#new" class="composite collapsed">
+				<li data-toggle="collapse" class="composite">
 					<a href="#">
 						<i class="fa fa-archive fa-lg"></i> 
 						<th:block th:text="#{desktop.warehouse.title.label}"></th:block>

@@ -43,7 +43,7 @@ public class SecurityServiceImpl implements SecurityService {
 		}
 	}
 
-	public Authentication getAuthentication() {
+	private Authentication getAuthentication() {
 		return SecurityContextHolder.getContext().getAuthentication();
 	}
 	
