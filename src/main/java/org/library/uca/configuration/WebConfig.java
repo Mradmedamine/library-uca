@@ -20,14 +20,14 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
-public class ThymeleafConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
-
-	@Value("${language.key}")
-	private String language;
+public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
 	@Value("${thymeleaf.templates.cache}")
 	private String thymeleafCache;
 
+	@Value("${language.key}")
+	private String language;
+	
 	@Autowired
 	private MessageSource messageSource;
 

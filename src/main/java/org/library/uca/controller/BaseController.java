@@ -1,4 +1,4 @@
-package org.library.uca.controllers;
+package org.library.uca.controller;
 
 public abstract class BaseController {
 
