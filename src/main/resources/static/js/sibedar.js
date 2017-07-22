@@ -23,7 +23,7 @@ $(function() {
 	    });
 
 	    if (isCompositeMenuItem(item)) {
-		subMenuItems = getSubMenu(item).find('li');
+		subMenuItems = $(item).next().find('li');
 		initMenu(subMenuItems);
 	    }
 	});
@@ -46,9 +46,6 @@ $(function() {
 	    return $(item).hasClass('collapsed');
 	}
 
-	function getSubMenu(item) {
-	    return $(item).next();
-	}
     }
 
 });
