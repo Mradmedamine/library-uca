@@ -8,6 +8,12 @@ $.fn.extend({
     },
     deactivate : function() {
 	this.removeClass('active');
+    },
+    collapse : function() {
+	this.addClass('collapsed');
+    },
+    uncollapse : function() {
+	this.removeClass('collapsed');
     }
 
 });

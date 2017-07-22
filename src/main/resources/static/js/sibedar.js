@@ -31,6 +31,7 @@ $(function() {
 	function collapse(item) {
 	    $(item).deactivate();
 	    if (isCompositeMenuItem(item)) {
+		$(item).uncollapse();
 		$(item).next().addClass('collapse');
 	    }
 	}
@@ -38,12 +39,13 @@ $(function() {
 	function unCollapse(item) {
 	    $(item).activate();
 	    if (isCompositeMenuItem(item)) {
+		$(item).collapse();
 		$(item).next().removeClass('collapse');
 	    }
 	}
 
 	function isCompositeMenuItem(item) {
-	    return $(item).hasClass('collapsed');
+	    return $(item).hasClass('composite');
 	}
 
     }
