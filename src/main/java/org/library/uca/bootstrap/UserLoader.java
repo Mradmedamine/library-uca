@@ -16,12 +16,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
-	private Logger log = Logger.getLogger(UserLoader.class);
+	private static Logger log = Logger.getLogger(UserLoader.class);
 
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
+
 	@Autowired
 	public void setUserRepository(UserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -36,7 +36,7 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 	public void setBCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
-	
+
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 

@@ -27,7 +27,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
 	@Value("${language.key}")
 	private String language;
-	
+
 	@Autowired
 	private MessageSource messageSource;
 
