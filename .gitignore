@@ -10,6 +10,7 @@
 *.exe
 *.o
 *.so
+/src/main/resources/static/css/*.css
 
 # Packages #
 ############
