@@ -1,4 +1,4 @@
-package org.library.uca.controllers;
+package org.library.uca.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
