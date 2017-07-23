@@ -7,9 +7,12 @@
 			  </a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse-2">
-			  <ul class="nav navbar-nav navbar-right">
-			    <li><a th:href="@{/logout}"><i class="fa fa-power-off fa-lg"></i></a></li>
-			  </ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a th:href="@{/logout}"><i class="fa fa-power-off fa-lg"></i></a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+				  <li><a href="#"><small sec:authentication="name"></small></a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
