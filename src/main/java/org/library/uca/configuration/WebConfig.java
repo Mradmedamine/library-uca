@@ -21,6 +21,8 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
@@ -64,6 +66,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setMessageSource(messageSource);
 		templateEngine.addDialect(springSecurityDialect());
+		templateEngine.addDialect(new LayoutDialect());
 		return templateEngine;
 	}
 

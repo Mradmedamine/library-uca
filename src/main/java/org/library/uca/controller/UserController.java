@@ -40,7 +40,7 @@ public class UserController {
 	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 		userValidator.validate(userForm, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "base :: registration";
+			return "registration";
 		}
 		userService.save(userForm);
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
@@ -60,7 +60,7 @@ public class UserController {
 			model.addAttribute("message", logoutSuccessMessage);
 		}
 
-		return "base :: login";
+		return "login";
 	}
 
 }

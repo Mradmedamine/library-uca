@@ -9,7 +9,7 @@ public class RecordsController extends BaseController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		return "base :: records";
+		return "modules/records";
 	}
 
 }
