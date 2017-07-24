@@ -14,10 +14,14 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
@@ -61,6 +65,8 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		templateEngine.setEnableSpringELCompiler(true);
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setMessageSource(messageSource);
+		templateEngine.addDialect(springSecurityDialect());
+		templateEngine.addDialect(new LayoutDialect());
 		return templateEngine;
 	}
 
@@ -76,5 +82,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine());
 		return viewResolver;
+	}
+
+	private IDialect springSecurityDialect() {
+		return new SpringSecurityDialect();
 	}
 }

@@ -17,11 +17,13 @@ import org.springframework.stereotype.Component;
 public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	private static Logger log = Logger.getLogger(UserLoader.class);
-	
+
+	private static final String USER_ROLE = "USER_ROLE";
+	private static final String ADMIN_ROLE = "ADMIN_ROLE";
+
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;
-
 
 	@Autowired
 	public void setUserRepository(UserRepository userRepository) {
@@ -41,22 +43,27 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		Role role = new Role();
-		role.setName("user_role");
-		role = roleRepository.save(role);
-		log.info("Saved Role : user_role  id: " + role.getId());
-
+		Role userRole = new Role();
+		userRole.setName(USER_ROLE);
+		userRole = roleRepository.save(userRole);
+		log.info("Saved Role :" + USER_ROLE + " id: " + userRole.getId());
+		
+		Role adminRole = new Role();
+		adminRole.setName(ADMIN_ROLE);
+		adminRole = roleRepository.save(adminRole);
+		log.info("Saved Role :" + ADMIN_ROLE + " id: " + adminRole.getId());
+		
 		User user = new User();
 		user.setUsername("uca");
 		user.setPassword(bCryptPasswordEncoder.encode("uca"));
 		user.setPasswordConfirm("uca");
-		user.setRoles(Collections.singleton(role));
+		user.setRoles(Collections.singleton(userRole));
 		user = userRepository.save(user);
 
 		log.info("Saved User - id: " + user.getId());
 
-		role.setUsers(Collections.singleton(user));
-		roleRepository.save(role);
+		userRole.setUsers(Collections.singleton(user));
+		roleRepository.save(userRole);
 
 	}
 }

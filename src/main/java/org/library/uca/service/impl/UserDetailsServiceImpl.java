@@ -1,4 +1,4 @@
-package org.library.uca.service;
+package org.library.uca.service.impl;
 
 import org.library.uca.domain.Role;
 import org.library.uca.domain.User;

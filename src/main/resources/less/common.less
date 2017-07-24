@@ -1,5 +1,6 @@
 .uca-site {
-	background-color: rgb(225, 255, 255);
+	background-color: #e1ffff;
+	font-family: verdana;
 	.logo-uca {
 		width: 211px;
 		height: 50px;
@@ -66,11 +67,11 @@
 		padding-right: 5px;
 	}
 
-	.navbar-uca i {
+	.navbar-uca * {
 		color: rgb(225, 255, 255);
 	}
 
-	.navbar-uca i:hover {
+	.navbar-uca *:hover {
 		color: rgb(167, 189, 189);
 	}
 
@@ -81,7 +82,7 @@
 		font-weight: 200;
 		background-color: #2e353d;
 		position: fixed;
-		width: 300px;
+		width: 25%;
 		height: 100%;
 		color: #e1ffff;
 	}
@@ -167,12 +168,12 @@
 		border-bottom: 1px solid #23282e;
 	}
 
-	.header li a {
+	.navbar li a , .sidebar li a {
 		text-decoration: none;
 		color: #e1ffff;
 	}
 
-	.header li a i {
+	.navbar li a i , .sidebar li a i {
 		padding-left: 10px;
 		width: 20px;
 		padding-right: 20px;
@@ -214,6 +215,27 @@
 		.nav-side-menu .menu-list .menu-content {
 			display: block;
 			padding-top: 20px;
+		}
+	}
+
+	.desktop-page-container {
+		margin-left: 25%;
+		width: 75%;
+		.panel {
+			margin: 7px;
+			color: #777;
+			font-family: verdana;
+			font-weight: 200;
+			font-size: 10px;
+			box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
+			-webkit-box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
+			-moz-box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
+			border-radius: 3px;
+			.panel-heading {
+				color: #333;
+				background-color: #FFF;
+				border-color: #DDD;
+			}
 		}
 	}
 

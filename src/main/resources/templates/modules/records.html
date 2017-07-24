@@ -1,4 +1,32 @@
-<th:block th:fragment="content">
+<th:block layout:decorator="desktop-layout">
 
-				
+	<div class="panel panel-default" layout:fragment="desktop-page-content">
+		<div class="panel-heading">
+		    <b>List of Records</b>
+		</div>
+		<div class="panel-body">
+			<div th:if="${not #lists.isEmpty(records)}" >
+		        <table class="table table-striped">
+		            <tr>
+		                <th>Id</th>
+		                <th>Reference</th>
+		                <th>Name</th>
+		                <th>Author</th>
+		                <th>Status</th>
+		                <th>View</th>
+		                <th>Edit</th>
+		            </tr>
+		            <tr th:each="record : ${records}">
+		                <td th:text="${record.id}"><a href="/record/${record.id}">Id</a></td>
+		                <td th:text="${record.reference}">Reference</td>
+		                <td th:text="${record.name}">Name</td>
+		                <td th:text="${record.author}">Author</td>
+		                <td th:text="${record.status}">Status</td>
+		                <td><a th:href="${ '/record/' + record.id}">View</a></td>
+		                <td><a th:href="${'/record/edit/' + record.id}">Edit</a></td>
+		            </tr>
+		        </table>
+		    </div>
+		</div>
+	</div>  
 </th:block>

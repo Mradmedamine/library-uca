@@ -1,8 +1,9 @@
-package org.library.uca.service;
+package org.library.uca.service.impl;
 
 import org.library.uca.domain.User;
 import org.library.uca.repository.RoleRepository;
 import org.library.uca.repository.UserRepository;
+import org.library.uca.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

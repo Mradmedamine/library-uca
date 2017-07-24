@@ -33,14 +33,14 @@ public class UserController {
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {
 		model.addAttribute("userForm", new User());
-		return "base :: registration";
+		return "registration";
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 		userValidator.validate(userForm, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "base :: registration";
+			return "registration";
 		}
 		userService.save(userForm);
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
@@ -60,7 +60,7 @@ public class UserController {
 			model.addAttribute("message", logoutSuccessMessage);
 		}
 
-		return "base :: login";
+		return "login";
 	}
 
 }
