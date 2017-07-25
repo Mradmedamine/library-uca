@@ -1,6 +1,5 @@
 package org.library.uca.controller;
 
-import org.library.uca.repository.RecordRepository;
 import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

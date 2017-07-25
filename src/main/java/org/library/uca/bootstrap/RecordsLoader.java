@@ -38,6 +38,22 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record2.setStatus("Impreso");
 		record2 = recordRepository.save(record2);
 		log.info("Saved Role :   id: " + record2.getId());
+		
+		Record record3 = new Record();
+		record3.setName("Aprendiendo C ");
+		record3.setAuthor("Rodriguez Corral");
+		record3.setReference("EBK/2013/26");
+		record3.setStatus("Impreso");
+		record3 = recordRepository.save(record3);
+		log.info("Saved Role :   id: " + record3.getId());
+		
+		Record record4 = new Record();
+		record4.setName("Reimpreso Aprendiendo C ");
+		record4.setAuthor("Rodriguez Corral");
+		record4.setReference("REI/2009/26");
+		record4.setStatus("Impreso");
+		record4 = recordRepository.save(record4);
+		log.info("Saved Role :   id: " + record4.getId());
 
 	}
 }
