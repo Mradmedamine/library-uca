@@ -1,5 +1,5 @@
 <th:block layout:decorator="base-layout">
-	<div class="signin-container" layout:fragment="content">
+	<div class="signin-container col-lg-5" layout:fragment="content">
 	    <form method="POST" th:action="@{/login}" class="form-signin">
 	        <h3 class="form-heading" th:text="#{common.login.title}"></h3>
 	        <div th:class="|form-group ${error != null ? 'has-error' : ''}|">

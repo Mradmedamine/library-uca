@@ -92,7 +92,7 @@
 				<artifactId>lesscss-maven-plugin</artifactId>
 				<version>1.7.0.1.1</version>
 				<configuration>
-					<sourceDirectory>${project.basedir}/src/main/resources/less</sourceDirectory>
+					<sourceDirectory>${project.basedir}/src/main/resources/static/less</sourceDirectory>
 					<outputDirectory>${project.basedir}/src/main/resources/static/css</outputDirectory>
 					<compress>true</compress>
 					<includes>
