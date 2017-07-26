@@ -2,6 +2,7 @@ package org.library.uca.bootstrap;
 
 import org.apache.log4j.Logger;
 import org.library.uca.domain.Record;
+import org.library.uca.domain.RecordStatus;
 import org.library.uca.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -27,7 +28,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record1.setName("Aprendiendo C ");
 		record1.setAuthor("Rodriguez Corral");
 		record1.setReference("EBK/2013/26");
-		record1.setStatus("Impreso");
+		record1.setStatus(RecordStatus.IN_PRINTING);
 		record1 = recordRepository.save(record1);
 		log.info("Saved Role :   id: " + record1.getId());
 
@@ -35,7 +36,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record2.setName("Reimpreso Aprendiendo C ");
 		record2.setAuthor("Rodriguez Corral");
 		record2.setReference("REI/2009/26");
-		record2.setStatus("Impreso");
+		record2.setStatus(RecordStatus.PRINTED);
 		record2 = recordRepository.save(record2);
 		log.info("Saved Role :   id: " + record2.getId());
 		
@@ -43,7 +44,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record3.setName("Aprendiendo C ");
 		record3.setAuthor("Rodriguez Corral");
 		record3.setReference("EBK/2013/26");
-		record3.setStatus("Impreso");
+		record3.setStatus(RecordStatus.IN_PRINTING);
 		record3 = recordRepository.save(record3);
 		log.info("Saved Role :   id: " + record3.getId());
 		
@@ -51,7 +52,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record4.setName("Reimpreso Aprendiendo C ");
 		record4.setAuthor("Rodriguez Corral");
 		record4.setReference("REI/2009/26");
-		record4.setStatus("Impreso");
+		record4.setStatus(RecordStatus.IN_PRINTING);
 		record4 = recordRepository.save(record4);
 		log.info("Saved Role :   id: " + record4.getId());
 

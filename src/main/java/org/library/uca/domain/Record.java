@@ -1,6 +1,8 @@
 package org.library.uca.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,8 @@ public class Record {
 	private String Reference;
 	private String name;
 	private String author;
-	private String status;
+	@Enumerated(EnumType.STRING)
+	private RecordStatus status;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,11 +53,11 @@ public class Record {
 		this.author = author;
 	}
 
-	public String getStatus() {
+	public RecordStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(RecordStatus status) {
 		this.status = status;
 	}
 
