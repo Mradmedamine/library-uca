@@ -1,0 +1,34 @@
+<th:block layout:decorator="~{desktop-layout}">
+	<div class="panel panel-default" layout:fragment="desktop-page-content"> 
+		<div class="panel-heading">
+       		<div class="row">
+                 <div class="col-lg-12">
+                    <span>
+                        <i class="fa fa-files-o fa-fw"></i> 
+						<b><th:block th:text="#{desktop.records.summary.title.label}"></th:block> : </b>
+						<th:block th:text="${record.reference}"></th:block> 
+                    </span>
+                    <a th:href="@{/records/edit/__${record.id}__}">
+                    	<i class="fa fa-pencil-square-o fa-lg  pull-right" aria-hidden="true"></i>
+                    </a>
+                 </div>
+       		</div>
+		</div>				
+		<div class="panel-body">
+			<table class="table table-striped table-bordered table-uca col-lg-8">
+	            <tr>
+	                <td width="20%"><b>Description : </b></td>
+	                <td><th:block th:text="${record.description}"></th:block> </td>
+	            </tr>
+	             <tr>
+	                <td width="20%"><b>Author : </b></td>
+	                <td><th:block th:text="${record.author}"></th:block> </td>
+	            </tr>
+	             <tr>
+	                <td width="20%"><b>Status : </b></td>
+	                <td><th:block th:text="${record.status.value}"></th:block> </td>
+	            </tr>
+            </table>
+		</div>
+	</div>
+</th:block>

@@ -19,5 +19,10 @@ public class RecordServiceImpl implements RecordService {
 		return recordRepository.findAll();
 	}
 
+	@Override
+	public Record findById(Long id) {
+		return recordRepository.findOne(id);
+	}
+
 
 }
