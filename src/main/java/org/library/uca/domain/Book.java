@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "record")
-public class Record {
+@Table(name = "book")
+public class Book {
 
 	private Long id;
 	private String Reference;

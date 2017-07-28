@@ -8,4 +8,6 @@ public interface RecordService {
 
 	List<Record> getAllRecords();
 
+	Record findById(Long id);
+	
 }

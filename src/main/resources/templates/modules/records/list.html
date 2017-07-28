@@ -1,11 +1,11 @@
-<th:block layout:decorator="desktop-layout">
+<th:block layout:decorator="~{desktop-layout}">
 	<div class="panel panel-default" layout:fragment="desktop-page-content"> 
 		<div class="panel-heading">
        		<div class="row">
                  <div class="col-lg-12">
                     <span>
                         <i class="fa fa-files-o fa-fw"></i> 
-						<th:block th:text="#{desktop.records.title.label}"></th:block>
+						<b><th:block th:text="#{desktop.records.title.label}"></th:block></b>
                     </span>
                  </div>
        		</div>
@@ -16,17 +16,17 @@
                        <thead>
                            <tr> 
 			                <th>Reference</th>
-			                <th>Name</th>
+			                <th>Description</th>
 			                <th>Author</th>
 			                <th>Status</th>
 			            </tr>
                        </thead>
                        <tbody>
 				            <tr th:each="record : ${records}">
-				                <td th:text="${record.reference}">Reference</td>
-				                <td> <a th:href="${ '/record/' + record.id}" th:text="${record.name}">Name</td>
-				                <td th:text="${record.author}">Author</td>
-				                <td th:text="#{desktop.records.status.__${record.status.value}__}">Status</td>
+				                <td th:text="${record.reference}"></td>
+				                <td> <a th:href="${ '/records/' + record.id}" th:text="${record.description}"></td>
+				                <td th:text="${record.author}"></td>
+				                <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
 				            </tr>
                        </tbody>
                    </table>
