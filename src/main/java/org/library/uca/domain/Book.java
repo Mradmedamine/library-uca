@@ -10,24 +10,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "book")
-public class Book {
+public class Book extends EntityBase {
 
-	private Long id;
 	private String Reference;
 	private String description;
 	private String author;
-	@Enumerated(EnumType.STRING)
-	private RecordStatus status;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getReference() {
 		return Reference;
@@ -53,12 +40,5 @@ public class Book {
 		this.author = author;
 	}
 
-	public RecordStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(RecordStatus status) {
-		this.status = status;
-	}
 
 }

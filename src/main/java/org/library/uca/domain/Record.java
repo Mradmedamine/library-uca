@@ -3,30 +3,27 @@ package org.library.uca.domain;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.library.uca.domain.metadata.RecordStatus;
+import org.library.uca.domain.metadata.RecordType;
 
 @Entity
 @Table(name = "record")
-public class Record {
+public class Record extends EntityBase {
 
-	private Long id;
 	private String Reference;
 	private String description;
-	private String author;
-	@Enumerated(EnumType.STRING)
 	private RecordStatus status;
+	private RecordType type;
+	private String author;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
-		return id;
+	public RecordType getType() {
+		return type;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setType(RecordType type) {
+		this.type = type;
 	}
 
 	public String getReference() {
@@ -53,6 +50,7 @@ public class Record {
 		this.author = author;
 	}
 
+	@Enumerated(EnumType.STRING)
 	public RecordStatus getStatus() {
 		return status;
 	}
