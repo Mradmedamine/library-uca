@@ -18,14 +18,6 @@ public class Record extends EntityBase {
 	private RecordType type;
 	private String author;
 
-	public RecordType getType() {
-		return type;
-	}
-
-	public void setType(RecordType type) {
-		this.type = type;
-	}
-
 	public String getReference() {
 		return Reference;
 	}
@@ -42,14 +34,6 @@ public class Record extends EntityBase {
 		this.description = name;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
 	@Enumerated(EnumType.STRING)
 	public RecordStatus getStatus() {
 		return status;
@@ -59,4 +43,20 @@ public class Record extends EntityBase {
 		this.status = status;
 	}
 
+	@Enumerated(EnumType.STRING)
+	public RecordType getType() {
+		return type;
+	}
+
+	public void setType(RecordType type) {
+		this.type = type;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 }

@@ -29,7 +29,6 @@
     <link th:href="@{/library/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
     <link th:href="@{/css/desktop.css}" rel="stylesheet" >
 
 </head>
@@ -48,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">	
+                <a class="navbar-brand" th:href="@{/}">	
                 	<img class="logo-uca" th:src="@{/images/editorial-logo.png}" />
                 </a>
             </div>
@@ -73,6 +72,7 @@
             </ul>
             
 			<!-- SIDEBAR -->
+			
 			<div th:replace="fragments/sidebar::content"></div>
         </nav>
 

@@ -32,6 +32,7 @@ public class RecordsController {
 
 	@RequestMapping(path = "/records", method = RequestMethod.POST)
 	public String searchRecords(Model model, @RequestBody RecordSearch recordSearch) {
+		recordService.findByCriteria(recordSearch);
 		return "modules/records/list";
 	}
 	

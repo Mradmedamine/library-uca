@@ -1,5 +1,7 @@
 package org.library.uca.domain.metadata;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum RecordType {
 
     OLD("old"), 
@@ -21,6 +23,7 @@ public enum RecordType {
 		this.setValue(value);
 	}
 
+	@JsonValue
 	public String getValue() {
 		return value;
 	}

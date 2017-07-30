@@ -7,32 +7,32 @@ public class RecordSearch implements Serializable {
 
 	private static final long serialVersionUID = 2306798939310096115L;
 
-	private String recordText;
-	private List<RecordType> recordTypes;
-	private List<RecordStatus> recordStatus;
+	private String descriptionText;
+	private List<RecordType> types;
+	private List<RecordStatus> status;
 
-	public String getRecordText() {
-		return recordText;
+	public String getDescriptionText() {
+		return descriptionText;
 	}
 
-	public void setRecordText(String recordText) {
-		this.recordText = recordText;
+	public void setDescriptionText(String descriptionText) {
+		this.descriptionText = descriptionText;
 	}
 
-	public List<RecordType> getRecordTypes() {
-		return recordTypes;
+	public List<RecordType> getTypes() {
+		return types;
 	}
 
-	public void setRecordTypes(List<RecordType> recordTypes) {
-		this.recordTypes = recordTypes;
+	public void setTypes(List<RecordType> types) {
+		this.types = types;
 	}
 
-	public List<RecordStatus> getRecordStatus() {
-		return recordStatus;
+	public List<RecordStatus> getStatus() {
+		return status;
 	}
 
-	public void setRecordStatus(List<RecordStatus> recordStatus) {
-		this.recordStatus = recordStatus;
+	public void setStatus(List<RecordStatus> status) {
+		this.status = status;
 	}
 
 }

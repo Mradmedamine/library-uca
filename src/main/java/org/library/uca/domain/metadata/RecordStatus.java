@@ -1,5 +1,7 @@
 package org.library.uca.domain.metadata;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum RecordStatus {
 	
 	SENT("sent"), 
@@ -26,6 +28,7 @@ public enum RecordStatus {
 		this.setValue(value);
 	}
 
+	@JsonValue
 	public String getValue() {
 		return value;
 	}
