@@ -30,17 +30,17 @@ public class UserController {
 	@Autowired
 	private MessageSource messageSource;
 
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
-	public String registration(Model model) {
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signup(Model model) {
 		model.addAttribute("userForm", new User());
-		return "registration";
+		return "signup";
 	}
 
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String signup(@ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
 		userValidator.validate(userForm, bindingResult);
 		if (bindingResult.hasErrors()) {
-			return "registration";
+			return "signup";
 		}
 		userService.save(userForm);
 		securityService.autologin(userForm.getUsername(), userForm.getPasswordConfirm());
