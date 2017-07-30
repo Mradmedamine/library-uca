@@ -1,6 +1,6 @@
 package org.library.uca.controller;
 
-import org.library.uca.domain.RecordStatus;
+import org.library.uca.domain.metadata.RecordStatus;
 import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

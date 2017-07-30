@@ -94,7 +94,6 @@
 				<configuration>
 					<sourceDirectory>${project.basedir}/src/main/resources/static/less</sourceDirectory>
 					<outputDirectory>${project.basedir}/src/main/resources/static/css</outputDirectory>
-					<compress>true</compress>
 					<includes>
 						<include>**/*.less</include>
 					</includes>

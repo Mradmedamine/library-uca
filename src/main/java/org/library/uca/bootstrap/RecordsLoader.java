@@ -2,7 +2,7 @@ package org.library.uca.bootstrap;
 
 import org.apache.log4j.Logger;
 import org.library.uca.domain.Record;
-import org.library.uca.domain.RecordStatus;
+import org.library.uca.domain.metadata.RecordStatus;
 import org.library.uca.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;

@@ -1,27 +1,22 @@
 package org.library.uca.domain;
 
-import javax.persistence.*;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends EntityBase {
 	
-    private Long id;
     private String username;
     private String password;
     private String passwordConfirm;
     private Set<Role> roles;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
