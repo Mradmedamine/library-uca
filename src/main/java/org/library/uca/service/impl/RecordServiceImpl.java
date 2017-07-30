@@ -3,6 +3,7 @@ package org.library.uca.service.impl;
 import java.util.List;
 
 import org.library.uca.domain.Record;
+import org.library.uca.domain.metadata.RecordSearch;
 import org.library.uca.repository.RecordRepository;
 import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,9 @@ public class RecordServiceImpl implements RecordService {
 
 	@Autowired
 	private RecordRepository recordRepository;
-	
+
 	@Override
-	public List<Record> getAllRecords() {
+	public List<Record> findAll() {
 		return recordRepository.findAll();
 	}
 
@@ -23,6 +24,5 @@ public class RecordServiceImpl implements RecordService {
 	public Record findById(Long id) {
 		return recordRepository.findOne(id);
 	}
-
 
 }

@@ -6,8 +6,8 @@ import org.library.uca.domain.Record;
 
 public interface RecordService {
 
-	List<Record> getAllRecords();
-
+	List<Record> findAll();
+	
 	Record findById(Long id);
 	
 }

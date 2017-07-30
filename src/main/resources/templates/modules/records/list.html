@@ -11,39 +11,18 @@
 		<div class="panel-body">
 		    <div id="toolbar" class="toolbar">
 				<input type="text" class="form-control search-box" placeholder="Search" />
-				<select class="selectpicker" title="Type" data-width="fit" multiple>
-					  <option data-tokens="ketchup mustard">Hot Dog</option>
-					  <option data-tokens="mustard">Burger</option>
-					  <option data-tokens="frosting">Sugar</option>
+				<select class="selectpicker search-item" title="Type" data-live-search="true" data-width="fit" multiple>
+					  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:text="${type.value}">
+					  </option>
 				</select>
-				<select class="selectpicker" title="Status" data-width="fit" multiple>
-					  <option data-tokens="ketchup mustard">Hot Dog</option>
-					  <option data-tokens="mustard">Burger</option>
-					  <option data-tokens="frosting">Sugar</option>
+				<select class="selectpicker search-item" title="Status" data-live-search="true" data-width="fit" multiple>
+					 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:text="${status.value}">
+					  </option>
 				</select>
 				<button class="btn btn-primary btn-block search-btn" type="submit">Search</button>
         	</div> 
         	<hr>
-			<div th:if="${not #lists.isEmpty(records)}" >
-             		<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="dataTables-example">
-                       <thead>
-                           <tr> 
-			                <th>Reference</th>
-			                <th>Description</th>
-			                <th>Author</th>
-			                <th>Status</th>
-			            </tr>
-                       </thead>
-                       <tbody>
-				            <tr th:each="record : ${records}">
-				                <td th:text="${record.reference}"></td>
-				                <td> <a th:href="${ '/records/' + record.id}" th:text="${record.description}"></td>
-				                <td th:text="${record.author}"></td>
-				                <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
-				            </tr>
-                       </tbody>
-                   </table>
-		    </div>
+			<th:block th:include="~{fragments/recordsTable::records}"></th:block>
 		</div>
 	</div>
 </th:block>
