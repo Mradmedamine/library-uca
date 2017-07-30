@@ -73,10 +73,11 @@
             </ul>
             
 			<!-- SIDEBAR -->
-			<th:block th:include="~{fragments/sidebar::sidebar}"></th:block> 
+			<div th:replace="fragments/sidebar::content"></div>
         </nav>
 
         <div id="page-wrapper" >
+        	
         	<div layout:fragment="desktop-page-content"></div>
         </div>
         

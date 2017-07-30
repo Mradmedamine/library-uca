@@ -1,4 +1,9 @@
-<th:block layout:decorator="~{desktop-layout}">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="desktop-layout">
+        
 	<div class="panel panel-default" layout:fragment="desktop-page-content"> 
 		<div class="panel-heading">
        		<div class="row">
@@ -44,42 +49,8 @@
 			    		</div>
 			    	</div>
 			    </form>
-<!-- 	        	<div class="well"> -->
-<!-- 					<form method="POST" th:object="${record}" role="form" class="form-signin"> -->
-<!-- 			        	<table> -->
-<!-- 			        		<tr><td width="100%"> -->
-<!-- 			        			<div class="form-group"> -->
-<!-- 					            	<label for="description">Description</label> -->
-<!-- 					                <input type="text" id="description" th:field="*{description}" class="form-control" th:placeholder="Description" autofocus="true"></input> -->
-<!-- 					            </div> -->
-<!-- 					        </td></tr> -->
-<!-- 							<tr> -->
-<!-- 								<td width="70%"> -->
-<!-- 									<div class="form-group"> -->
-<!-- 						            	<label for="author">Author</label> -->
-<!-- 						                <input type="text" id="author" th:field="*{author}" class="form-control" th:placeholder="Author"></input> -->
-<!-- 					            	</div> -->
-<!-- 				            	</td> -->
-<!-- 				            	<td width="30%"><i class="fa fa-plus fa-lg  pull-right" aria-hidden="true"></i></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr><td width="40%"> -->
-<!-- 								<div class="form-group"> -->
-<!-- 				                    <label for="status">Status</label> -->
-<!-- 				                    <select id="status" class="form-control"> -->
-<!-- 				                    	<th:block th:each="status : ${recordStatusList}"> -->
-<!-- 				                    		<option th:text="#{${status}}"></option> -->
-<!-- 				                    	</th:block> -->
-<!-- 				                    </select> -->
-<!-- 				                </div></td> -->
-<!-- 			                </tr>  -->
-<!-- 			                <tr><td> -->
-<!-- 			                	<button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{common.submit}"></button> -->
-<!-- 			           			</td> -->
-<!-- 			           		</tr> -->
-<!-- 			            </table>                -->
-<!-- 			    	</form> -->
-<!-- 			   	</div> -->
 		   	</div>
 		</div>
 	</div>
-</th:block>
+	
+</html>
