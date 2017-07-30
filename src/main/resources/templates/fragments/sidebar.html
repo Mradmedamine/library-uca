@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<th:block th:fragment="sidebar">
+	<div class="navbar-default sidebar" role="navigation">
+		<div class="sidebar-nav navbar-collapse">
+			<ul class="nav" id="side-menu">
+				<li>
+					<a th:href="@{/}">
+						<i class="fa fa-files-o fa-fw"></i>&nbsp;<th:block th:text="#{desktop.layout.sidebar.files}"></th:block>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/}">
+						<i class="fa fa-book fa-fw"></i>&nbsp;<th:block th:text="#{desktop.layout.sidebar.books}"></th:block>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/}">
+						<i class="fa fa-users fa-fw"></i>&nbsp;<th:block th:text="#{desktop.layout.sidebar.writers}"></th:block>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/}">
+						<i class="fa fa-database fa-fw"></i>&nbsp;<th:block th:text="#{desktop.layout.sidebar.catalog}"></th:block>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{/}">
+						<i class="fa fa-cogs fa-fw"></i>&nbsp;<th:block th:text="#{desktop.layout.sidebar.tools}"></th:block>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</th:block>
+
+</html>
