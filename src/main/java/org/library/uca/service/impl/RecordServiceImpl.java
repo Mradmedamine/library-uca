@@ -3,8 +3,8 @@ package org.library.uca.service.impl;
 import java.util.Arrays;
 import java.util.List;
 
-import org.library.uca.domain.Record;
-import org.library.uca.domain.metadata.RecordSearch;
+import org.library.uca.domain.RecordSearch;
+import org.library.uca.domain.entity.Record;
 import org.library.uca.domain.metadata.RecordStatus;
 import org.library.uca.domain.metadata.RecordType;
 import org.library.uca.repository.RecordRepository;
@@ -49,7 +49,7 @@ public class RecordServiceImpl implements RecordService {
 		if (CollectionUtils.isEmpty(statusList)) {
 			statusList = Arrays.asList(RecordStatus.values());
 		}
-		return recordRepository.findByDescriptionContainingAndStatusInAndTypeIn(descriptionText, typeList, statusList);
+		return recordRepository.findByDescriptionContainingIgnoreCaseAndStatusInAndTypeIn(descriptionText, statusList, typeList);
 	}
 
 }

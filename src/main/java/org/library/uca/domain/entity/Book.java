@@ -1,4 +1,4 @@
-package org.library.uca.domain;
+package org.library.uca.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

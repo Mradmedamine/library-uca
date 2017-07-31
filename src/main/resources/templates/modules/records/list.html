@@ -15,23 +15,28 @@
   		</div>
   	</div> 
 	<div class="panel-body">
-	    <div id="toolbar" class="toolbar">
-	    	<form>
-				<input type="text" class="form-control search-box" placeholder="Search" />
-				<select class="selectpicker search-item" title="Type" data-live-search="true" data-width="auto" multiple>
-					  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:text="${type.value}">
-					  </option>
-				</select>
-				<select class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
-					 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:text="${status.value}">
-					  </option>
-				</select>
-				<button class="btn btn-primary btn-block search-btn" type="button">Search</button>
-			</form>
-       	</div> 
+	    <form id="toolbar" class="toolbar">
+			<input type="text" name="descriptionText" class="form-control search-box" placeholder="Search" />
+			<select name="types" class="selectpicker search-item" title="Type" data-live-search="true" data-width="auto" multiple>
+				  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:text="${type.value}">
+				  </option>
+			</select>
+			<select name="status" class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
+				 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:text="${status.value}">
+				  </option>
+			</select>
+			<button class="btn btn-primary btn-block search-btn" type="button">Search</button>
+       	</form> 
        	<hr>
-		<div th:include="~{fragments/recordsTable::records}"></div>
+		<div id="result-container" th:include="~{modules/records/dataTable::content}"></div>
 	</div>
+</div>
+
+<div layout:fragment="js-files"> 	
+	<script th:src="@{/js/records.js}" ></script> 
+	<script th:inline="javascript"> 
+		var emptySearchResultMessage = [[#{common.empty.search.result.message}]];
+	</script>
 </div>
 
 </html>

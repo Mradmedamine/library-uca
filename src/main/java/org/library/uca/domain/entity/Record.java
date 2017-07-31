@@ -1,4 +1,4 @@
-package org.library.uca.domain;
+package org.library.uca.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,18 +12,18 @@ import org.library.uca.domain.metadata.RecordType;
 @Table(name = "record")
 public class Record extends EntityBase {
 
-	private String Reference;
+	private String reference;
 	private String description;
 	private RecordStatus status;
 	private RecordType type;
 	private String author;
 
 	public String getReference() {
-		return Reference;
+		return reference;
 	}
 
 	public void setReference(String reference) {
-		Reference = reference;
+		this.reference = reference;
 	}
 
 	public String getDescription() {
