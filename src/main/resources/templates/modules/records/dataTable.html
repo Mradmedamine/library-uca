@@ -1,0 +1,24 @@
+<th:block th:fragment="content">
+	<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="records-dataTables">
+	     <thead>
+		     <tr> 
+		     	<th style="display: none;">Id</th>
+				<th>Reference</th>
+				<th>Description</th>
+				<th>Author</th>
+				<th>Type</th>
+				<th>Status</th>
+		 	 </tr>
+	     </thead>
+	     <tbody>
+			<tr th:each="record : ${records}">
+				<td style="display: none;" th:text="${record.id}"></td>
+			    <td th:text="${record.reference}"></td>
+			    <td> <a th:href="${ '/records/' + record.id}" th:text="${record.description}"></td>
+			    <td th:text="${record.author}"></td>
+			    <td th:text="${record.type}"></td>
+			    <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
+			</tr>
+	    </tbody>
+	</table>
+</th:block>

@@ -2,7 +2,7 @@ package org.library.uca.controller;
 
 import java.util.Locale;
 
-import org.library.uca.domain.User;
+import org.library.uca.domain.entity.User;
 import org.library.uca.service.SecurityService;
 import org.library.uca.service.UserService;
 import org.library.uca.validator.UserValidator;

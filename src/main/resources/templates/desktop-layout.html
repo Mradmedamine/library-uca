@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 
 <head lang="en">
 
@@ -13,7 +13,6 @@
 
     <!-- Bootstrap Core CSS -->
     <link th:href="@{/library/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-
     <link th:href="@{/library/bootstrap/css/bootstrap-select.min.css}" rel="stylesheet">
     
     <!-- MetisMenu CSS -->
@@ -29,7 +28,6 @@
     <link th:href="@{/library/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link th:href="@{/css/sb-admin-2.css}" rel="stylesheet">
     <link th:href="@{/css/desktop.css}" rel="stylesheet" >
 
 </head>
@@ -48,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">	
+                <a class="navbar-brand" th:href="@{/}">	
                 	<img class="logo-uca" th:src="@{/images/editorial-logo.png}" />
                 </a>
             </div>
@@ -73,11 +71,10 @@
             </ul>
             
 			<!-- SIDEBAR -->
-			<div th:replace="fragments/sidebar::content"></div>
+			<div th:replace="~{fragments/sidebar::content}"></div>
         </nav>
 
         <div id="page-wrapper" >
-        	
         	<div layout:fragment="desktop-page-content"></div>
         </div>
         
@@ -87,6 +84,7 @@
 	
     <!-- jQuery -->
     <script th:src="@{/library/jquery/jquery.min.js}"></script>
+    <script th:src="@{/library/jquery/jquery.serialize-object.js}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script th:src="@{/library/bootstrap/js/bootstrap.min.js}"></script>
@@ -100,13 +98,11 @@
     <script th:src="@{/library/datatables-plugins/dataTables.bootstrap.min.js}"></script>
     <script th:src="@{/library/datatables-responsive/dataTables.responsive.js}"></script>
 
-    <!---- EDITORIAL ---->
-    	
-    <!-- Custom Theme JavaScript -->
-    <script th:src="@{/js/sb-admin-2.js}"></script>
-		
+    <!---- UCA ---->
 	<script th:src="@{/js/jquery.extend.js}" ></script>
 	<script th:src="@{/js/desktop.js}" ></script>
+	
+	<th:block layout:fragment="js-files"></th:block>
 	
 </body>
 

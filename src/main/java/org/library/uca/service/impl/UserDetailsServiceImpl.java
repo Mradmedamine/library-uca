@@ -1,7 +1,7 @@
 package org.library.uca.service.impl;
 
-import org.library.uca.domain.Role;
-import org.library.uca.domain.User;
+import org.library.uca.domain.entity.Role;
+import org.library.uca.domain.entity.User;
 import org.library.uca.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

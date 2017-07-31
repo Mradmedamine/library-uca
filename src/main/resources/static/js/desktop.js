@@ -1,14 +1,7 @@
 $(function() {
-    $('#side-menu').metisMenu();
-    $('#dataTables-example').DataTable({
-	responsive : true
-    });
-});
 
-//Loads the correct sidebar on window load,
-//collapses the sidebar on window resize.
-// Sets the min-height of #page-wrapper to window size
-$(function() {
+    $('#side-menu').metisMenu();
+
     $(window).bind("load resize", function() {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -42,4 +35,5 @@ $(function() {
             break;
         }
     }
+    
 });

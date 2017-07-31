@@ -1,6 +1,6 @@
 package org.library.uca.service.impl;
 
-import org.library.uca.domain.User;
+import org.library.uca.domain.entity.User;
 import org.library.uca.repository.RoleRepository;
 import org.library.uca.repository.UserRepository;
 import org.library.uca.service.UserService;

@@ -1,8 +1,9 @@
 package org.library.uca.bootstrap;
 
 import org.apache.log4j.Logger;
-import org.library.uca.domain.Record;
+import org.library.uca.domain.entity.Record;
 import org.library.uca.domain.metadata.RecordStatus;
+import org.library.uca.domain.metadata.RecordType;
 import org.library.uca.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -29,6 +30,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record1.setAuthor("Rodriguez Corral");
 		record1.setReference("EBK/2013/26");
 		record1.setStatus(RecordStatus.IN_PRINTING);
+		record1.setType(RecordType.ADMINISTRATIVE);		
 		record1 = recordRepository.save(record1);
 		log.info("Saved Role :   id: " + record1.getId());
 
@@ -37,6 +39,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record2.setAuthor("Rodriguez Corral");
 		record2.setReference("REI/2009/26");
 		record2.setStatus(RecordStatus.PRINTED);
+		record2.setType(RecordType.EBOOK);	
 		record2 = recordRepository.save(record2);
 		log.info("Saved Role :   id: " + record2.getId());
 
@@ -45,6 +48,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record3.setAuthor("Rodriguez Corral");
 		record3.setReference("EBK/2013/26");
 		record3.setStatus(RecordStatus.IN_PRINTING);
+		record3.setType(RecordType.EBOOK);
 		record3 = recordRepository.save(record3);
 		log.info("Saved Role :   id: " + record3.getId());
 
@@ -53,6 +57,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record4.setAuthor("Silva Ramírez, Esther Lydia");
 		record4.setReference("REI/IYA/2014/10");
 		record4.setStatus(RecordStatus.ANSWERED);
+		record4.setType(RecordType.MANUAL);
 		record4 = recordRepository.save(record4);
 		log.info("Saved Role :   id: " + record4.getId());
 
@@ -61,6 +66,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record33.setAuthor("Hurtado Rodríguez, Nuria");
 		record33.setReference("MAN/IYA/2010/09");
 		record33.setStatus(RecordStatus.REGISTERED);
+		record33.setType(RecordType.OLD);
 		record33 = recordRepository.save(record33);
 		log.info("Saved Role :   id: " + record33.getId());
 
@@ -69,6 +75,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record5.setAuthor("López Coello, Manuel");
 		record5.setReference("EBK/IYA/2017/07");
 		record5.setStatus(RecordStatus.IN_PRINTING);
+		record5.setType(RecordType.TRANSLATION);
 		record5 = recordRepository.save(record5);
 		log.info("Saved Role :   id: " + record5.getId());
 
@@ -77,6 +84,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record6.setAuthor("Jiménez Millán, José Antonio");
 		record6.setReference("EBK/IYA/2015/03");
 		record6.setStatus(RecordStatus.EXTERNAL_EVALUATION);
+		record6.setType(RecordType.EBOOK);
 		record6 = recordRepository.save(record6);
 		log.info("Saved Role :   id: " + record6.getId());
 
@@ -85,6 +93,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record7.setAuthor("Jiménez Millán, José Antonio");
 		record7.setReference("EBK/IYA/2015/03");
 		record7.setStatus(RecordStatus.DISMISSED);
+		record7.setType(RecordType.EBOOK);
 		record7 = recordRepository.save(record7);
 		log.info("Saved Role :   id: " + record7.getId());
 
@@ -93,6 +102,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record8.setAuthor("Aburruzaga García, Gerardo");
 		record8.setReference("REI/IYA/2016/01");
 		record8.setStatus(RecordStatus.ACCEPTED_WITH_MODIFICATIONS);
+		record8.setType(RecordType.INSTITUTIONAL);
 		record8 = recordRepository.save(record8);
 		log.info("Saved Role :   id: " + record8.getId());
 
@@ -101,6 +111,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record9.setAuthor("Domínguez Jiménez, Juan José");
 		record9.setReference("REI/IYA/2009/07");
 		record9.setStatus(RecordStatus.IN_PRINTING);
+		record9.setType(RecordType.REPRINT);
 		record9 = recordRepository.save(record9);
 		log.info("Saved Role :   id: " + record9.getId());
 
@@ -109,6 +120,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record10.setAuthor("Domínguez Jiménez, Juan José");
 		record10.setReference("REI/IYA/2009/07");
 		record10.setStatus(RecordStatus.IN_PRINTING);
+		record10.setType(RecordType.EBOOK);
 		record10 = recordRepository.save(record10);
 		log.info("Saved Role :   id: " + record10.getId());
 
@@ -117,6 +129,7 @@ public class RecordsLoader implements ApplicationListener<ContextRefreshedEvent>
 		record11.setAuthor("Jiménez Millán, José Antonio");
 		record11.setReference("EBK/I/2015/03");
 		record11.setStatus(RecordStatus.DISMISSED);
+		record11.setType(RecordType.EBOOK);
 		record11 = recordRepository.save(record11);
 		log.info("Saved Role :   id: " + record11.getId());
 	}

@@ -1,4 +1,4 @@
-package org.library.uca.domain;
+package org.library.uca.domain.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,26 +12,18 @@ import org.library.uca.domain.metadata.RecordType;
 @Table(name = "record")
 public class Record extends EntityBase {
 
-	private String Reference;
+	private String reference;
 	private String description;
 	private RecordStatus status;
 	private RecordType type;
 	private String author;
 
-	public RecordType getType() {
-		return type;
-	}
-
-	public void setType(RecordType type) {
-		this.type = type;
-	}
-
 	public String getReference() {
-		return Reference;
+		return reference;
 	}
 
 	public void setReference(String reference) {
-		Reference = reference;
+		this.reference = reference;
 	}
 
 	public String getDescription() {
@@ -40,14 +32,6 @@ public class Record extends EntityBase {
 
 	public void setDescription(String name) {
 		this.description = name;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	@Enumerated(EnumType.STRING)
@@ -59,4 +43,20 @@ public class Record extends EntityBase {
 		this.status = status;
 	}
 
+	@Enumerated(EnumType.STRING)
+	public RecordType getType() {
+		return type;
+	}
+
+	public void setType(RecordType type) {
+		this.type = type;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 }
