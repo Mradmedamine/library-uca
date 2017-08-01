@@ -1,7 +1,7 @@
 <th:block layout:decorator="desktop-layout">
 
 	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8 toppad" layout:fragment="desktop-page-content">
-		<div class="panel panel-info">
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<span> <i class="fa fa-files-o fa-fw"></i> 
@@ -25,9 +25,13 @@
 								</tr>
 								<tr>
 									<td>Status :</td>
+									<td><th:block th:text="#{desktop.records.status.__${record.status.value}__}"></th:block></td>
+								</tr>
+								<tr>
+									<td>Type :</td>
 									<td><th:block th:text="${record.status.value}"></th:block></td>
 								</tr>
-
+								
 							</tbody>
 						</table>
 					</div>
