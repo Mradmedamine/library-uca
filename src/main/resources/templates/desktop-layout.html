@@ -28,7 +28,7 @@
     <link th:href="@{/library/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link th:href="@{/css/desktop.css}" rel="stylesheet" >
+    <link th:href="@{/css/editorial-uca.css}" rel="stylesheet" >
 
 </head>
 
@@ -64,7 +64,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                        	<a href="login.html"><i class="fa fa-sign-out fa-fw"></i> <th:block th:text="#{desktop.layout.topbar.logout}"/></a>
+                        	<a th:href="@{login?logout}"><i class="fa fa-sign-out fa-fw"></i> <th:block th:text="#{desktop.layout.topbar.logout}"/></a>
                         </li>
                     </ul>
                 </li>

@@ -1,14 +1,12 @@
 $(function() {
 
-    var recordsUrl = '/records/search';
-
     initRecordsDataTables();
-
+    
     $('#toolbar .search-btn').on('click', function(event) {
 	var data = $('#toolbar').serializeObject();
 	$.ajax({
 	    type : 'POST',
-	    url : recordsUrl,
+	    url : recordsSearchUrl,
 	    data : JSON.stringify(data),
 	    contentType : 'application/json',
 	    success : function(data) {
@@ -19,11 +17,15 @@ $(function() {
     });
 
     function initRecordsDataTables() {
-	$('#records-dataTables').DataTable({
-	    "language" : {
-		"emptyTable" : emptySearchResultMessage,
-	    }
-	});
+	var recordsDataTable = $('#records-dataTables');
+	if (recordsDataTable.length) {
+	    $(recordsDataTable).DataTable({
+		"language" : {
+		    "emptyTable" : emptySearchResultMessage,
+		}
+	    });
+	}
     }
+
 
 });

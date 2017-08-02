@@ -1,10 +1,15 @@
 package org.library.uca.domain.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.library.uca.domain.metadata.RecordStatus;
 import org.library.uca.domain.metadata.RecordType;
 
@@ -16,7 +21,8 @@ public class Record extends EntityBase {
 	private String description;
 	private RecordStatus status;
 	private RecordType type;
-	private String author;
+	private Author responsible;
+	private Book book;
 
 	public String getReference() {
 		return reference;
@@ -52,11 +58,25 @@ public class Record extends EntityBase {
 		this.type = type;
 	}
 
-	public String getAuthor() {
-		return author;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "responsible_id")
+	public Author getResponsible() {
+		return responsible;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setResponsible(Author responsible) {
+		this.responsible = responsible;
 	}
+
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "book_id")
+	@NotFound(action = NotFoundAction.IGNORE)
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
 }

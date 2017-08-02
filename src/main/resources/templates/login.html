@@ -13,9 +13,9 @@
                     <h3 class="form-heading login-heading" th:text="#{common.login.title}"></h3>
                 </div>
                 <div class="panel-body">
-                	<span th:text="${message}"></span>
                     <form role="form" method="POST" th:action="@{/login}" class="form-login">
                         <fieldset>
+                           <span th:text="${message}"></span>
                            <div th:class="|form-group ${error != null ? 'has-error' : ''}|">
 		           		  	  <input name="username" type="text" class="form-control" th:placeholder="#{common.login.username}"/>
 					       </div>

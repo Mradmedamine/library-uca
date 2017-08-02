@@ -1,6 +1,13 @@
 package org.library.uca.domain.entity;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -9,7 +16,7 @@ public class Book extends EntityBase {
 
 	private String Reference;
 	private String description;
-	private String author;
+	private Set<Author> authors;
 
 	public String getReference() {
 		return Reference;
@@ -27,13 +34,14 @@ public class Book extends EntityBase {
 		this.description = name;
 	}
 
-	public String getAuthor() {
-		return author;
+	 @ManyToMany
+	 @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	public Set<Author> getAuthors() {
+		return authors;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
 	}
-
 
 }

@@ -24,14 +24,62 @@
 
 	.sidebar {
 		margin-top: 60px;
+		z-index: 1;
+		position: absolute;
+		width: 20%;
+		ul li {
+			border-bottom: 1px solid #e7e7e7;
+		}
+
+		ul li a.active {
+			background-color: rgba(181, 181, 181, 0.17);
+		}
+
+		.sidebar-nav.navbar-collapse {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.navbar-top-links {
+		margin-right: 0;
+		li a {
+			padding: 15px;
+			min-height: 50px;
+		}
+
+		li:last-child {
+			margin-right: 15px;
+		}
+
+		li {
+			display: inline-block;
+		}
+
+		.dropdown-menu li {
+			display: block;
+		}
+
+		.dropdown-menu li:last-child {
+			margin-right: 0;
+		}
+
+		.dropdown-menu li a {
+			padding: 3px 20px;
+			min-height: 0;
+		}
+
+		.dropdown-menu li a div {
+			white-space: normal;
+		}
 	}
 }
 
 #page-wrapper {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGklEQVQIW2N89+7dfyEhIUYGJIDCgYlTKAgAmtcEBhJsYjsAAAAASUVORK5CYII=) repeat;
-	background-color: white !important;
+	background-color: white ! important;
 	padding: 1px 0px 1px 0px;
-	min-height: 581px !important;
+	min-height: 581px ! important;
 	.panel {
 		margin: 10px;
 		color: #777;
@@ -71,22 +119,35 @@
 				margin-right: 10px;
 			}
 		}
+
+		.summary-container {
+			font-size: 14px;
+			float: none;
+			margin: auto;
+			padding: 0px;
+			background-color: rgba(240, 240, 240, 0.3);
+		}
+
+		.dataTables_empty {
+			text-align: center;
+		}
 	}
 
 	.table-uca {
 		border: 0px ! important;
-	}
-
-	*:not(i):not(.glyphicon) {
-		font-family: verdana;
+		table-layout: fixed;
+		th , td {
+			word-wrap: break-word;
+		}
 	}
 }
 
 @media (min-width: 768px) {
-	.sidebar {
-		z-index: 1;
-		position: absolute;
-		width: 250px;
+	#page-wrapper {
+		position: inherit;
+		margin: 0 0 0 20%;
+		border-left: 1px solid #e7e7e7;
+		min-height: 100vh ! important;
 	}
 
 	.navbar-top-links .dropdown-messages , .navbar-top-links .dropdown-tasks , .navbar-top-links .dropdown-alerts {
@@ -94,147 +155,7 @@
 	}
 }
 
-@media (min-width: 768px) {
-	#page-wrapper {
-		position: inherit;
-		margin: 0 0 0 250px;
-		border-left: 1px solid #e7e7e7;
-	}
-}
-
-.navbar-top-links li a {
-	padding: 15px;
-	min-height: 50px;
-}
-
-.navbar-top-links li:last-child {
-	margin-right: 15px;
-}
-
-.navbar-top-links li {
-	display: inline-block;
-}
-
-.navbar-top-links {
-	margin-right: 0;
-}
-
-.sidebar ul li {
-	border-bottom: 1px solid #e7e7e7;
-}
-
-.sidebar ul li a.active {
-	background-color: rgba(181, 181, 181, 0.17);
-}
-
-.sidebar .sidebar-nav.navbar-collapse {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.navbar-top-links {
-	margin-right: 0;
-}
-
-.navbar-top-links li {
-	display: inline-block;
-}
-
-.navbar-top-links li:last-child {
-	margin-right: 15px;
-}
-
-.navbar-top-links li a {
-	padding: 15px;
-	min-height: 50px;
-}
-
-.navbar-top-links .dropdown-menu li {
-	display: block;
-}
-
-.navbar-top-links .dropdown-menu li:last-child {
-	margin-right: 0;
-}
-
-.navbar-top-links .dropdown-menu li a {
-	padding: 3px 20px;
-	min-height: 0;
-}
-
-.navbar-top-links .dropdown-menu li a div {
-	white-space: normal;
-}
-
-.navbar-top-links {
-	margin-right: 0;
-}
-
-.navbar-top-links li {
-	display: inline-block;
-}
-
-.navbar-top-links li:last-child {
-	margin-right: 15px;
-}
-
-.navbar-top-links li a {
-	padding: 15px;
-	min-height: 50px;
-}
-
-.navbar-top-links .dropdown-menu li {
-	display: block;
-}
-
-.navbar-top-links .dropdown-menu li:last-child {
-	margin-right: 0;
-}
-
-.navbar-top-links .dropdown-menu li a {
-	padding: 3px 20px;
-	min-height: 0;
-}
-
-.navbar-top-links .dropdown-menu li a div {
-	white-space: normal;
-}
-
-.btn-outline {
-	color: inherit;
-	background-color: transparent;
-	transition: all .5s;
-}
-
-.btn-primary.btn-outline {
-	color: #428bca;
-}
-
-.btn-success.btn-outline {
-	color: #5cb85c;
-}
-
-.btn-info.btn-outline {
-	color: #5bc0de;
-}
-
-.btn-warning.btn-outline {
-	color: #f0ad4e;
-}
-
-.btn-danger.btn-outline {
-	color: #d9534f;
-}
-
-.btn-primary.btn-outline:hover , .btn-success.btn-outline:hover , .btn-info.btn-outline:hover , .btn-warning.btn-outline:hover , .btn-danger.btn-outline:hover {
-	color: white;
-}
-
-#wrapper {
-	width: 100%;
-}
-
 body {
-	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGklEQVQIW2N89+7dfyEhIUYGJIDCgYlTKAgAmtcEBhJsYjsAAAAASUVORK5CYII=) repeat;
 	background-color: rgba(208, 205, 205, 0.17);
 }
+
