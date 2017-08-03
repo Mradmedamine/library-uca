@@ -13,4 +13,6 @@ public interface RecordService {
 
 	Record findById(Long id);
 
+	Record saveRecord(Record record);
+
 }

@@ -2,7 +2,7 @@ package org.library.uca.domain.metadata;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum RecordType {
+public enum BookType {
 
 	PAPER("paper"),
 	EBOOK("ebook"), 
@@ -11,7 +11,7 @@ public enum RecordType {
 	
 	private String value;
 
-	private RecordType(String value) {
+	private BookType(String value) {
 		this.setValue(value);
 	}
 

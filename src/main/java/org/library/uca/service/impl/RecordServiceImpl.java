@@ -31,6 +31,11 @@ public class RecordServiceImpl implements RecordService {
 	}
 
 	@Override
+	public Record saveRecord(Record record) {
+		return recordRepository.saveAndFlush(record);
+	}
+
+	@Override
 	public List<Record> findByCriteria(RecordSearch recordSearch) {
 
 		String descriptionText = recordSearch.getDescriptionText();
@@ -39,17 +44,18 @@ public class RecordServiceImpl implements RecordService {
 		} else {
 			descriptionText = "%" + descriptionText + "%";
 		}
-		
+
 		List<RecordType> typeList = recordSearch.getTypes();
 		if (CollectionUtils.isEmpty(typeList)) {
 			typeList = Arrays.asList(RecordType.values());
 		}
-		
+
 		List<RecordStatus> statusList = recordSearch.getStatus();
 		if (CollectionUtils.isEmpty(statusList)) {
 			statusList = Arrays.asList(RecordStatus.values());
 		}
-		return recordRepository.findByDescriptionContainingIgnoreCaseAndStatusInAndTypeIn(descriptionText, statusList, typeList);
+		return recordRepository.findByDescriptionContainingIgnoreCaseAndStatusInAndTypeIn(descriptionText, statusList,
+				typeList);
 	}
 
 }

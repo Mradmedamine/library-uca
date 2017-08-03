@@ -95,7 +95,7 @@
 					<sourceDirectory>${project.basedir}/src/main/resources/static/less</sourceDirectory>
 					<outputDirectory>${project.basedir}/src/main/resources/static/css</outputDirectory>
 					<includes>
-						<include>**/*.less</include>
+						<include>editorial-uca.less</include>
 					</includes>
 				</configuration>
 				<executions>
