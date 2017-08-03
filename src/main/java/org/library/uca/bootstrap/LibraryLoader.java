@@ -58,18 +58,21 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		// BOOKS
 		Book book1 = new Book();
+		book1.setTitle("Title Book 1 ");
 		book1.setReference("book1 Reference");
 		book1.setAuthors(Collections.singleton(author1));
 		bookRepository.save(book1);
 		log.info("Saved Book :   id: " + book1.getId());
 
 		Book book2 = new Book();
+		book2.setTitle("Title Book 2 ");
 		book2.setReference("book2 Reference");
 		book2.setAuthors(Collections.singleton(author3));
 		bookRepository.save(book2);
 		log.info("Saved Book :   id: " + book2.getId());
 
 		Book book3 = new Book();
+		book3.setTitle("Title Book 3 ");
 		book3.setReference("book. Reference");
 		book3.setAuthors(Collections.singleton(author2));
 		bookRepository.save(book3);

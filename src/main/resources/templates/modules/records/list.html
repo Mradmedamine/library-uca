@@ -6,13 +6,14 @@
         layout:decorator="desktop-layout">
         
 <div class="panel panel-default" layout:fragment="desktop-page-content"> 
-	<div class="panel-heading container-fluuid">
-  		<div>
+	<div class="panel-heading display-flow-root">
+  		<strong class="title">
             <span>
             	<i class="fa fa-files-o fa-fw"></i> 
 				<th:block th:text="#{desktop.layout.sidebar.files}"></th:block>
             </span>
-  		</div>
+  		</strong>
+  		<a th:href="@{/records/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i>New</a>
   	</div> 
 	<div class="panel-body">
 	    <form id="toolbar" class="toolbar">

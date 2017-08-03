@@ -6,13 +6,14 @@ import org.library.uca.domain.RecordSearch;
 import org.library.uca.domain.entity.Record;
 import org.library.uca.domain.metadata.RecordStatus;
 import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.service.AuthorService;
+import org.library.uca.service.BookService;
 import org.library.uca.service.RecordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,12 @@ public class RecordsController {
 	@Autowired
 	private RecordService recordService;
 
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
+	private AuthorService authorService;
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		return "redirect:/records";
@@ -52,6 +59,12 @@ public class RecordsController {
 		return "modules/records/form";
 	}
 
+	@RequestMapping("/records/new")
+	public String newRecord(Model model) {
+		model.addAttribute("record", new Record());
+		return "modules/records/form";
+	}
+	
 	@ResponseBody
 	@RequestMapping(path = "/records", method = RequestMethod.POST)
 	public String saveRecord(Model model, @RequestBody Record record) {
@@ -72,5 +85,8 @@ public class RecordsController {
 	public void addAttributes(Model model) {
 		model.addAttribute("recordStatusList", RecordStatus.values());
 		model.addAttribute("recordTypeList", RecordType.values());
+		model.addAttribute("ebookRecordType", RecordType.EBOOK);
+		model.addAttribute("bookList", bookService.findAll());
+		model.addAttribute("authorList", authorService.findAll());
 	}
 }
