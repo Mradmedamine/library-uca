@@ -32,7 +32,7 @@ public class RecordServiceImpl implements RecordService {
 
 	@Override
 	public Record saveRecord(Record record) {
-		return recordRepository.saveAndFlush(record);
+		return recordRepository.save(record);
 	}
 
 	@Override
