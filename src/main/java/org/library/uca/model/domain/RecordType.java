@@ -1,4 +1,4 @@
-package org.library.uca.domain.metadata;
+package org.library.uca.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

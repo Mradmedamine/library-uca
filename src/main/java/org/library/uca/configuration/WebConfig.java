@@ -49,13 +49,11 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode("HTML");
 		templateResolver.setCharacterEncoding("UTF-8");
-
 		if (thymeleafCache.equals("true")) {
 			templateResolver.setCacheable(true);
 		} else {
 			templateResolver.setCacheable(false);
 		}
-
 		return templateResolver;
 	}
 
@@ -66,7 +64,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		templateEngine.setTemplateResolver(templateResolver());
 		templateEngine.setMessageSource(messageSource);
 		templateEngine.addDialect(springSecurityDialect());
-		templateEngine.addDialect(new LayoutDialect());
+		templateEngine.addDialect(layoutDialect());
 		return templateEngine;
 	}
 
@@ -86,5 +84,9 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 
 	private IDialect springSecurityDialect() {
 		return new SpringSecurityDialect();
+	}
+	
+	private IDialect layoutDialect() {
+		return new LayoutDialect();
 	}
 }

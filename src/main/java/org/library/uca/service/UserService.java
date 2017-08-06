@@ -1,6 +1,6 @@
 package org.library.uca.service;
 
-import org.library.uca.domain.entity.User;
+import org.library.uca.model.domain.entity.User;
 
 public interface UserService {
 

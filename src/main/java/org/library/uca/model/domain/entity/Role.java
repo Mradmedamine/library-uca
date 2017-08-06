@@ -1,4 +1,4 @@
-package org.library.uca.domain.entity;
+package org.library.uca.model.domain.entity;
 
 import javax.persistence.*;
 import java.util.Set;

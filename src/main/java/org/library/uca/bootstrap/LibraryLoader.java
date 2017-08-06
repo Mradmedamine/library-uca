@@ -3,11 +3,11 @@ package org.library.uca.bootstrap;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
-import org.library.uca.domain.entity.Author;
-import org.library.uca.domain.entity.Book;
-import org.library.uca.domain.entity.Record;
-import org.library.uca.domain.metadata.RecordStatus;
-import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.model.domain.RecordStatus;
+import org.library.uca.model.domain.RecordType;
+import org.library.uca.model.domain.entity.Author;
+import org.library.uca.model.domain.entity.Book;
+import org.library.uca.model.domain.entity.Record;
 import org.library.uca.repository.AuthorRepository;
 import org.library.uca.repository.BookRepository;
 import org.library.uca.repository.RecordRepository;
