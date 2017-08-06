@@ -2,8 +2,9 @@ package org.library.uca.service;
 
 import java.util.List;
 
-import org.library.uca.domain.RecordSearch;
-import org.library.uca.domain.entity.Record;
+import org.library.uca.model.domain.entity.Record;
+import org.library.uca.model.front.web.RecordDTO;
+import org.library.uca.model.front.web.RecordSearch;
 
 public interface RecordService {
 
@@ -13,6 +14,6 @@ public interface RecordService {
 
 	Record findById(Long id);
 
-	Record saveRecord(Record record);
+	Record saveRecord(RecordDTO record);
 
 }

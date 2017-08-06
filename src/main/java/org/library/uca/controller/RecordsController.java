@@ -2,10 +2,11 @@ package org.library.uca.controller;
 
 import java.util.List;
 
-import org.library.uca.domain.RecordSearch;
-import org.library.uca.domain.entity.Record;
-import org.library.uca.domain.metadata.RecordStatus;
-import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.model.domain.RecordStatus;
+import org.library.uca.model.domain.RecordType;
+import org.library.uca.model.domain.entity.Record;
+import org.library.uca.model.front.web.RecordDTO;
+import org.library.uca.model.front.web.RecordSearch;
 import org.library.uca.service.AuthorService;
 import org.library.uca.service.BookService;
 import org.library.uca.service.RecordService;
@@ -31,10 +32,10 @@ public class RecordsController {
 
 	@Autowired
 	private BookService bookService;
-	
+
 	@Autowired
 	private AuthorService authorService;
-	
+
 	@RequestMapping("/")
 	public String index(Model model) {
 		return "redirect:/records";
@@ -64,20 +65,11 @@ public class RecordsController {
 		model.addAttribute("record", new Record());
 		return "modules/records/form";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(path = "/records", method = RequestMethod.POST)
-	public String saveRecord(Model model, @RequestBody Record record) {
-		Long recordId = record.getId();
-		if (recordId != null) {
-			Record oldRecord = recordService.findById(recordId);
-			oldRecord.setDescription(record.getDescription());
-			oldRecord.setStatus(record.getStatus());
-			oldRecord.setType(record.getType());
-			recordService.saveRecord(oldRecord);
-		} else {
-			recordService.saveRecord(record);
-		}
+	public String saveRecord(Model model, @RequestBody RecordDTO record) {
+		recordService.saveRecord(record);
 		return "";
 	}
 

@@ -1,10 +1,10 @@
-package org.library.uca.domain;
+package org.library.uca.model.front.web;
 
 import java.io.Serializable;
 import java.util.List;
 
-import org.library.uca.domain.metadata.RecordStatus;
-import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.model.domain.RecordStatus;
+import org.library.uca.model.domain.RecordType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

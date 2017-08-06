@@ -1,4 +1,4 @@
-package org.library.uca.domain.entity;
+package org.library.uca.model.domain.entity;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 
 @MappedSuperclass
-public class EntityBase {
+public abstract class EntityBase {
 
 	private Long id;
 	private LocalDateTime createdAt;

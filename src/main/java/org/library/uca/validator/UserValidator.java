@@ -1,6 +1,6 @@
 package org.library.uca.validator;
 
-import org.library.uca.domain.entity.User;
+import org.library.uca.model.domain.entity.User;
 import org.library.uca.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

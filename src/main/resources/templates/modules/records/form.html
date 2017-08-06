@@ -12,7 +12,7 @@
 	                    <span>
 	                        <strong>
 	                        	<i class="fa fa-files-o fa-fw"></i>
-		                        <th:block th:text="#{common.__${isNewRecord ? 'add' : 'edit'}__}"></th:block>
+		                        <th:block th:text="#{common.__${isNewRecord ? 'new' : 'edit'}__}"></th:block>
 								<th:block th:text="#{desktop.records.summary.title.label}"></th:block>
 								<th:block th:text="${record.reference}"></th:block> 
 							</strong>
@@ -26,36 +26,36 @@
 				    <form class="form-horizontal" role="form">
 				    	<input id="recordId" type="hidden" name="id" th:value="${record.id}"/>
 			    		<div class="form-group">
-				    		<label for="name" class="col-sm-2 control-label">Description</label>
+				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.description}"></th:block></label>
 				    		<div class="col-sm-6">
 				    			<textarea id="description" name="description" th:text="${record.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${record.description} ? true : false" required></textarea>
 				    		</div>
 				    	</div>
 			    		<div class="form-group">
-				    		<label for="responsible" class="col-sm-2 control-label">Responsible</label>
-							<select name="responsible" class="selectpicker col-sm-3" title="Responsible" th:disabled="${isNewRecord} ? false : true">
+				    		<label for="responsibleId" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.responsible}"></label>
+							<select name="responsibleId" class="selectpicker col-sm-3" title="Responsible" th:disabled="${isNewRecord} ? false : true" required>
 								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.name}" th:selected="${author.id == record.responsible?.id}" th:value="${author.id}" th:text="${author.name}">
 								  </option>
 							</select>			    		
 				    	</div>
 				    	<div class="form-group">
-				    		<label for="type" class="col-sm-2 control-label">Type</label>
-							<select name="types" class="selectpicker col-sm-3" title="Type" th:disabled="${isNewRecord} ? false : true">
-								  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:selected="${type == record.type}" th:text="${type.value}">
+				    		<label for="type" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.type}"></label>
+							<select name="type" class="selectpicker col-sm-3" title="Type" th:disabled="${record.type} ? true : false" required>
+								  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:selected="${type == record.type}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}">
 								  </option>
 							</select>			    		
 				    	</div>
-				    	<div th:if="${isNewRecord || record.type == ebookRecordType}" class="form-group">
-				    		<label for="book" class="col-sm-2 control-label">Book</label>
-							<select name="book" class="selectpicker col-sm-3" title="Book" th:disabled="${isNewRecord} ? false : true">
+				    	<div th:if="${isNewRecord || record.book != null}" class="form-group">
+				    		<label for="bookId" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.book}"></label>
+							<select name="bookId" class="selectpicker col-sm-3" title="Book" th:disabled="${isNewRecord} ? false : true" required>
 								  <option th:each="book : ${bookList}" th:attr="data-tokens=${book.title}" th:selected="${book.id == record.book?.id}" th:value="${book.id}" th:text="${book.title}">
 								  </option>
 							</select>			    		
 				    	</div>
 				    	<div class="form-group">
-				    		<label for="status" class="col-sm-2 control-label">Status</label>
-				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${record.status} ? true : false">
-								  <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == record.status}" th:text="${status.value}">
+				    		<label for="status" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.status}"></label>
+				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${record.status} ? true : false" required>
+								  <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == record.status}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}">
 								  </option>
 							</select>	
 				    	</div>
@@ -64,19 +64,20 @@
 			</div>
 			<div class="panel-footer display-flow-root">
 				<span class="pull-right"> 
-					<button th:unless="${isNewRecord}" type="button" class="btn btn-default btn-edit">Edit</button>
-					<button th:unless="${isNewRecord}" type="button" class="btn btn-default btn-cancel hidden">Cancel</button>
-					<button type="button" th:class="|btn btn-primary btn-save ${isNewRecord ? '' : 'hidden'}|">Save</button>
+					<button type="button" th:class="|btn btn-default btn-edit ${isNewRecord ? 'hidden' :''}|"><th:block th:text="#{common.edit}"></button>
+					<button type="button" class="btn btn-default btn-cancel hidden"><th:block th:text="#{common.cancel}"></button>
+					<button type="button" th:class="|btn btn-primary btn-save ${isNewRecord ? '' : 'hidden'}|"><th:block th:text="#{common.save}"></button>
 				</span>
 			</div>
 		</th:block>
 	</div>
 	
-	<div layout:fragment="js-files"> 	
-		<script th:src="@{/js/record-form.js}" ></script> 
+	<th:block layout:fragment="js-files"> 	
+		<script th:src="@{/js/recordForm.js}" ></script> 
 		<script th:inline="javascript"> 
 			var recordsUrl = [[@{/records}]];
+			var savingSuccessMessage = [[#{common.message.saving.success}]];
 		</script>
-	</div>
+	</th:block>
 	
 </html>

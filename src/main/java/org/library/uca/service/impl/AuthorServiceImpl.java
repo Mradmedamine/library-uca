@@ -2,7 +2,7 @@ package org.library.uca.service.impl;
 
 import java.util.List;
 
-import org.library.uca.domain.entity.Author;
+import org.library.uca.model.domain.entity.Author;
 import org.library.uca.repository.AuthorRepository;
 import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;

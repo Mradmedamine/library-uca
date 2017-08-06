@@ -3,10 +3,13 @@ package org.library.uca.service.impl;
 import java.util.Arrays;
 import java.util.List;
 
-import org.library.uca.domain.RecordSearch;
-import org.library.uca.domain.entity.Record;
-import org.library.uca.domain.metadata.RecordStatus;
-import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.model.domain.RecordStatus;
+import org.library.uca.model.domain.RecordType;
+import org.library.uca.model.domain.entity.Author;
+import org.library.uca.model.domain.entity.Book;
+import org.library.uca.model.domain.entity.Record;
+import org.library.uca.model.front.web.RecordDTO;
+import org.library.uca.model.front.web.RecordSearch;
 import org.library.uca.repository.RecordRepository;
 import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +34,27 @@ public class RecordServiceImpl implements RecordService {
 	}
 
 	@Override
-	public Record saveRecord(Record record) {
-		return recordRepository.save(record);
+	public Record saveRecord(RecordDTO record) {
+		Record entityRecord = null;
+		Long recordId = record.getId();
+		if (recordId != null) {
+			entityRecord = findById(recordId);
+		} else {
+			entityRecord = new Record();
+		}
+		entityRecord.setDescription(record.getDescription());
+		entityRecord.setStatus(record.getStatus());
+		entityRecord.setType(record.getType());
+		record.setReference("any reference");
+		// Book
+		Book entityBook = new Book();
+		entityBook.setId(record.getBookId());
+		// Responsible
+		Author responsible = new Author();
+		responsible.setId(record.getResponsibleId());
+		entityRecord.setBook(entityBook);
+		entityRecord.setResponsible(responsible);
+		return recordRepository.save(entityRecord);
 	}
 
 	@Override

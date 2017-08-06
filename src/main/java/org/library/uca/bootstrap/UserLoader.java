@@ -3,8 +3,8 @@ package org.library.uca.bootstrap;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
-import org.library.uca.domain.entity.Role;
-import org.library.uca.domain.entity.User;
+import org.library.uca.model.domain.entity.Role;
+import org.library.uca.model.domain.entity.User;
 import org.library.uca.repository.RoleRepository;
 import org.library.uca.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

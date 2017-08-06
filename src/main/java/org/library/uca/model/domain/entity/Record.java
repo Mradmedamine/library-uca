@@ -1,17 +1,17 @@
-package org.library.uca.domain.entity;
+package org.library.uca.model.domain.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.library.uca.domain.metadata.RecordStatus;
-import org.library.uca.domain.metadata.RecordType;
+import org.library.uca.model.domain.RecordStatus;
+import org.library.uca.model.domain.RecordType;
 
 @Entity
 @Table(name = "record")
@@ -58,7 +58,7 @@ public class Record extends EntityBase {
 		this.type = type;
 	}
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "responsible_id")
 	public Author getResponsible() {
 		return responsible;
@@ -68,7 +68,7 @@ public class Record extends EntityBase {
 		this.responsible = responsible;
 	}
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "book_id")
 	@NotFound(action = NotFoundAction.IGNORE)
 	public Book getBook() {
