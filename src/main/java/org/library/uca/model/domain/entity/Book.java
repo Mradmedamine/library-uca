@@ -8,6 +8,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.library.uca.model.domain.BookType;
+
 @Entity
 @Table(name = "book")
 public class Book extends EntityBase {
@@ -15,6 +17,9 @@ public class Book extends EntityBase {
 	private String reference;
 	private String title;
 	private String description;
+	private String subject;
+	private String collection;
+	private BookType type;
 	private Set<Author> authors;
 
 	public String getReference() {
@@ -49,6 +54,30 @@ public class Book extends EntityBase {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getCollection() {
+		return collection;
+	}
+
+	public void setCollection(String collection) {
+		this.collection = collection;
+	}
+
+	public BookType getType() {
+		return type;
+	}
+
+	public void setType(BookType type) {
+		this.type = type;
 	}
 
 }

@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum BookType {
 
-	PAPER("paper"),
-	EBOOK("ebook"), 
-    REPRINT("reprint"),
-    ADMINISTRATIVE("administrative");
+	MANUAL("manual"),
+	MONOGRAPH("monograph");
 	
 	private String value;
 
