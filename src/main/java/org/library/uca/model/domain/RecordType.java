@@ -12,16 +12,16 @@ public enum RecordType {
 	private String value;
 
 	private RecordType(String value) {
-		this.setValue(value);
+		this.value = value;
 	}
-
-	@JsonValue
+	
 	public String getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	@JsonValue
+	public String getName() {
+		return name();
 	}
 	
 }

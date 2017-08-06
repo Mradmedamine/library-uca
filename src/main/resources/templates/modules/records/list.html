@@ -16,17 +16,17 @@
   		<a th:href="@{/records/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i>New</a>
   	</div> 
 	<div class="panel-body">
-	    <form id="toolbar" class="toolbar">
+	    <form id="searchbar" class="searchbar">
 			<input type="text" name="descriptionText" class="form-control search-box" placeholder="Search" />
 			<select name="types" class="selectpicker search-item" title="Type" data-live-search="true" data-width="auto" multiple>
-				  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:text="${type.value}">
+				  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}">
 				  </option>
 			</select>
 			<select name="status" class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
-				 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:text="${status.value}">
+				 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}">
 				  </option>
 			</select>
-			<button class="btn btn-primary btn-block search-btn" type="button">Search</button>
+			<button class="btn btn-primary btn-block search-btn" type="button"><th:block th:text="#{common.search}"></th:block></button>
        	</form> 
        	<hr>
 		<div id="result-container" th:include="~{modules/records/dataTable::content}"></div>

@@ -41,7 +41,7 @@
 				    	<div class="form-group">
 				    		<label for="type" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.type}"></label>
 							<select name="type" class="selectpicker col-sm-3" title="Type" th:disabled="${record.type} ? true : false" required>
-								  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:selected="${type == record.type}" th:value="${type.name()}" th:text="${type.value}">
+								  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:selected="${type == record.type}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}">
 								  </option>
 							</select>			    		
 				    	</div>
@@ -55,7 +55,7 @@
 				    	<div class="form-group">
 				    		<label for="status" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.status}"></label>
 				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${record.status} ? true : false" required>
-								  <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == record.status}" th:text="${status.value}">
+								  <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == record.status}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}">
 								  </option>
 							</select>	
 				    	</div>

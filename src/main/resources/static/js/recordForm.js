@@ -34,7 +34,7 @@ $(function() {
 		    contentType : 'application/json',
 		    success : function(data) {
 			updateBtnVisibility();
-			toastr["success"]('Element saved successfully');
+			toastr["success"](savingSuccessMessage);
 			$('#toast-container .toast-success').show();
 		    }
 		});
