@@ -47,12 +47,14 @@ public class RecordServiceImpl implements RecordService {
 		entityRecord.setType(record.getType());
 		record.setReference("any reference");
 		// Book
-		Book entityBook = new Book();
-		entityBook.setId(record.getBookId());
+		if(record.getBookId() != null) {
+			Book entityBook = new Book();
+			entityBook.setId(record.getBookId());
+			entityRecord.setBook(entityBook);
+		}
 		// Responsible
 		Author responsible = new Author();
 		responsible.setId(record.getResponsibleId());
-		entityRecord.setBook(entityBook);
 		entityRecord.setResponsible(responsible);
 		return recordRepository.save(entityRecord);
 	}
