@@ -6,29 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 
 @Entity
 @Table(name = "book")
 public class Book extends EntityBase {
 
-	private String reference;
 	private String title;
 	private String description;
-	private String subject;
+	private BookSubject subject;
 	private String collection;
 	private BookType type;
 	private Set<Author> authors;
-
-	public String getReference() {
-		return reference;
-	}
-
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+	private Set<BookEdition> editions;
 
 	public String getDescription() {
 		return description;
@@ -36,16 +30,6 @@ public class Book extends EntityBase {
 
 	public void setDescription(String name) {
 		this.description = name;
-	}
-
-	 @ManyToMany
-	 @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
-	public Set<Author> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(Set<Author> authors) {
-		this.authors = authors;
 	}
 
 	public String getTitle() {
@@ -56,11 +40,11 @@ public class Book extends EntityBase {
 		this.title = title;
 	}
 
-	public String getSubject() {
+	public BookSubject getSubject() {
 		return subject;
 	}
 
-	public void setSubject(String subject) {
+	public void setSubject(BookSubject subject) {
 		this.subject = subject;
 	}
 
@@ -78,6 +62,25 @@ public class Book extends EntityBase {
 
 	public void setType(BookType type) {
 		this.type = type;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	public Set<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(Set<Author> authors) {
+		this.authors = authors;
+	}
+
+	@OneToMany(mappedBy = "book")
+	public Set<BookEdition> getEditions() {
+		return editions;
+	}
+
+	public void setEditions(Set<BookEdition> editions) {
+		this.editions = editions;
 	}
 
 }

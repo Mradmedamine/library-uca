@@ -22,22 +22,26 @@
 		color: #999;
 	}
 
+	@media (min-width: 768px) {
+		.sidebar {
+			margin-top: 60px;
+			z-index: 1;
+			position: absolute;
+			width: 20%;
+			.sidebar-nav.navbar-collapse {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+
 	.sidebar {
-		margin-top: 60px;
-		z-index: 1;
-		position: absolute;
-		width: 20%;
 		ul li {
 			border-bottom: 1px solid #e7e7e7;
 		}
 
 		ul li a.active {
 			background-color: rgba(181, 181, 181, 0.17);
-		}
-
-		.sidebar-nav.navbar-collapse {
-			padding-left: 0;
-			padding-right: 0;
 		}
 	}
 

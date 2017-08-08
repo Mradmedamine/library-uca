@@ -15,37 +15,25 @@
       		</div> 
 	</div>
 	<div class="panel-body">
-	    <div id="searchbar" class="searchbar">
-			<input type="text" class="form-control search-box" th:placeholder="#{ common.search }" />
-			<select class="selectpicker" title="Type" data-width="fit" multiple>
-				  <option data-tokens="ketchup mustard">Hot Dog</option>
-				  <option data-tokens="mustard">Burger</option>
-				  <option data-tokens="frosting">Sugar</option>
-			</select>
-			<select class="selectpicker" title="Status" data-width="fit" multiple>
-				  <option data-tokens="ketchup mustard">Hot Dog</option>
-				  <option data-tokens="mustard">Burger</option>
-				  <option data-tokens="frosting">Sugar</option>
-			</select>
-			<button class="btn btn-primary btn-block search-btn" type="submit">Search</button>
-       	</div> 
+	     <form id="searchbar" class="searchbar">
+			<input type="text" name="descriptionText" class="form-control search-box" th:placeholder="#{common.search}" />
+			<button class="btn btn-primary btn-block search-btn" type="button"><th:block th:text="#{common.search}"></th:block></button>
+       	</form> 
        	<hr>
-		<div th:if="${not #lists.isEmpty(records)}" >
+		<div th:if="${not #lists.isEmpty(books)}" >
             		<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="dataTables-example">
                       <thead>
-                          <tr> 
-		                <th>Reference</th>
-		                <th>Description</th>
-		                <th>Author</th>
-		                <th>Status</th>
-		            </tr>
+                      	<tr> 
+			                <th>title</th>
+			                <th>Description</th>
+			                <th>Author</th>
+		            	</tr>
                       </thead>
                       <tbody>
-			            <tr th:each="record : ${records}">
-			                <td th:text="${record.reference}"></td>
-			                <td> <a th:href="${ '/records/' + record.id}" th:text="${record.description}"></a></td>
-			                <td th:text="${record.author}"></td>
-			                <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
+			            <tr th:each="book : ${books}">
+			                <td th:text="${book.title}"></td>
+			                <td> <a th:href="${ '/books/' + book.id}" th:text="${book.description}"></a></td>
+			                <td th:text="${book.authors}"></td>
 			            </tr>
                       </tbody>
                   </table>
