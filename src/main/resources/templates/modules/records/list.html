@@ -9,20 +9,20 @@
 	<div class="panel-heading display-flow-root">
   		<strong class="title">
             <span>
-            	<i class="fa fa-files-o fa-fw"></i> 
+            	<i class="fa fa-clipboard fa-fw"></i> 
 				<th:block th:text="#{desktop.layout.sidebar.files}"></th:block>
             </span>
   		</strong>
-  		<a th:href="@{/records/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i>New</a>
+  		<a th:href="@{/records/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i><th:block th:text="#{ common.new }"/></a>
   	</div> 
 	<div class="panel-body">
-	    <form id="searchbar" class="searchbar">
-			<input type="text" name="descriptionText" class="form-control search-box" placeholder="Search" />
-			<select name="types" class="selectpicker search-item" title="Type" data-live-search="true" data-width="auto" multiple>
+	    <form id="search-form" class="search-widget">
+			<input type="text" name="descriptionText" class="form-control search-description" th:placeholder="#{ desktop.records.description.label }" />
+			<select name="types" class="selectpicker search-item" th:title="#{ desktop.records.type.label }" data-live-search="true" multiple>
 				  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}">
 				  </option>
 			</select>
-			<select name="status" class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
+			<select name="status" class="selectpicker search-item" th:title="#{desktop.records.status.label}" data-live-search="true" multiple>
 				 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}">
 				  </option>
 			</select>
