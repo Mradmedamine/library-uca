@@ -2,8 +2,8 @@ $(function() {
 
     initRecordsDataTables();
     
-    $('#searchbar .search-btn').on('click', function(event) {
-	var data = $('#searchbar').serializeObject();
+    $('#search-form .search-btn').on('click', function(event) {
+	var data = $('#search-form').serializeObject();
 	$.ajax({
 	    type : 'POST',
 	    url : recordsSearchUrl,

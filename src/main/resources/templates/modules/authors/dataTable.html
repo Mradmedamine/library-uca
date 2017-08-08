@@ -3,19 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <th:block th:fragment="content">
-	<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="records-dataTables">
+	<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="authors-dataTables">
 	     <thead>
-		     <tr>
+		     <tr> 
 		     	<th class="hidden">id</th>
-				<th width="15%" >Reference</th>
-				<th width="35%" th:text="#{desktop.records.description.label}"></th>
-				<th width="20%" th:text="#{desktop.records.responsible.label}">Responsible</th>
-				<th width="15%" th:text="#{desktop.records.type.label}"></th>
-				<th width="15%" th:text="#{desktop.records.status.label}">Status</th>
+				<th width="15%">Reference</th>
+				<th width="35%">Description</th>
+				<th width="20%">Responsible</th>
+				<th width="15%">Type</th>
+				<th width="15%">Status</th>
 		 	 </tr>
 	     </thead>
 	     <tbody>
-			<tr th:each="record : ${records}" class="clickable" th:attr="data-href=@{__${ '/records/' + record.id}__}">
+			<tr th:each="author : ${author}" class="clickable" th:attr="data-href=@{__${ '/authors/' + author.id}__}">
 				<td class="hidden" th:text="${record.id}"></td>
 			    <td th:text="${record.reference}"></td>
 			    <td th:text="${record.description}"></td>

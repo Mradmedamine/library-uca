@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="desktop-layout">
+
+	<div class="panel panel-default" layout:fragment="desktop-page-content">
+		<div class="panel-heading display-flow-root">
+			<strong class="title">
+				<span>
+					<i class="fa fa-users fa-fw"></i><th:block th:text="#{desktop.layout.sidebar.authors}"></th:block>
+				</span>
+			</strong> 
+			<a th:href="@{/authors/new}" class="btn btn-default btn-add pull-right">
+				<i class="fa fa-plus fa-fw"></i>
+				<th:block th:text="#{ common.new }">
+			</a>
+		</div>
+		<div class="panel-body">
+			<form id="searchbar" class="searchbar">
+				<input type="text" name="descriptionText" class="form-control search-box" th:placeholder="#{ common.search }" />
+				<select name="types" class="selectpicker search-item" th:title="#{desktop.records.type.label}" data-live-search="true" data-width="auto" multiple>
+					<option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}"></option>
+				</select>
+				<select name="status" class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
+					<option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}"></option>
+				</select>
+				<button class="btn btn-primary btn-block search-btn" type="button">
+					<th:block th:text="#{common.search}"></th:block>
+				</button>
+			</form>
+			<hr>
+			<div id="result-container" th:include="~{modules/authors/dataTable::content}"></div>
+		</div>
+	</div>
+	
+	<div layout:fragment="js-files">
+		<script th:src="@{/js/authors.js}"></script>
+	</div>
+
+</html>
+
