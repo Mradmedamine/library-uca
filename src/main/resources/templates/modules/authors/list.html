@@ -18,16 +18,11 @@
 			</a>
 		</div>
 		<div class="panel-body">
-			<form id="searchbar" class="searchbar">
-				<input type="text" name="descriptionText" class="form-control search-box" th:placeholder="#{ common.search }" />
-				<select name="types" class="selectpicker search-item" th:title="#{desktop.records.type.label}" data-live-search="true" data-width="auto" multiple>
-					<option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}"></option>
-				</select>
-				<select name="status" class="selectpicker search-item" title="Status" data-live-search="true" data-width="auto" multiple>
-					<option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}"></option>
-				</select>
+			<form id="search-form" class="search-widget">
+				<input type="text" name="fullname" class="form-control search-box fullname" th:placeholder="#{ desktop.authors.fullname.label }" />
+				<input type="text" name="dni" class="form-control search-box id" th:placeholder="#{ desktop.authors.id.label }" />
 				<button class="btn btn-primary btn-block search-btn" type="button">
-					<th:block th:text="#{common.search}"></th:block>
+					<th:block th:text="#{ common.search }"></th:block>
 				</button>
 			</form>
 			<hr>

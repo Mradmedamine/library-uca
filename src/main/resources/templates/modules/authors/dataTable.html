@@ -7,21 +7,17 @@
 	     <thead>
 		     <tr> 
 		     	<th class="hidden">id</th>
-				<th width="15%">Reference</th>
-				<th width="35%">Description</th>
-				<th width="20%">Responsible</th>
-				<th width="15%">Type</th>
-				<th width="15%">Status</th>
+				<th width="15%" th:text="#{desktop.authors.id.label}"></th>
+				<th width="35%" th:text="#{desktop.authors.fullname.label}"></th>
+				<th width="20%" th:text="#{desktop.authors.email.label}"></th>
 		 	 </tr>
 	     </thead>
 	     <tbody>
 			<tr th:each="author : ${author}" class="clickable" th:attr="data-href=@{__${ '/authors/' + author.id}__}">
-				<td class="hidden" th:text="${record.id}"></td>
-			    <td th:text="${record.reference}"></td>
-			    <td th:text="${record.description}"></td>
-			    <td th:text="${record.responsible.name}"></td>
-			    <td th:text="${record.type}"></td>
-			    <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
+				<td class="hidden" th:text="${author.id}"></td>
+			    <td th:text="${author.idNumber}"></td>
+			    <td th:text="${author.fullname}"></td>
+			    <td th:text="${author.email}"></td>
 			</tr>
 	    </tbody>
 	</table>
