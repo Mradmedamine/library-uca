@@ -1,6 +1,6 @@
 $(function() {
 
-    var recordContainer = $('#record-container');
+    var recordContainer = $('#record-form-container');
     initRecordForm();
 
     function initRecordForm() {

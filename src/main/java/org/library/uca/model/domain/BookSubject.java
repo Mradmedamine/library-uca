@@ -2,13 +2,13 @@ package org.library.uca.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum BookType {
+public enum BookSubject {
 
-	MANUAL("manual"), MONOGRAPH("monograph");
+	MATHEMATIC("mathematic");
 
 	private String value;
 
-	private BookType(String value) {
+	private BookSubject(String value) {
 		this.setValue(value);
 	}
 

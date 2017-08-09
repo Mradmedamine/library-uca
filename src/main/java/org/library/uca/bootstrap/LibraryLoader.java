@@ -1,5 +1,6 @@
 package org.library.uca.bootstrap;
 
+import java.time.LocalDate;
 import java.util.Collections;
 
 import org.apache.log4j.Logger;
@@ -7,8 +8,10 @@ import org.library.uca.model.domain.RecordStatus;
 import org.library.uca.model.domain.RecordType;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.Book;
+import org.library.uca.model.domain.entity.BookEdition;
 import org.library.uca.model.domain.entity.Record;
 import org.library.uca.repository.AuthorRepository;
+import org.library.uca.repository.BookEditionRepository;
 import org.library.uca.repository.BookRepository;
 import org.library.uca.repository.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
+	private BookEditionRepository bookEditionRepository;
+	@Autowired
 	private AuthorRepository authorRepository;
 
 	@Override
@@ -39,44 +44,78 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		Author author1 = new Author();
 		author1.setName("Rodriguez Corral");
 		authorRepository.save(author1);
-		log.info("Saved Author :   id: " + author1.getId());
+		log.info("Saved Author : id: " + author1.getId());
 
 		Author author2 = new Author();
 		author2.setName("Silva Ramírez, Esther Lydia");
 		authorRepository.save(author2);
-		log.info("Saved Author :   id: " + author2.getId());
+		log.info("Saved Author : id: " + author2.getId());
 
 		Author author3 = new Author();
 		author3.setName("Hurtado Rodríguez, Nuria");
 		authorRepository.save(author3);
-		log.info("Saved Author :   id: " + author3.getId());
+		log.info("Saved Author : id: " + author3.getId());
 
 		Author author4 = new Author();
 		author4.setName("Domínguez Jiménez, Juan José");
 		authorRepository.save(author4);
-		log.info("Saved Author :   id: " + author4.getId());
+		log.info("Saved Author : id: " + author4.getId());
 
 		// BOOKS
+
 		Book book1 = new Book();
 		book1.setTitle("Title Book 1 ");
-		book1.setReference("book1 Reference");
+		book1.setDescription("Description Book 1 ");
 		book1.setAuthors(Collections.singleton(author1));
 		bookRepository.save(book1);
 		log.info("Saved Book :   id: " + book1.getId());
 
+		BookEdition edition11 = new BookEdition();
+		edition11.setIsbn("5959652");
+		edition11.setStartDate(LocalDate.now());
+		edition11.setEndDate(LocalDate.now());
+		edition11.setPages(450);
+		edition11.setBook(book1);
+		bookEditionRepository.save(edition11);
+		book1.setEditions(Collections.singleton(edition11));
+
+		// Book 2
+
 		Book book2 = new Book();
 		book2.setTitle("Title Book 2 ");
-		book2.setReference("book2 Reference");
+		book2.setDescription("Description Book 2 ");
 		book2.setAuthors(Collections.singleton(author3));
 		bookRepository.save(book2);
 		log.info("Saved Book :   id: " + book2.getId());
 
+		BookEdition edition21 = new BookEdition();
+		edition21.setIsbn("5969652");
+		edition21.setStartDate(LocalDate.now());
+		edition21.setEndDate(LocalDate.now());
+		edition21.setPages(450);
+		edition21.setBook(book2);
+		bookEditionRepository.save(edition21);
+
+		book1.setEditions(Collections.singleton(edition21));
+
+		// Book 3
+
 		Book book3 = new Book();
 		book3.setTitle("Title Book 3 ");
-		book3.setReference("book. Reference");
+		book3.setDescription("Description Book 3 ");
 		book3.setAuthors(Collections.singleton(author2));
+
 		bookRepository.save(book3);
 		log.info("Saved Book :   id: " + book3.getId());
+
+		BookEdition edition31 = new BookEdition();
+		edition31.setIsbn("5969652");
+		edition31.setStartDate(LocalDate.now());
+		edition31.setEndDate(LocalDate.now());
+		edition31.setPages(450);
+		bookEditionRepository.save(edition31);
+
+		book1.setEditions(Collections.singleton(edition31));
 
 		// RECORDS
 		Record record1 = new Record();
@@ -86,7 +125,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		record1.setStatus(RecordStatus.IN_PRINTING);
 		record1.setType(RecordType.ADMINISTRATIVE);
 		record1 = recordRepository.save(record1);
-		log.info("Saved Role :   id: " + record1.getId());
+		log.info("Saved Role : id: " + record1.getId());
 
 		Record record2 = new Record();
 		record2.setDescription("Reimpreso Aprendiendo C ");

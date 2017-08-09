@@ -6,24 +6,23 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.library.uca.model.domain.BookSubject;
+import org.library.uca.model.domain.BookType;
 
 @Entity
 @Table(name = "book")
 public class Book extends EntityBase {
 
-	private String reference;
 	private String title;
 	private String description;
+	private BookSubject subject;
+	private String collection;
+	private BookType type;
 	private Set<Author> authors;
-
-	public String getReference() {
-		return reference;
-	}
-
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+	private Set<BookEdition> editions;
 
 	public String getDescription() {
 		return description;
@@ -33,8 +32,40 @@ public class Book extends EntityBase {
 		this.description = name;
 	}
 
-	 @ManyToMany
-	 @JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public BookSubject getSubject() {
+		return subject;
+	}
+
+	public void setSubject(BookSubject subject) {
+		this.subject = subject;
+	}
+
+	public String getCollection() {
+		return collection;
+	}
+
+	public void setCollection(String collection) {
+		this.collection = collection;
+	}
+
+	public BookType getType() {
+		return type;
+	}
+
+	public void setType(BookType type) {
+		this.type = type;
+	}
+
+	@ManyToMany
+	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
 	public Set<Author> getAuthors() {
 		return authors;
 	}
@@ -43,12 +74,13 @@ public class Book extends EntityBase {
 		this.authors = authors;
 	}
 
-	public String getTitle() {
-		return title;
+	@OneToMany(mappedBy = "book")
+	public Set<BookEdition> getEditions() {
+		return editions;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setEditions(Set<BookEdition> editions) {
+		this.editions = editions;
 	}
 
 }
