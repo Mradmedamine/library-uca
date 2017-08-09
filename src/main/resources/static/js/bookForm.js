@@ -1,6 +1,6 @@
 $(function() {
 
-    var bookContainer = $('#book-container');
+    var bookContainer = $('#book-form-container');
     var editor; 
     initBookForm();
     initEditionsDataTables();

@@ -4,7 +4,7 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorator="desktop-layout">
 
-	<div id="record-container" class="panel panel-default col-lg-9" layout:fragment="desktop-page-content"> 
+	<div id="record-form-container" class="panel panel-default col-lg-9" layout:fragment="desktop-page-content"> 
 		<th:block th:with="isNewRecord=${record.id == null}">
 			<div class="panel-heading">
 	       		<div class="row">
