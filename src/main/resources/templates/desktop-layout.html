@@ -24,9 +24,8 @@
     <link th:href="@{/library/toastr/toastr.min.css}" rel="stylesheet">
     
   	<!-- DataTables CSS -->
+  	<link th:href="@{/library/datatables/css/dataTables.buttons.min.css}" rel="stylesheet">
     <link th:href="@{/library/datatables-plugins/dataTables.bootstrap.css}" rel="stylesheet">
-
-    <!-- DataTables Responsive CSS -->
     <link th:href="@{/library/datatables-responsive/dataTables.responsive.css}" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -103,6 +102,7 @@
     
    <!-- DataTables JavaScript -->
     <script th:src="@{/library/datatables/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/library/datatables/js/dataTables.buttons.min.js}"></script>
     <script th:src="@{/library/datatables-plugins/dataTables.bootstrap.min.js}"></script>
     <script th:src="@{/library/datatables-responsive/dataTables.responsive.js}"></script>
     
@@ -111,7 +111,7 @@
 	<script th:src="@{/js/desktop.js}" ></script>
 	
 	<th:block layout:fragment="js-files"></th:block>
-	<th:block th:include="fragments/desktop-js-vars::content"></th:block>
+	<th:block th:include="fragments/global-texts::content"></th:block>
 	
 </body>
 
