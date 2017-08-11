@@ -74,6 +74,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition11.setIsbn("5959652");
 		edition11.setStartDate(LocalDate.now());
 		edition11.setEndDate(LocalDate.now());
+		edition11.setPrice(45.5);
+		edition11.setVat(5.5);
 		edition11.setPages(450);
 		edition11.setBook(book1);
 		bookEditionRepository.save(edition11);
@@ -92,6 +94,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition21.setIsbn("5969652");
 		edition21.setStartDate(LocalDate.now());
 		edition21.setEndDate(LocalDate.now());
+		edition21.setPrice(45.5);
+		edition21.setVat(5.5);
 		edition21.setPages(450);
 		edition21.setBook(book2);
 		bookEditionRepository.save(edition21);
@@ -112,6 +116,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition31.setIsbn("5969652");
 		edition31.setStartDate(LocalDate.now());
 		edition31.setEndDate(LocalDate.now());
+		edition11.setPrice(25.5);
+		edition11.setVat(4.5);
 		edition31.setPages(450);
 		bookEditionRepository.save(edition31);
 

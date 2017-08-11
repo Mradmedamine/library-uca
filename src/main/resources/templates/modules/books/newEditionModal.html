@@ -1,0 +1,63 @@
+<th:block th:fragment="content">
+	<div id="newEditionModal" class="modal-uca hidden">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="panel panel-default"> 
+				<div class="panel-heading">
+		       		<div class="row">
+		                 <div class="col-lg-6">
+		                    <span>
+		                        <strong>
+		                        	<i class="fa fa-files-o fa-fw"></i>
+									<th:block th:text="#{desktop.books.summary.title.label}"></th:block>
+									<th:block th:text="${book.title}"></th:block> 
+								</strong>
+		                    </span>
+		                 </div>
+		       		</div>
+				</div>				
+				<div class="panel-body">
+					<div class="col-lg-12">
+					    <form class="form-horizontal" role="form">
+					    	<input id="bookId" type="hidden" name="id" th:value="${book.id}"/>
+				    		<div class="form-group">
+					    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.title}"></th:block></label>
+					    		<div class="col-sm-6">
+					    			<input type="text" name="title" class="form-control" th:placeholder="#{desktop.common.title}" />
+					    		</div>
+					    	</div>
+				    		<div class="form-group">
+					    		<label for="authors" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.authors}"></label>
+								<select name="authors" class="selectpicker col-sm-5" title="Responsible" th:disabled="${isNewBook} ? false : true" required multiple>
+									  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.name}" th:value="${author.id}" th:text="${author.name}">
+									  </option>
+								</select>			    		
+					    	</div>
+					    	<div class="form-group">
+					    		<label for="type" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.type}"></label>
+								<select name="type" class="selectpicker col-sm-3" title="Type" th:disabled="${book.type} ? true : false" required>
+									  <option th:each="type : ${bookTypes}" th:attr="data-tokens=${type.value}" th:selected="${type == book.type}" th:value="${type.name}" th:text="#{desktop.books.type.__${type.value}__}">
+									  </option>
+								</select>			    		
+					    	</div>
+					    	<div class="form-group">
+					    		<label for="subject" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.subject}"></label>
+					    		<select name="subject" class="selectpicker col-sm-3" title="Status" th:disabled="${book.subject} ? true : false" required>
+									  <option th:each="subject : ${bookSubjects}" th:attr="data-tokens=${subject.value}" th:selected="${subject == book.subject}" th:value="${subject.name}" th:text="#{desktop.books.subject.__${subject.value}__}">
+									  </option>
+								</select>	
+					    	</div>
+					    </form>
+				   	</div>
+				</div>
+				<div class="panel-footer display-flow-root">
+					<span class="pull-right"> 
+						<button type="button" class="btn btn-primary btn-save"><th:block th:text="#{common.save}"></button>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>

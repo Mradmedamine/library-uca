@@ -1,9 +1,10 @@
 $(function() {
 
     var bookContainer = $('#book-form-container');
-    var editor; 
+    var editor;
     initBookForm();
     initEditionsDataTables();
+    initEditionModal();
     
     function initBookForm() {
 
@@ -55,80 +56,42 @@ $(function() {
 	    $(editBtn).show();
 	}
     }
-    
+
     function initEditionsDataTables() {
 	var editionsDataTable = $('#editions-table');
 	if (editionsDataTable.length) {
 	    $(editionsDataTable).DataTable({
-		"language" : {
+		language : {
 		    "emptyTable" : emptySearchResultMessage
 		},
-		buttons : [{
-		    text : 'Add',
-		    action : function(e, dt, node, config) {
-			alert('Button activated');
-		    }
-		}]
+		dom : '<"dt-buttons">frtip'
 	    });
-	} 
+	}
+	var editionBtn = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>New</button>';
+	$(bookContainer).find('div.dt-buttons').html(editionBtn);
     }
-    
-    
-    function initBookEditions() {
-	
-//	  editor = new $.fn.dataTable.Editor({
-//	        ajax: bookEditionsUrl,
-//	        table: "#editions-table",
-//	        fields: [ {
-//	                label: "ISBN:",
-//	                name: "isbn"
-//	            }, {
-//	                label: "Start Date:",
-//	                name: "startDate",
-//	                type: 'datetime'
-//	            }, {
-//	                label: "END DATE:",
-//	                name: "endDate",
-//	                type: 'datetime'
-//	            }, {
-//	                label: "Price:",
-//	                name: "price"
-//	            }, {
-//	                label: "Vat:",
-//	                name: "vat"
-//	            }, {
-//	                label: "Pages :",
-//	                name: "pages"
-//	            }, {
-//	                label: "Salary:",
-//	                name: "salary"
-//	            }
-//	        ]
-//	    });
-//	 
-//	    var table = $('#editions-table').DataTable({
-//	        lengthChange: false,
-//	        ajax: bookEditionsUrl,
-//	        columns: [
-//	            { data: "isbn" },
-//	            { data: "startDate" },
-//	            { data: "endDate" },
-//	            { data: "price" },
-//	            { data: "vat" }, 
-//	            { data: "pages" },
-//	            { data: "salary", render: $.fn.dataTable.render.number( ',', '.', 0, '$' )}
-//	        ],
-//	        select: true
-//	    });
-	 
-//	    // Display the buttons
-//	    new $.fn.dataTable.Buttons( table, [
-//	        { extend: "create", editor: editor },
-//	        { extend: "edit",   editor: editor },
-//	        { extend: "remove", editor: editor }
-//	    ]);
-//	 
-//	    table.buttons().container().appendTo( $('.col-sm-6:eq(0)', table.table().container()));
+
+    function initEditionModal() {
+
+	var modal = $(bookContainer).find('#newEditionModal');
+	var btn = $(bookContainer).find('.dt-buttons button');
+	var span = $(bookContainer).find('.close');
+
+	$(btn).on('click', function() {
+	    $(modal).show();
+	});
+
+	// When the user clicks on <span> (x), close the modal
+	$(span).on('click', function() {
+	    $(modal).hide();
+	});
+
+	// When the user clicks anywhere outside of the modal, close it
+//	$(window).on('click', function(event) {
+//	    if (event.target == modal) {
+//		$(modal).hide();
+//	    }
+//	});
     }
 
 });

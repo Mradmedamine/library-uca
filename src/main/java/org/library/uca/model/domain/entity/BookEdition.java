@@ -1,6 +1,5 @@
 package org.library.uca.model.domain.entity;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -15,13 +14,13 @@ public class BookEdition extends EntityBase {
 	private String isbn;
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private BigDecimal price;
-	private BigDecimal vat;
+	private Double price;
+	private Double vat;
 	private Integer pages;
 	private Boolean finalized;
 	private Boolean finishedCopyright;
 	private Book book;
-	
+
 	public String getIsbn() {
 		return isbn;
 	}
@@ -46,19 +45,19 @@ public class BookEdition extends EntityBase {
 		this.endDate = endDate;
 	}
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-	public BigDecimal getVat() {
+	public Double getVat() {
 		return vat;
 	}
 
-	public void setVat(BigDecimal vat) {
+	public void setVat(Double vat) {
 		this.vat = vat;
 	}
 
@@ -91,7 +90,7 @@ public class BookEdition extends EntityBase {
 	public Book getBook() {
 		return book;
 	}
-	
+
 	public void setBook(Book book) {
 		this.book = book;
 	}

@@ -59,6 +59,7 @@
 <!-- 							</select>	 -->
 <!-- 				    	</div> -->
 				    </form>
+				    <hr>
 				   	<table id="editions-table" class="table table-striped table-bordered table-uca" cellspacing="0" width="100%">
 						<thead>
 							<tr>
@@ -77,8 +78,8 @@
 							    <td th:text="${edition.isbn}"></td>
 							    <td th:text="${edition.startDate}"></td>
 							    <td th:text="${edition.endDate}"></td>
-							    <td th:text="${edition.price}"></td>
-							    <td th:text="${edition.vat}"></td>
+							    <td th:text="|${edition.price} €|"></td>
+							    <td th:text="|${edition.vat} €|"></td>
 							    <td th:text="${edition.pages}"></td>
 							</tr>
 					    </tbody>
@@ -92,6 +93,8 @@
 					<button type="button" th:class="|btn btn-primary btn-save ${isNewBook ? '' : 'hidden'}|"><th:block th:text="#{common.save}"></button>
 				</span>
 			</div>
+		</th:block>
+		<th:block th:include="~{/modules/books/newEditionModal::content}">
 		</th:block>
 	</div>
 	
