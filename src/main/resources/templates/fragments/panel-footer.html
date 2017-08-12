@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorator="desktop-layout">
+        
+<th:block th:fragment="content (isNewElement)">
+	<div th:class="|panel-footer col-lg-12 ${isNewElement ? '' :'readonly'}|">
+		<div class="pull-right"> 
+			<button type="button" class="btn btn-default btn-edit"><th:block th:text="#{common.edit}"></button>
+			<button type="button" th:class="|btn btn-default btn-cancel ${isNewElement ? 'hidden' :''}|"><th:block th:text="#{common.cancel}"></button>
+			<button type="button" class="btn btn-primary btn-save"><th:block th:text="#{common.save}"></button>
+		</div>
+	</div>
+</th:block>
+
+</html>

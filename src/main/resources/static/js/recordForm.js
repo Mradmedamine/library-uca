@@ -17,9 +17,7 @@ $(function() {
 	$(editBtn).on('click', function(e) {
 	    $(formFields).prop('disabled', false);
 	    $(selectFields).selectpicker('refresh');
-	    $(this).hide();
-	    $(saveBtn).show();
-	    $(cancelBtn).show();
+	    $(panelFooter).removeClass('readonly');
 	});
 
 	$(saveBtn).on('click', function(e) {
@@ -48,9 +46,7 @@ $(function() {
 	function updateBtnVisibility() {
 	    $(formFields).prop('disabled', true);
 	    $(selectFields).selectpicker('refresh');
-	    $(saveBtn).hide()
-	    $(cancelBtn).hide();
-	    $(editBtn).show();
+	    $(panelFooter).addClass('readonly');
 	}
 
 	const ADMINISTRATIVE_RECORD = 'ADMINISTRATIVE';

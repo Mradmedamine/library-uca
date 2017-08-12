@@ -20,9 +20,7 @@ $(function() {
 	$(editBtn).on('click', function(e) {
 	    $(formFields).prop('disabled', false);
 	    $(selectFields).selectpicker('refresh');
-	    $(this).hide();
-	    $(saveBtn).show();
-	    $(cancelBtn).show();
+	    $(panelFooter).removeClass('readonly');
 	});
 
 	$(saveBtn).on('click', function(e) {
@@ -51,9 +49,7 @@ $(function() {
 	function updateBtnVisibility() {
 	    $(formFields).prop('disabled', true);
 	    $(selectFields).selectpicker('refresh');
-	    $(saveBtn).hide()
-	    $(cancelBtn).hide();
-	    $(editBtn).show();
+	    $(panelFooter).addClass('readonly');
 	}
     }
 
@@ -73,7 +69,7 @@ $(function() {
 
     function initEditionModal() {
 
-	var modal = $(bookContainer).find('#newEditionModal');
+	var modal = $(bookContainer).find('#editionModal');
 	var btn = $(bookContainer).find('.dt-buttons button');
 	var span = $(bookContainer).find('.close');
 
