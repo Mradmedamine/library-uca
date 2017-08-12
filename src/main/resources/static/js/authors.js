@@ -12,7 +12,6 @@ $(function() {
 			success : function(data) {
 				
 				$('#result-container').html(data);
-				initRecordsDataTables();
 			}
 		});
 	});
