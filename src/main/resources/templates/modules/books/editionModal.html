@@ -1,70 +1,90 @@
-<th:block th:fragment="content">
-	<div id="editionModal" class="modal-uca hidden">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<div class="panel panel-default"> 
-				<div class="panel-heading">
-		       		<div class="row">
-		                 <div class="col-lg-11">
-		                    <span>
-		                        <strong>
-		                        	<i class="fa fa-files-o fa-fw"></i>
-									<th:block th:text="#{desktop.books.summary.title.label}"></th:block>
-									<th:block th:text="${book.title}"></th:block> 
-								</strong>
-		                    </span>
-		                 </div>
-		       		</div>
-				</div>				
-				<div class="panel-body">
-					<div class="col-lg-12">
-					    <form class="form-horizontal" role="form">
-					    	<input id="bookId" type="hidden" name="id" th:value="${book.id}"/>
-				    		<div class="form-group">
-					    		<label for="isbn" class="col-sm-2 control-label"><th:block th:text="#{desktop.books.isbn}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="text" name="isbn" class="form-control" th:placeholder="#{desktop.books.isbn}" />
-					    		</div>
-					    	</div>
-					    	<div class="form-group">
-					    		<label for="startDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.start}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="date" name="startDate" class="form-control"/>
-					    		</div>
-					    	</div>
-					    	<div class="form-group">
-					    		<label for="endDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.end}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="date" name="endDate" class="form-control" />
-					    		</div>
-					    	</div>
-					    	<div class="form-group">
-					    		<label for="price" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.price}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="text" name="price" class="form-control" placeholder="0.00 EU" />
-					    		</div>
-					    	</div>
-					    	<div class="form-group">
-					    		<label for="vat" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.vat}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="text" name="vat" class="form-control" placeholder="0.00 %" />
-					    		</div>
-					    	</div>
-							<div class="form-group">
-					    		<label for="pages" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.pages}"></th:block></label>
-					    		<div class="col-sm-6">
-					    			<input type="text" name="pages" class="form-control" placeholder="0" />
-					    		</div>
-					    	</div>
-<!-- 						<th>Finalized</th> -->
-					    </form>
-				   	</div>
-				</div>
-				<div th:replace="~{/fragments/panel-footer::content (true)}">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ </head>
+ <body>
+ 
+	<th:block th:fragment="content">
+		<div id="editionModal" class="modal-uca hidden">
+	
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<div class="panel panel-default"> 
+					<div class="panel-heading">
+			       		<div class="row">
+			                 <div class="col-lg-11">
+			                    <span>
+			                        <strong>
+			                        	<i class="fa fa-files-o fa-fw"></i>
+										<th:block th:text="#{desktop.books.summary.title.label}"></th:block>
+										<th:block th:text="${book.title}"></th:block> 
+									</strong>
+			                    </span>
+			                 </div>
+			       		</div>
+					</div>				
+					<div class="panel-body">
+						<div class="col-lg-12">
+						    <form class="form-horizontal" role="form">
+						    	<input id="bookId" type="hidden" name="id" th:value="${book.id}"/>
+					    		<div class="form-group">
+						    		<label for="isbn" class="col-sm-2 control-label"><th:block th:text="#{desktop.books.isbn}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="text" name="isbn" class="form-control" th:placeholder="#{desktop.books.isbn}" />
+						    		</div>
+						    	</div>
+						    	<div class="form-group">
+						    		<label for="startDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.start}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="date" name="startDate" class="form-control"/>
+						    		</div>
+						    	</div>
+						    	<div class="form-group">
+						    		<label for="endDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.end}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="date" name="endDate" class="form-control" />
+						    		</div>
+						    	</div>
+						    	<div class="form-group">
+						    		<label for="price" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.price}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="number" name="price" class="form-control" placeholder="0.00 €" />
+						    		</div>
+						    	</div>
+						    	<div class="form-group">
+						    		<label for="vat" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.vat}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="text" name="vat" class="form-control" placeholder="0.00 %" />
+						    		</div>
+						    	</div>
+								<div class="form-group">
+						    		<label for="pages" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.pages}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="text" name="pages" class="form-control" placeholder="0" />
+						    		</div>
+						    	</div>
+						    	<div class="form-group">
+						    		<label for="pages" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.pages}"></th:block></label>
+						    		<div class="col-sm-6">
+						    			<input type="text" name="pages" class="form-control" placeholder="0" />
+						    		</div>
+						    	</div>
+	<!-- 						<th>Finalized</th> -->
+						    </form>
+					   	</div>
+					</div>
+					<div th:replace="~{/fragments/panel-footer::content (true)}">
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</th:block>
+	</th:block>
+	
+</body>
+</html>

@@ -27,13 +27,13 @@
 			    		<div class="form-group">
 				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.title}"></th:block></label>
 				    		<div class="col-sm-6">
-				    			<input type="text" name="title" class="form-control" th:placeholder="#{desktop.common.title}" />
+				    			<input type="text" name="title" class="form-control"  th:value="${book.title}" th:placeholder="#{desktop.common.title}" />
 				    		</div>
 				    	</div>
 				    	<div class="form-group">
 				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.description.label}"></th:block></label>
 				    		<div class="col-sm-8">
-				    			<textarea id="description" name="description" th:text="${book.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${book.description} ? true : false" required></textarea>
+				    			<textarea id="description" name="description" th:text="${book.description}" class="form-control" th:placeholder="#{desktop.records.description.label}" rows="5" th:disabled="${book.description} ? true : false" required></textarea>
 				    		</div>
 				    	</div>
 			    		<div class="form-group">

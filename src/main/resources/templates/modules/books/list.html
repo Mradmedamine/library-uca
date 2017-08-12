@@ -6,13 +6,14 @@
         layout:decorator="desktop-layout">
         
 <div id="books-container" class="panel panel-default" layout:fragment="desktop-page-content"> 
-	<div class="panel-heading container-fluuid">
-      	<div>
+	<div class="panel-heading container">
+      	<strong class="title">
             <span>
-                <i class="fa fa-book fa-fw"></i> 
+            	<i class="fa fa-book fa-fw"></i> 
  				<th:block th:text="#{desktop.layout.sidebar.books}"></th:block>
             </span>
-      	</div> 
+  		</strong>
+      	<a th:href="@{/books/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i><th:block th:text="#{common.new}"/></a>
 	</div>
 	<div class="panel-body">
 		<form id="search-form" class="search-widget">
