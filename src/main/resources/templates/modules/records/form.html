@@ -27,14 +27,14 @@
 				    	<input id="recordId" type="hidden" name="id" th:value="${record.id}"/>
 			    		<div class="form-group">
 				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.description.label}"></th:block></label>
-				    		<div class="col-sm-6">
+				    		<div class="col-sm-8">
 				    			<textarea id="description" name="description" th:text="${record.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${record.description} ? true : false" required></textarea>
 				    		</div>
 				    	</div>
 			    		<div class="form-group">
 				    		<label for="responsibleId" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.responsible.label}"></label>
 							<select name="responsibleId" class="selectpicker col-sm-3" title="Responsible" th:disabled="${isNewRecord} ? false : true" required>
-								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.name}" th:selected="${author.id == record.responsible?.id}" th:value="${author.id}" th:text="${author.name}">
+								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.fullname}" th:selected="${author.id == record.responsible?.id}" th:value="${author.id}" th:text="${author.fullname}">
 								  </option>
 							</select>			    		
 				    	</div>
@@ -62,12 +62,7 @@
 				    </form>
 			   	</div>
 			</div>
-			<div class="panel-footer display-flow-root">
-				<span class="pull-right"> 
-					<button type="button" th:class="|btn btn-default btn-edit ${isNewRecord ? 'hidden' :''}|"><th:block th:text="#{common.edit}"></button>
-					<button type="button" class="btn btn-default btn-cancel hidden"><th:block th:text="#{common.cancel}"></button>
-					<button type="button" th:class="|btn btn-primary btn-save ${isNewRecord ? '' : 'hidden'}|"><th:block th:text="#{common.save}"></button>
-				</span>
+			<div th:replace="~{/fragments/panel-footer::content (__${isNewRecord}__)}">
 			</div>
 		</th:block>
 	</div>

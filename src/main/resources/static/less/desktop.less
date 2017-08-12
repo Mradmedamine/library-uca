@@ -110,27 +110,43 @@
 					text-align: center;
 					padding: 5px;
 				}
+
 				.btn {
 					font-size: 14px;
 				}
-			}
-
-			.summary-container {
-				font-size: 14px;
-				float: none;
-				margin: auto;
-				padding: 0px;
-				background-color: rgba(240, 240, 240, 0.3);
 			}
 
 			.dataTables_empty {
 				text-align: center;
 			}
 		}
+
+		.panel-footer {
+			width: auto ! important;
+			&.readonly {
+				.btn-edit {
+					display: inline-block;
+				}
+
+				.btn-cancel , .btn-save {
+					display: none;
+				}
+			}
+
+			&:not(.readonly) {
+				.btn-edit {
+					display: none;
+				}
+
+				.btn-cancel , .btn-save {
+					display: inline-block;
+				}
+			}
+		}
+
 		.title {
 			vertical-align: -webkit-baseline-middle;
 		}
-
 	}
 
 	.table-uca {

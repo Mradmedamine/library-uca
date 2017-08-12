@@ -23,7 +23,7 @@ public class BooksController {
 
 	@RequestMapping("/books")
 	public String allBooks(Model model) {
-		model.addAttribute("books", bookService.findAll());
+		model.addAttribute("books", bookService.getAllBooks());
 		return "modules/books/list";
 	}
 

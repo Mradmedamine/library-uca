@@ -78,7 +78,7 @@ public class RecordsController {
 		model.addAttribute("recordStatusList", RecordStatus.values());
 		model.addAttribute("recordTypeList", RecordType.values());
 		model.addAttribute("ebookRecordType", RecordType.EBOOK);
-		model.addAttribute("bookList", bookService.findAll());
+		model.addAttribute("bookList", bookService.getAllBooks());
 		model.addAttribute("authorList", authorService.findAll());
 	}
 }

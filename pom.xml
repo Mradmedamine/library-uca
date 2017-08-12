@@ -28,6 +28,8 @@
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
 		<thymeleaf.dialect.version>2.0.5</thymeleaf.dialect.version>
 
+		<apache.common.version>3.6</apache.common.version>
+
 	</properties>
 
 	<dependencies>
@@ -87,6 +89,7 @@
     		<artifactId>javafaker</artifactId>
     		<version>0.13</version>
 		</dependency>
+		
 	</dependencies>
 
 	<build>

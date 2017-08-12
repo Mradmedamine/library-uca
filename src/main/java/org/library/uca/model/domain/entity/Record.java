@@ -1,5 +1,6 @@
 package org.library.uca.model.domain.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -32,6 +33,7 @@ public class Record extends EntityBase {
 		this.reference = reference;
 	}
 
+	@Column(columnDefinition="LONGVARCHAR")
 	public String getDescription() {
 		return description;
 	}
