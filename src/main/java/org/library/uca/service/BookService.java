@@ -2,15 +2,15 @@ package org.library.uca.service;
 
 import java.util.List;
 
-import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.BookEdition;
+import org.library.uca.model.front.web.BookDetails;
 
 public interface BookService {
 
-	List<Book> findAll();
+	List<BookDetails> getAllBooks();
 
 	List<BookEdition> findBookEditions(long bookId);
 
-	Book findById(Long id);
+	BookDetails findById(Long id);
 
 }

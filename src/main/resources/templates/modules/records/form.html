@@ -27,7 +27,7 @@
 				    	<input id="recordId" type="hidden" name="id" th:value="${record.id}"/>
 			    		<div class="form-group">
 				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.description.label}"></th:block></label>
-				    		<div class="col-sm-6">
+				    		<div class="col-sm-8">
 				    			<textarea id="description" name="description" th:text="${record.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${record.description} ? true : false" required></textarea>
 				    		</div>
 				    	</div>

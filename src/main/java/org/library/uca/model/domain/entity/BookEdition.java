@@ -17,8 +17,8 @@ public class BookEdition extends EntityBase {
 	private Double price;
 	private Double vat;
 	private Integer pages;
-	private Boolean finalized;
-	private Boolean finishedCopyright;
+	private boolean finalized;
+	private boolean finishedCopyright;
 	private Book book;
 
 	public String getIsbn() {

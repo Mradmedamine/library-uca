@@ -30,9 +30,15 @@
 				    			<input type="text" name="title" class="form-control" th:placeholder="#{desktop.common.title}" />
 				    		</div>
 				    	</div>
+				    	<div class="form-group">
+				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.description.label}"></th:block></label>
+				    		<div class="col-sm-8">
+				    			<textarea id="description" name="description" th:text="${book.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${book.description} ? true : false" required></textarea>
+				    		</div>
+				    	</div>
 			    		<div class="form-group">
 				    		<label for="authors" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.authors}"></label>
-							<select name="authors" class="selectpicker col-sm-5" title="Responsible" th:disabled="${isNewBook} ? false : true" required multiple>
+							<select name="authors" class="selectpicker col-sm-5" title="Authors" th:disabled="${isNewBook} ? false : true" required multiple>
 								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.name}" th:value="${author.id}" th:text="${author.name}">
 								  </option>
 							</select>			    		
@@ -43,26 +49,18 @@
 								  <option th:each="type : ${bookTypes}" th:attr="data-tokens=${type.value}" th:selected="${type == book.type}" th:value="${type.name}" th:text="#{desktop.books.type.__${type.value}__}">
 								  </option>
 							</select>			    		
-				    	</div>
-				    	<div class="form-group">
-				    		<label for="subject" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.subject}"></label>
-				    		<select name="subject" class="selectpicker col-sm-3" title="Status" th:disabled="${book.subject} ? true : false" required>
+				    		<label for="subject" class="col-sm-1 control-label"><th:block th:text="#{desktop.common.subject}"></label>
+				    		<select name="subject" class="selectpicker col-sm-3" title="Subject" th:disabled="${book.subject} ? true : false" required>
 								  <option th:each="subject : ${bookSubjects}" th:attr="data-tokens=${subject.value}" th:selected="${subject == book.subject}" th:value="${subject.name}" th:text="#{desktop.books.subject.__${subject.value}__}">
 								  </option>
 							</select>	
 				    	</div>
-<!-- 				    	<div class="form-group"> -->
-<!-- 				    		<label for="status" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.status}"></label> -->
-<!-- 				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${book.status} ? true : false" required> -->
-<!-- 								  <option th:each="status : ${bookStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == book.status}" th:value="${status.name}" th:text="#{desktop.books.status.__${status.value}__}"> -->
-<!-- 								  </option> -->
-<!-- 							</select>	 -->
-<!-- 				    	</div> -->
 				    </form>
 				    <hr>
 				   	<table id="editions-table" class="table table-striped table-bordered table-uca" cellspacing="0" width="100%">
 						<thead>
 							<tr>
+								<th class="hidden">id</th>
 								<th>ISBN</th>
 								<th>startDate</th>
 								<th>endDate</th>
@@ -79,8 +77,9 @@
 							    <td th:text="${edition.startDate}"></td>
 							    <td th:text="${edition.endDate}"></td>
 							    <td th:text="|${edition.price} €|"></td>
-							    <td th:text="|${edition.vat} €|"></td>
+							    <td th:text="|${edition.vat} %|"></td>
 							    <td th:text="${edition.pages}"></td>
+							    <td><i th:class="|fa ${edition.finalized ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
 							</tr>
 					    </tbody>
 					</table>
