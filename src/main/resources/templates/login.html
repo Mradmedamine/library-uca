@@ -17,7 +17,7 @@
                         <fieldset>
                            <span th:text="${message}"></span>
                            <div th:class="|form-group ${error != null ? 'has-error' : ''}|">
-		           		  	  <input name="username" type="text" class="form-control" th:placeholder="#{common.login.username}"/>
+		           		  	  <input name="username" type="text" class="form-control" th:placeholder="#{common.login.username}" autofocus/>
 					       </div>
 					       <div th:class="|form-group ${error != null ? 'has-error' : ''}|">
 					            <input name="password" type="password" class="form-control" th:placeholder="#{common.login.password}"/>

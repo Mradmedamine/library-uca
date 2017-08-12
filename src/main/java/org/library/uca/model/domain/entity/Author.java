@@ -10,26 +10,35 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "author")
 public class Author extends EntityBase {
-
-	private String name;
-	private Integer age;
+	
+	private String fullname;
+	private String idCard;
+	private String email;
 	private Set<Book> books;
 	private Set<Record> records;
 	
-	public String getName() {
-		return name;
+	public String getFullname() {
+		return fullname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 
-	public Integer getAge() {
-		return age;
+	public String getIdCard() {
+		return idCard;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@ManyToMany(mappedBy = "authors")
