@@ -3,14 +3,14 @@ package org.library.uca.service;
 import java.util.List;
 
 import org.library.uca.model.domain.entity.BookEdition;
-import org.library.uca.model.front.web.BookDetails;
+import org.library.uca.model.front.web.dto.BookDetailsDTO;
 
 public interface BookService {
 
-	List<BookDetails> getAllBooks();
+	List<BookDetailsDTO> getAllBooks();
 
 	List<BookEdition> findBookEditions(long bookId);
 
-	BookDetails findById(Long id);
+	BookDetailsDTO findById(Long id);
 
 }

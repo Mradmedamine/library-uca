@@ -5,8 +5,8 @@ import java.util.List;
 import org.library.uca.model.domain.RecordStatus;
 import org.library.uca.model.domain.RecordType;
 import org.library.uca.model.domain.entity.Record;
-import org.library.uca.model.front.web.RecordDTO;
-import org.library.uca.model.front.web.RecordSearch;
+import org.library.uca.model.front.web.dto.RecordDTO;
+import org.library.uca.model.front.web.queryparams.RecordQueryParams;
 import org.library.uca.service.AuthorService;
 import org.library.uca.service.BookService;
 import org.library.uca.service.RecordService;
@@ -47,7 +47,7 @@ public class RecordsController {
 	}
 
 	@RequestMapping(path = "/records/search", method = RequestMethod.POST)
-	public String searchRecords(Model model, @RequestBody RecordSearch recordSearch) {
+	public String searchRecords(Model model, @RequestBody RecordQueryParams recordSearch) {
 		logger.debug("searching for records with parameters {}", recordSearch.toString());
 		List<Record> foundRecords = recordService.findByCriteria(recordSearch);
 		model.addAttribute("records", foundRecords);

@@ -5,11 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.library.uca.model.domain.entity.Author;
+import org.library.uca.model.front.web.queryparams.AuthorQueryParams;
 import org.library.uca.repository.AuthorRepository;
 import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.thymeleaf.util.StringUtils;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -31,4 +33,33 @@ public class AuthorServiceImpl implements AuthorService {
 		return "";
 	}
 
+	@Override
+	public List<Author> findByCriteria(AuthorQueryParams authorQueryParams) {
+		// full name
+		String fullname = authorQueryParams.getFullname();
+		if (StringUtils.isEmpty(fullname)) {
+			fullname = "%";
+		} else {
+			fullname = "%" + fullname + "%";
+		}
+		
+		// id card
+		String idCard = authorQueryParams.getIdCard();
+		if (StringUtils.isEmpty(fullname)) {
+			idCard = "%";
+		} else {
+			idCard = "%" + idCard + "%";
+		}
+		
+		// email
+		String email = authorQueryParams.getEmail();
+		if (StringUtils.isEmpty(email)) {
+			email = "%";
+		} else {
+			email = "%" + email + "%";
+		}
+
+
+		return authorRepository.findByFullnameContainingIgnoreCaseAndIdCardContainingIgnoreCaseAndEmailContainingIgnoreCase(fullname, idCard, email);
+	}
 }

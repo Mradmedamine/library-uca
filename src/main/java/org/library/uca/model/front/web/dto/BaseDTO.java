@@ -1,8 +1,8 @@
-package org.library.uca.model.front.web;
+package org.library.uca.model.front.web.dto;
 
 import java.io.Serializable;
 
-public abstract class DTOBase implements Serializable {
+public abstract class BaseDTO implements Serializable {
 
 	private static final long serialVersionUID = 2085403430158338978L;
 	

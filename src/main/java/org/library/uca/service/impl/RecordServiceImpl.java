@@ -8,8 +8,8 @@ import org.library.uca.model.domain.RecordType;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.Record;
-import org.library.uca.model.front.web.RecordDTO;
-import org.library.uca.model.front.web.RecordSearch;
+import org.library.uca.model.front.web.dto.RecordDTO;
+import org.library.uca.model.front.web.queryparams.RecordQueryParams;
 import org.library.uca.repository.RecordRepository;
 import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +60,7 @@ public class RecordServiceImpl implements RecordService {
 	}
 
 	@Override
-	public List<Record> findByCriteria(RecordSearch recordSearch) {
+	public List<Record> findByCriteria(RecordQueryParams recordSearch) {
 
 		String descriptionText = recordSearch.getDescriptionText();
 		if (StringUtils.isEmpty(descriptionText)) {

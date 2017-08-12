@@ -1,9 +1,9 @@
-package org.library.uca.model.front.web;
+package org.library.uca.model.front.web.dto;
 
 import org.library.uca.model.domain.RecordStatus;
 import org.library.uca.model.domain.RecordType;
 
-public class RecordDTO extends DTOBase {
+public class RecordDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 5797499071965067582L;
 

@@ -1,4 +1,4 @@
-package org.library.uca.model.front.web;
+package org.library.uca.model.front.web.dto;
 
 import java.util.Set;
 
@@ -7,7 +7,7 @@ import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.BookEdition;
 
-public class BookDetails extends DTOBase {
+public class BookDetailsDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 1462937556020898573L;
 
