@@ -19,5 +19,4 @@ public class AuthorServiceImpl implements AuthorService {
 		return authorRepository.findAll();
 	}
 
-
 }

@@ -1,11 +1,8 @@
 package org.library.uca.controller;
 
-import java.util.List;
-
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Book;
-import org.library.uca.model.domain.entity.BookEdition;
 import org.library.uca.service.AuthorService;
 import org.library.uca.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BooksController {

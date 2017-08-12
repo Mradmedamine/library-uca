@@ -1,7 +1,10 @@
 package org.library.uca.bootstrap;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.library.uca.model.domain.RecordStatus;
@@ -18,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+
+import com.github.javafaker.Faker;
 
 @Component
 public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent> {
@@ -41,32 +46,23 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 	private void populateData() {
 
 		// AUTHORS
-		Author author1 = new Author();
-		author1.setName("Rodriguez Corral");
-		authorRepository.save(author1);
-		log.info("Saved Author : id: " + author1.getId());
-
-		Author author2 = new Author();
-		author2.setName("Silva Ramírez, Esther Lydia");
-		authorRepository.save(author2);
-		log.info("Saved Author : id: " + author2.getId());
-
-		Author author3 = new Author();
-		author3.setName("Hurtado Rodríguez, Nuria");
-		authorRepository.save(author3);
-		log.info("Saved Author : id: " + author3.getId());
-
-		Author author4 = new Author();
-		author4.setName("Domínguez Jiménez, Juan José");
-		authorRepository.save(author4);
-		log.info("Saved Author : id: " + author4.getId());
+		List<Author> authorList = new ArrayList<>();
+		Faker faker = new Faker(new Locale("es_ES"));
+		for (int i = 0; i < 10; i++) {
+			Author author = new Author();
+			author.setFullname(faker.name().fullName());
+			author.setEmail(faker.internet().emailAddress());
+			author.setIdCard(faker.code().ean8());
+			authorRepository.save(author);
+			authorList.add(author);
+		}
 
 		// BOOKS
 
 		Book book1 = new Book();
 		book1.setTitle("Title Book 1 ");
 		book1.setDescription("Description Book 1 ");
-		book1.setAuthors(Collections.singleton(author1));
+		book1.setAuthors(Collections.singleton(authorList.get(0)));
 		bookRepository.save(book1);
 		log.info("Saved Book :   id: " + book1.getId());
 
@@ -86,7 +82,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		Book book2 = new Book();
 		book2.setTitle("Title Book 2 ");
 		book2.setDescription("Description Book 2 ");
-		book2.setAuthors(Collections.singleton(author3));
+		book2.setAuthors(Collections.singleton(authorList.get(2)));
 		bookRepository.save(book2);
 		log.info("Saved Book :   id: " + book2.getId());
 
@@ -107,7 +103,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		Book book3 = new Book();
 		book3.setTitle("Title Book 3 ");
 		book3.setDescription("Description Book 3 ");
-		book3.setAuthors(Collections.singleton(author2));
+		book3.setAuthors(Collections.singleton(authorList.get(2)));
 
 		bookRepository.save(book3);
 		log.info("Saved Book :   id: " + book3.getId());
@@ -126,7 +122,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		// RECORDS
 		Record record1 = new Record();
 		record1.setDescription("Aprendiendo C ");
-		record1.setResponsible(author1);
+		record1.setResponsible(authorList.get(0));
 		record1.setReference("EBK/2013/26");
 		record1.setStatus(RecordStatus.IN_PRINTING);
 		record1.setType(RecordType.ADMINISTRATIVE);
@@ -135,7 +131,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record2 = new Record();
 		record2.setDescription("Reimpreso Aprendiendo C ");
-		record2.setResponsible(author2);
+		record2.setResponsible(authorList.get(1));
 		record2.setReference("REI/2009/26");
 		record2.setStatus(RecordStatus.PRINTED);
 		record2.setType(RecordType.EBOOK);
@@ -144,7 +140,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record3 = new Record();
 		record3.setDescription("Aprendiendo C ");
-		record3.setResponsible(author3);
+		record3.setResponsible(authorList.get(2));
 		record3.setReference("EBK/2013/26");
 		record3.setStatus(RecordStatus.IN_PRINTING);
 		record3.setType(RecordType.EBOOK);
@@ -153,7 +149,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record4 = new Record();
 		record4.setDescription("Verificación formal de algoritmos: ejercicios resueltos");
-		record4.setResponsible(author2);
+		record4.setResponsible(authorList.get(2));
 		record4.setReference("REI/IYA/2014/10");
 		record4.setStatus(RecordStatus.IN_BUDGET);
 		record4.setType(RecordType.EBOOK);
@@ -162,7 +158,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record33 = new Record();
 		record33.setDescription("Introducción a la programación");
-		record33.setResponsible(author4);
+		record33.setResponsible(authorList.get(3));
 		record33.setReference("MAN/IYA/2010/09");
 		record33.setStatus(RecordStatus.REGISTERED);
 		record33.setType(RecordType.REPRINT);
@@ -171,7 +167,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record5 = new Record();
 		record5.setDescription("Corrección de algoritmos complejos");
-		record5.setResponsible(author1);
+		record5.setResponsible(authorList.get(0));
 		record5.setReference("EBK/IYA/2017/07");
 		record5.setStatus(RecordStatus.IN_PRINTING);
 		record5.setType(RecordType.EBOOK);
@@ -181,7 +177,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record6 = new Record();
 		record6.setDescription("Compiladores y procesadores de lenguajes");
-		record6.setResponsible(author3);
+		record6.setResponsible(authorList.get(2));
 		record6.setReference("EBK/IYA/2015/03");
 		record6.setStatus(RecordStatus.EXTERNAL_MANAGEMENT);
 		record6.setType(RecordType.ADMINISTRATIVE);
@@ -190,7 +186,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record7 = new Record();
 		record7.setDescription("Compiladores y procesadores de lenguajes");
-		record7.setResponsible(author1);
+		record7.setResponsible(authorList.get(0));
 		record7.setReference("EBK/IYA/2015/03");
 		record7.setStatus(RecordStatus.DISMISSED);
 		record7.setType(RecordType.EBOOK);
@@ -200,7 +196,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record8 = new Record();
 		record8.setDescription("Fundamentos de C++");
-		record8.setResponsible(author3);
+		record8.setResponsible(authorList.get(2));
 		record8.setReference("REI/IYA/2016/01");
 		record8.setStatus(RecordStatus.ACCEPTED);
 		record8.setType(RecordType.PAPER);
@@ -209,7 +205,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record9 = new Record();
 		record9.setDescription("Sistemas operativos");
-		record9.setResponsible(author4);
+		record9.setResponsible(authorList.get(3));
 		record9.setReference("REI/IYA/2009/07");
 		record9.setStatus(RecordStatus.IN_PRINTING);
 		record9.setType(RecordType.REPRINT);
@@ -218,7 +214,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record10 = new Record();
 		record10.setDescription("Sistemas operativos");
-		record10.setResponsible(author1);
+		record10.setResponsible(authorList.get(0));
 		record10.setReference("REI/IYA/2009/07");
 		record10.setStatus(RecordStatus.IN_PRINTING);
 		record10.setType(RecordType.EBOOK);
@@ -227,7 +223,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 		Record record11 = new Record();
 		record11.setDescription("Compiladores y procesadores de lenguajes");
-		record11.setResponsible(author2);
+		record11.setResponsible(authorList.get(1));
 		record11.setReference("EBK/I/2015/03");
 		record11.setStatus(RecordStatus.DISMISSED);
 		record11.setType(RecordType.EBOOK);

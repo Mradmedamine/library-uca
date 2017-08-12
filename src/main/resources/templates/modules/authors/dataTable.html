@@ -13,9 +13,9 @@
 		 	 </tr>
 	     </thead>
 	     <tbody>
-			<tr th:each="author : ${author}" class="clickable" th:attr="data-href=@{__${ '/authors/' + author.id}__}">
+			<tr th:each="author : ${authors}" class="clickable" th:attr="data-href=@{__${ '/authors/' + author.id}__}">
 				<td class="hidden" th:text="${author.id}"></td>
-			    <td th:text="${author.idNumber}"></td>
+			    <td th:text="${author.idCard}"></td>
 			    <td th:text="${author.fullname}"></td>
 			    <td th:text="${author.email}"></td>
 			</tr>
