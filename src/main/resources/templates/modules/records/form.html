@@ -34,7 +34,7 @@
 			    		<div class="form-group">
 				    		<label for="responsibleId" class="col-sm-2 control-label"><th:block th:text="#{desktop.records.responsible.label}"></label>
 							<select name="responsibleId" class="selectpicker col-sm-3" title="Responsible" th:disabled="${isNewRecord} ? false : true" required>
-								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.name}" th:selected="${author.id == record.responsible?.id}" th:value="${author.id}" th:text="${author.name}">
+								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.fullname}" th:selected="${author.id == record.responsible?.id}" th:value="${author.id}" th:text="${author.fullname}">
 								  </option>
 							</select>			    		
 				    	</div>

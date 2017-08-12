@@ -58,14 +58,14 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 			authorRepository.save(author);
 			authorList.add(author);
 		}
-
+		
 		// BOOKS
 
 		Book book1 = new Book();
 		book1.setTitle("Introducción a la programación");
 		book1.setDescription(
 				"Esta obra constituye una completa herramienta para el estudio de los fundamentos de la programación de ordenadores que puede servir como libro de texto para cualquier asignatura de Introducción a la Programación en los estudios universitarios de Informática.");
-		book1.setAuthors(Collections.singleton(author3));
+		book1.setAuthors(Collections.singleton(authorList.get(0)));
 		book1.setType(BookType.MANUAL);
 		book1.setSubject(BookSubject.MATHEMATIC);
 		bookRepository.save(book1);
@@ -96,7 +96,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		book2.setTitle("Fundamentos de C++");
 		book2.setDescription(
 				"Este libro explica el lenguaje de programación C++ según la norma aprobada hace unos años por el instituto de normalización ANSI. Ha sido elaborado pensando en los alumnos de Metodología y Tecnología de Programación II, asignatura de segundo curso de Ingeniería Técnica en Informática de Gestión.");
-		book2.setAuthors(Collections.singleton(author3));
+		book2.setAuthors(Collections.singleton(authorList.get(1)));
 		book2.setType(BookType.MANUAL);
 		book2.setSubject(BookSubject.MATHEMATIC);
 		bookRepository.save(book2);
@@ -128,7 +128,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		book3.setTitle("Compiladores y procesadores de lenguajes");
 		book3.setDescription(
 				"Manual centrado en el uso de los Traductores, programas que leen un programa fuente escrito en el lenguaje fuente y produce como resultado otro programa, con el mismo significado (misma semántica) que el fuente, llamado programa objeto y escrito en el lenguaje objeto. A su vez, un compilador es un caso particular de un traductor en el que el lenguaje objeto es el lenguaje máquina.");
-		book3.setAuthors(Collections.singleton(author1));
+		book3.setAuthors(Collections.singleton(authorList.get(2)));
 		book3.setType(BookType.MONOGRAPH);
 		book3.setSubject(BookSubject.MATHEMATIC);
 		bookRepository.save(book3);
@@ -159,7 +159,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		book4.setTitle("Verificación formal de algoritmos: ejercicios resueltos");
 		book4.setDescription(
 				"Con este libro se intenta cubrir una de las necesidades que los alumnos demandan año tras año en el aprendizaje de sus materias. Se trata, por tanto, de un texto con ejercicios resueltos, que complemente a los libros más teóricos, entendiendo que éstos son fundamentales. Viene, pues, este libro a complementar al título Corrección de algoritmos complejos. Verificación formal, publicado recientemente por los mismos autores.");
-		book4.setAuthors(Collections.singleton(author2));
+		book4.setAuthors(Collections.singleton(authorList.get(3)));
 		book4.setType(BookType.MANUAL);
 		book4.setSubject(BookSubject.MATHEMATIC);
 		bookRepository.save(book4);

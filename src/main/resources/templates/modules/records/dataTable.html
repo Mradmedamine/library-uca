@@ -19,7 +19,7 @@
 				<td class="hidden" th:text="${record.id}"></td>
 			    <td th:text="${record.reference}"></td>
 			    <td th:text="${record.description}"></td>
-			    <td th:text="${record.responsible.name}"></td>
+			    <td th:text="${record.responsible.fullname}"></td>
 			    <td th:text="${record.type}"></td>
 			    <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
 			</tr>

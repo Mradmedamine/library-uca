@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.repository.AuthorRepository;
 import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -24,8 +24,8 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public String getChainedAuthorNames(Collection<Author> authors) {
-		if (CollectionUtils.isNotEmpty(authors)) {
-			List<String> authorNames = authors.stream().map(Author::getName).collect(Collectors.toList());
+		if (!CollectionUtils.isEmpty(authors)) {
+			List<String> authorNames = authors.stream().map(Author::getFullname).collect(Collectors.toList());
 			return String.join(", ", authorNames);
 		}
 		return "";
