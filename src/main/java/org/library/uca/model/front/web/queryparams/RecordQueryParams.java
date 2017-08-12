@@ -1,4 +1,4 @@
-package org.library.uca.model.front.web;
+package org.library.uca.model.front.web.queryparams;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.library.uca.model.domain.RecordType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class RecordSearch implements Serializable {
+public class RecordQueryParams implements Serializable {
 
 	private static final long serialVersionUID = 2306798939310096115L;
 
