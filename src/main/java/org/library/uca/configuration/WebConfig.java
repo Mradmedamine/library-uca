@@ -79,6 +79,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	public ViewResolver viewResolver() {
 		ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
 		viewResolver.setTemplateEngine(templateEngine());
+		viewResolver.setCharacterEncoding("UTF-8");
 		return viewResolver;
 	}
 

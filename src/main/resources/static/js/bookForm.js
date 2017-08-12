@@ -1,7 +1,6 @@
 $(function() {
 
     var bookContainer = $('#book-form-container');
-    var editor;
     initBookForm();
     initEditionsDataTables();
     initEditionModal();
@@ -77,17 +76,15 @@ $(function() {
 	    $(modal).show();
 	});
 
-	// When the user clicks on <span> (x), close the modal
 	$(span).on('click', function() {
 	    $(modal).hide();
 	});
 
-	// When the user clicks anywhere outside of the modal, close it
-//	$(window).on('click', function(event) {
-//	    if (event.target == modal) {
-//		$(modal).hide();
-//	    }
-//	});
+	$(window).on('click', function(event) {
+	    if (event.target == modal) {
+		$(modal).hide();
+	    }
+	});
     }
 
 });

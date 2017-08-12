@@ -9,7 +9,7 @@ import org.springframework.beans.BeansException;
 
 public abstract class MappingUtils {
 
-	private static Logger log = LoggerFactory.getLogger(MappingUtils.class);
+	private static Logger logger = LoggerFactory.getLogger(MappingUtils.class);
 
 	private MappingUtils() {
 		throw new UnsupportedOperationException();
@@ -23,7 +23,7 @@ public abstract class MappingUtils {
 			String message = MessageFormat.format(
 					"error occured while mapping from bean Class {} to bean {}, Exception: {}", src.getClass(),
 					dest.getClass(), e.getMessage());
-			log.error(message);
+			logger.error(message);
 			throw new RuntimeException(message);
 		}
 	}
@@ -35,6 +35,7 @@ public abstract class MappingUtils {
 		} catch (InstantiationException | IllegalAccessException e) {
 			String msg = MessageFormat.format("error instantiating object of class {}, Ex: {}", destClass,
 					e.getMessage());
+			logger.error(msg);
 			throw new RuntimeException(msg);
 		}
 	}

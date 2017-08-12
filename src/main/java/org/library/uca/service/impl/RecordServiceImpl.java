@@ -47,7 +47,7 @@ public class RecordServiceImpl implements RecordService {
 		entityRecord.setType(record.getType());
 		record.setReference("any reference");
 		// Book
-		if(record.getBookId() != null) {
+		if (record.getBookId() != null) {
 			Book entityBook = new Book();
 			entityBook.setId(record.getBookId());
 			entityRecord.setBook(entityBook);
@@ -66,7 +66,7 @@ public class RecordServiceImpl implements RecordService {
 		if (StringUtils.isEmpty(descriptionText)) {
 			descriptionText = "%";
 		} else {
-			descriptionText = "%" + descriptionText + "%";
+			descriptionText = "%" + descriptionText.toUpperCase() + "%";
 		}
 
 		List<RecordType> typeList = recordSearch.getTypes();
@@ -78,8 +78,7 @@ public class RecordServiceImpl implements RecordService {
 		if (CollectionUtils.isEmpty(statusList)) {
 			statusList = Arrays.asList(RecordStatus.values());
 		}
-		return recordRepository.findByDescriptionContainingIgnoreCaseAndStatusInAndTypeIn(descriptionText, statusList,
-				typeList);
+		return recordRepository.findByCriteria(descriptionText, statusList, typeList);
 	}
 
 }

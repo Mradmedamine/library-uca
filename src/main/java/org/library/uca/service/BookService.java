@@ -7,7 +7,7 @@ import org.library.uca.model.front.web.dto.BookDetailsDTO;
 
 public interface BookService {
 
-	List<BookDetailsDTO> getAllBooks();
+	List<BookDetailsDTO> findAll();
 
 	List<BookEdition> findBookEditions(long bookId);
 
