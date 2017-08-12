@@ -6,7 +6,7 @@ $(function() {
 		var data = $('#search-form').serializeObject();
 		$.ajax({
 			type : 'POST',
-			url : recordsSearchUrl,
+			url : '/records/search',
 			data : JSON.stringify(data),
 			contentType : 'application/json',
 			success : function(data) {

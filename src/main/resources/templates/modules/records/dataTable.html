@@ -20,7 +20,7 @@
 			    <td th:text="${record.reference}"></td>
 			    <td th:text="${record.description}"></td>
 			    <td th:text="${record.responsible.fullname}"></td>
-			    <td th:text="${record.type}"></td>
+			    <td th:text="#{desktop.records.type.__${record.type.value}__}"></td>
 			    <td th:text="#{desktop.records.status.__${record.status.value}__}"></td>
 			</tr>
 	    </tbody>
