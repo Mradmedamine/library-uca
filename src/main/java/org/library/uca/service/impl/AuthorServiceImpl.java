@@ -40,7 +40,7 @@ public class AuthorServiceImpl implements AuthorService {
 		if (StringUtils.isEmpty(fullname)) {
 			fullname = "%";
 		} else {
-			fullname = "%" + fullname + "%";
+			fullname = "%" + fullname.toUpperCase()  + "%";
 		}
 		
 		// id card
@@ -48,7 +48,7 @@ public class AuthorServiceImpl implements AuthorService {
 		if (StringUtils.isEmpty(fullname)) {
 			idCard = "%";
 		} else {
-			idCard = "%" + idCard + "%";
+			idCard = "%" + idCard.toUpperCase()  + "%";
 		}
 		
 		// email
@@ -56,10 +56,9 @@ public class AuthorServiceImpl implements AuthorService {
 		if (StringUtils.isEmpty(email)) {
 			email = "%";
 		} else {
-			email = "%" + email + "%";
+			email = "%" + email.toUpperCase() + "%";
 		}
 
-
-		return authorRepository.findByFullnameContainingIgnoreCaseAndIdCardContainingIgnoreCaseAndEmailContainingIgnoreCase(fullname, idCard, email);
+		return authorRepository.findByCriteria(fullname, idCard, email);
 	}
 }

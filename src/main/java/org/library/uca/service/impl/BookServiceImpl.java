@@ -27,7 +27,7 @@ public class BookServiceImpl implements BookService {
 	private AuthorService authorService;
 
 	@Override
-	public List<BookDetailsDTO> getAllBooks() {
+	public List<BookDetailsDTO> findAll() {
 		List<Book> booksEntity = bookRepository.findAll();
 		List<BookDetailsDTO> books = new ArrayList<>(booksEntity.size());
 		for (Book book : booksEntity) {

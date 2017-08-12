@@ -66,9 +66,8 @@ public class RecordServiceImpl implements RecordService {
 		if (StringUtils.isEmpty(descriptionText)) {
 			descriptionText = "%";
 		} else {
-			descriptionText = "%" + descriptionText + "%";
+			descriptionText = "%" + descriptionText.toUpperCase() + "%";
 		}
-		descriptionText = descriptionText.toUpperCase();
 
 		List<RecordType> typeList = recordSearch.getTypes();
 		if (CollectionUtils.isEmpty(typeList)) {
