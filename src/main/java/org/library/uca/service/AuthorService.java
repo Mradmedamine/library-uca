@@ -11,6 +11,7 @@ public interface AuthorService {
 	List<Author> findAll();
 	
 	List<Author> findByCriteria(AuthorQueryParams authorQueryParams);
+	Author findById(Long id);
 
 	String getChainedAuthorNames(Collection<Author> authors);
 
