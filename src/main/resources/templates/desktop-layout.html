@@ -80,13 +80,14 @@
 
         <div id="page-wrapper" >
         	<div layout:fragment="desktop-page-content"></div>
+			<div layout:fragment="modals"></div>
         </div>
         
     </div>
 	
 	<!---- LIBRARIES ---->
 	
-    <!-- jQuery -->
+    <!-- JQuery -->
     <script th:src="@{/library/jquery/jquery.min.js}"></script>
     <script th:src="@{/library/jquery/jquery.validate.js}"></script>
     
@@ -94,7 +95,7 @@
     <script th:src="@{/library/bootstrap/js/bootstrap.min.js}"></script>
 	<script th:src="@{/library/bootstrap/js/bootstrap-select.min.js}"></script>
 		
-    <!-- Metis Menu Plugin JavaScript -->
+    <!-- MetisMenu Plugin JavaScript -->
     <script th:src="@{/library/metisMenu/metisMenu.min.js}"></script>
 
     <!-- Toastr -->
@@ -109,8 +110,9 @@
     <!---- UCA ---->
 	<script th:src="@{/js/jquery.extend.js}" ></script>
 	<script th:src="@{/js/desktop.js}" ></script>
-	
+		
 	<th:block layout:fragment="js-files"></th:block>
+	
 	<th:block th:include="fragments/global-texts::content"></th:block>
 	
 </body>

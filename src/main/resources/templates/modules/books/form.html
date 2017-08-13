@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorator="desktop-layout">
+        layout:decorate="~{desktop-layout}">
 
 	<div id="book-form-container" class="panel panel-default details-container book-details-container" layout:fragment="desktop-page-content"> 
 		<th:block th:with="isNewBook=${book.id == null}">
@@ -61,13 +61,13 @@
 						<thead>
 							<tr>
 								<th class="hidden">id</th>
-								<th>ISBN</th>
-								<th>startDate</th>
-								<th>endDate</th>
-								<th>Price</th>
-								<th>Vat</th>
-								<th>Pages</th>
-								<th>Finalized</th>
+								<th width="20%">ISBN</th>
+								<th width="15%">startDate</th>
+								<th width="15%">endDate</th>
+								<th width="10%">Price</th>
+								<th width="10%">Vat</th>
+								<th width="10%">Pages</th>
+								<th width="10%">Finalized</th>
 							</tr>
 						</thead>
 						 <tbody>
@@ -88,10 +88,13 @@
 			<div th:replace="~{/fragments/panel-footer::content (__${isNewBook}__)}">
 			</div>
 		</th:block>
-		<th:block th:include="~{/modules/books/editionModal::content}">
-		</th:block>
 	</div>
 	
+	<th:block layout:fragment="modals"> 	
+		<th:block th:include="~{/modules/books/editionModal::content}">
+		</th:block>
+	</th:block>
+		
 	<th:block layout:fragment="js-files"> 	
 		<script th:src="@{/js/bookForm.js}" ></script> 
 		<script th:inline="javascript"> 
