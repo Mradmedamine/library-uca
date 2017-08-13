@@ -8,6 +8,7 @@ import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,16 +20,22 @@ public class AuthorsController {
 	private AuthorService authorService;
 
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
-	public String recordsList(Model model) {
+	public String authorsList(Model model) {
 		return "modules/authors/list";		
 	}
 	
 	@RequestMapping(path = "/authors/search", method = RequestMethod.POST)
-	public String searchRecords(Model model, @RequestBody AuthorQueryParams authorQueryParams) {
+	public String searchAuthors(Model model, @RequestBody AuthorQueryParams authorQueryParams) {
 		List<Author> authors = authorService.findByCriteria(authorQueryParams);
 		if (authors != null && authors.size() > 0) {
 			model.addAttribute("authors", authors);
 		}
 		return "modules/authors/dataTable::content";
+	}
+	
+	@RequestMapping("/authors/{id}")
+	public String authorPage(Model model, @PathVariable Long id) {
+		model.addAttribute("author", authorService.findById(id));
+		return "modules/authors/form";
 	}
 }

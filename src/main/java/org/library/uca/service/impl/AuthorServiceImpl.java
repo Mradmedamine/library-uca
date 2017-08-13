@@ -61,4 +61,9 @@ public class AuthorServiceImpl implements AuthorService {
 
 		return authorRepository.findByCriteria(fullname, idCard, email);
 	}
+
+	@Override
+	public Author findById(Long id) {
+		return authorRepository.findOne(id);
+	}
 }

@@ -1,6 +1,7 @@
 $(function() {
 
-	var bookContainer = $('#author-form-container');
+	var authorFormContainer = $('#author-form-container');
+	var panelFooter = $(authorFormContainer).find('.panel-footer');
 	
 	var backBtn = $(panelFooter).find('.btn-back');
 	
