@@ -13,6 +13,11 @@ $(function() {
 	var editBtn = $(panelFooter).find('.btn-edit');
 	var saveBtn = $(panelFooter).find('.btn-save');
 	var cancelBtn = $(panelFooter).find('.btn-cancel');
+	var backBtn = $(panelFooter).find('.btn-back');
+	
+	$(backBtn).on('click', function(event) {
+		window.location.href = "/records";
+	});
 
 	$(editBtn).on('click', function(e) {
 	    $(formFields).prop('disabled', false);

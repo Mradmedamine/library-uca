@@ -4,7 +4,7 @@
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
         layout:decorator="desktop-layout">
 
-	<div id="book-form-container" class="panel panel-default" layout:fragment="desktop-page-content"> 
+	<div id="book-form-container" class="panel panel-default details-container book-details-container" layout:fragment="desktop-page-content"> 
 		<th:block th:with="isNewBook=${book.id == null}">
 			<div class="panel-heading">
 	       		<div class="row">
@@ -22,7 +22,7 @@
 			</div>				
 			<div class="panel-body">
 				<div class="col-lg-12">
-				    <form class="form-horizontal" role="form">
+				    <form class="form-horizontal details-form book-details-form" role="form">
 				    	<input id="bookId" type="hidden" name="id" th:value="${book.id}"/>
 			    		<div class="form-group">
 				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.title}"></th:block></label>
