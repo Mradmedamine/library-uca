@@ -20,11 +20,7 @@ public class AuthorsController {
 
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
 	public String recordsList(Model model) {
-		List<Author> authors = authorService.findAll();
-		if (authors != null && authors.size() > 0) {
-			model.addAttribute("authors", authors);
-		}
-		return "modules/authors/list";
+		return "modules/authors/list";		
 	}
 	
 	@RequestMapping(path = "/authors/search", method = RequestMethod.POST)

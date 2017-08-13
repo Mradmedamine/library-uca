@@ -8,9 +8,10 @@
 <th:block th:fragment="content (isNewElement)">
 	<div th:class="|panel-footer container ${isNewElement ? '' :'readonly'}|">
 		<div class="pull-right"> 
-			<button type="button" class="btn btn-default btn-edit"><th:block th:text="#{common.edit}"></button>
-			<button type="button" th:class="|btn btn-default btn-cancel ${isNewElement ? 'hidden' :''}|"><th:block th:text="#{common.cancel}"></button>
-			<button type="button" class="btn btn-primary btn-save"><th:block th:text="#{common.save}"></button>
+			<button type="button" class="btn btn-default btn-back"><th:block th:text="#{ common.back }"></button>
+			<button type="button" class="btn btn-default btn-edit"><th:block th:text="#{ common.edit }"></button>
+			<button type="button" th:class="|btn btn-default btn-cancel ${isNewElement ? 'hidden' :''}|"><th:block th:text="#{ common.cancel }"></button>
+			<button type="button" class="btn btn-primary btn-save"><th:block th:text="#{ common.save }"></button>
 		</div>
 	</div>
 </th:block>
