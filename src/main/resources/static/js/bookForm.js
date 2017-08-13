@@ -73,18 +73,23 @@ $(function() {
 
 	function initEditionModal() {
 
-		var modal = $(bookContainer).find('#editionModal');
-		var btn = $(bookContainer).find('.dt-buttons button');
-		var span = $(bookContainer).find('.close');
-
-		$(btn).on('click', function() {
+		var modal = $('#page-wrapper').find('#editionModal');
+		var newBtn = $(bookContainer).find('.dt-buttons button');
+		var closeBtn = $(modal).find('.close');
+		var backBtn = $(modal).find('.panel-footer .btn-back');
+		
+		$(newBtn).on('click', function() {
 			$(modal).show();
 		});
-
-		$(span).on('click', function() {
+		
+		$(closeBtn).on('click', function() {
 			$(modal).hide();
 		});
-
+		
+		$(backBtn).on('click', function() {
+			$(modal).hide();
+		});
+		
 		$(window).on('click', function(event) {
 			if (event.target == modal) {
 				$(modal).hide();

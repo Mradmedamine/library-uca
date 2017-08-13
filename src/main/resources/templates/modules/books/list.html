@@ -21,31 +21,12 @@
 			<button class="btn btn-primary btn-block search-btn" type="button"><th:block th:text="#{common.search}"></th:block></button>
        	</form> 
        	<hr>
-		<div th:if="${not #lists.isEmpty(books)}" >
-          	<table width="100%" class="table table-striped table-bordered table-hover table-uca" id="books-datatables">
-            	<thead>
-                   	<tr> 
-                   		<th class="hidden">id</th>
-		                <th width="25%">title</th>
-		                <th width="35%">Description</th>
-		                <th width="20%">Authors</th>
-		                <th width="10%">Type</th>
-		                <th width="10%">Subject</th>
-		           	</tr>
-                </thead>
-                <tbody>
-            		<tr th:each="book : ${books}" class="clickable" th:attr="data-href=@{__${ '/books/' + book.id}__}">
-		                <td class="hidden" th:text="${book.id}"></td>
-		                <td th:text="${book.title}"></td>
-		                <td class="abbreviated" th:text="${book.description}"></td>
-		                <td th:text="${book.chainedAuthorNames}"></td>
-		                <td th:text="${book.type}"></td>
-		                <td th:text="${book.subject}"></td>
-	            	</tr>
-                </tbody>
-            </table>
-	    </div>
+		<div id="result-container" th:include="~{modules/books/dataTable::content}"></div>
 	</div>
+</div>
+
+<div layout:fragment="js-files"> 	
+	<script th:src="@{/js/books.js}" ></script> 
 </div>
 
 </html>

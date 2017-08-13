@@ -1,30 +1,30 @@
 $(function() {
 
-    initRecordsDataTables();
+    initBooksDataTables();
 
     $('#search-form .search-btn').on('click', function(event) {
 	var data = $('#search-form').serializeObject();
 	$.ajax({
 	    type : 'POST',
-	    url : '/records/search',
+	    url : '/books/search',
 	    data : JSON.stringify(data),
 	    contentType : 'application/json',
 	    success : function(data) {
 		$('#result-container').html(data);
-		initRecordsDataTables();
+		initBooksDataTables();
 	    }
 	});
     });
 
-    function initRecordsDataTables() {
-	var recordsDataTable = $('#records-dataTables');
-	if (recordsDataTable.length) {
-	    $(recordsDataTable).DataTable({
+    function initBooksDataTables() {
+	var booksDataTable = $('#books-datatables');
+	if (booksDataTable.length) {
+	    $(booksDataTable).DataTable({
 		"language" : {
 		    "emptyTable" : emptySearchResultMessage,
 		}
 	    });
 	}
-    }
+    };
 
 });
