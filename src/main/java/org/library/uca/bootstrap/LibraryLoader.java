@@ -55,6 +55,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 			author.setFullname(faker.name().fullName());
 			author.setEmail(faker.internet().emailAddress());
 			author.setIdCard(faker.code().ean8());
+			author.setPhone(faker.phoneNumber().cellPhone());
 			authorRepository.save(author);
 			authorList.add(author);
 		}
