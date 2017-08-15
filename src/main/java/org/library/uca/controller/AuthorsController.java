@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class AuthorsController {
@@ -33,9 +34,22 @@ public class AuthorsController {
 		return "modules/authors/dataTable::content";
 	}
 	
-	@RequestMapping("/authors/{id}")
+	@RequestMapping(path="/authors/{id}", method = RequestMethod.GET)
 	public String authorPage(Model model, @PathVariable Long id) {
 		model.addAttribute("author", authorService.findById(id));
+		return "modules/authors/form";
+	}
+	
+	@ResponseBody
+	@RequestMapping(path = "/authors", method = RequestMethod.POST)
+	public String saveAuthor(Model model, @RequestBody Author author) {
+		authorService.saveAuthor(author);
+		return "";
+	}
+	
+	@RequestMapping("/authors/new")
+	public String newAuthor(Model model) {
+		model.addAttribute("author", new Author());
 		return "modules/authors/form";
 	}
 }
