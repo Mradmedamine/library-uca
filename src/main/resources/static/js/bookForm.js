@@ -34,7 +34,7 @@ $(function() {
 
 				$.ajax({
 					type : 'POST',
-					url : recordsUrl,
+					url : '/books',
 					data : JSON.stringify(data),
 					contentType : 'application/json',
 					success : function(data) {

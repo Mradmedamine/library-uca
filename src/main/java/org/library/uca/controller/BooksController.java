@@ -5,7 +5,8 @@ import java.util.List;
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Book;
-import org.library.uca.model.front.web.dto.BookDTO;
+import org.library.uca.model.front.web.dto.BaseBookDTO;
+import org.library.uca.model.front.web.dto.BookDetailsDTO;
 import org.library.uca.model.front.web.queryparams.BookQueryParams;
 import org.library.uca.service.AuthorService;
 import org.library.uca.service.BookService;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class BooksController {
@@ -39,7 +41,7 @@ public class BooksController {
 	@RequestMapping(path = "/books/search", method = RequestMethod.POST)
 	public String searchBookss(Model model, @RequestBody BookQueryParams bookQuery) {
 		logger.debug("searching for books with parameters {}", bookQuery.toString());
-		List<BookDTO> foundBooks = bookService.findByCriteria(bookQuery);
+		List<BookDetailsDTO> foundBooks = bookService.findByCriteria(bookQuery);
 		model.addAttribute("books", foundBooks);
 		return "modules/books/dataTable::content";
 	}
@@ -57,12 +59,12 @@ public class BooksController {
 		return "modules/books/form";
 	}
 
-	// @ResponseBody
-	// @RequestMapping("/books/editions/{bookId}")
-	// public List<BookEdition> getBookEditions(@PathVariable Long bookId, Model
-	// model) {
-	// return bookService.findBookEditions(bookId);
-	// }
+	@ResponseBody
+	@RequestMapping(path = "/books", method = RequestMethod.POST)
+	public String saveBook(Model model, @RequestBody BaseBookDTO book) {
+		bookService.saveBook(book);
+		return "";
+	}
 
 	@ModelAttribute
 	public void addAttributes(Model model) {

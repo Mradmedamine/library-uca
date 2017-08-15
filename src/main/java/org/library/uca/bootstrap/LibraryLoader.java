@@ -68,7 +68,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 				"Esta obra constituye una completa herramienta para el estudio de los fundamentos de la programación de ordenadores que puede servir como libro de texto para cualquier asignatura de Introducción a la Programación en los estudios universitarios de Informática.");
 		book1.setAuthors(Collections.singleton(authorList.get(0)));
 		book1.setType(BookType.MANUAL);
-		book1.setSubject(BookSubject.MATHEMATIC);
+		book1.setSubject(BookSubject.INSTITUTIONAL);
 		bookRepository.save(book1);
 		log.info("Saved Book :   id: " + book1.getId());
 
@@ -99,7 +99,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 				"Este libro explica el lenguaje de programación C++ según la norma aprobada hace unos años por el instituto de normalización ANSI. Ha sido elaborado pensando en los alumnos de Metodología y Tecnología de Programación II, asignatura de segundo curso de Ingeniería Técnica en Informática de Gestión.");
 		book2.setAuthors(Collections.singleton(authorList.get(1)));
 		book2.setType(BookType.MANUAL);
-		book2.setSubject(BookSubject.MATHEMATIC);
+		book2.setSubject(BookSubject.MATHEMATICS_PHYSICAL);
 		bookRepository.save(book2);
 		log.info("Saved Book :   id: " + book2.getId());
 
@@ -131,7 +131,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 				"Manual centrado en el uso de los Traductores, programas que leen un programa fuente escrito en el lenguaje fuente y produce como resultado otro programa, con el mismo significado (misma semántica) que el fuente, llamado programa objeto y escrito en el lenguaje objeto. A su vez, un compilador es un caso particular de un traductor en el que el lenguaje objeto es el lenguaje máquina.");
 		book3.setAuthors(Collections.singleton(authorList.get(2)));
 		book3.setType(BookType.MONOGRAPH);
-		book3.setSubject(BookSubject.MATHEMATIC);
+		book3.setSubject(BookSubject.ECONOMIC_BUSINESS_SCIENCES);
 		bookRepository.save(book3);
 		log.info("Saved Book :   id: " + book3.getId());
 		BookEdition edition31 = new BookEdition();
@@ -162,7 +162,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 				"Con este libro se intenta cubrir una de las necesidades que los alumnos demandan año tras año en el aprendizaje de sus materias. Se trata, por tanto, de un texto con ejercicios resueltos, que complemente a los libros más teóricos, entendiendo que éstos son fundamentales. Viene, pues, este libro a complementar al título Corrección de algoritmos complejos. Verificación formal, publicado recientemente por los mismos autores.");
 		book4.setAuthors(Collections.singleton(authorList.get(3)));
 		book4.setType(BookType.MANUAL);
-		book4.setSubject(BookSubject.MATHEMATIC);
+		book4.setSubject(BookSubject.CHEMISTRY);
 		bookRepository.save(book4);
 		
 		log.info("Saved Book :   id: " + book4.getId());
