@@ -11,10 +11,9 @@ import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.thymeleaf.util.StringUtils;
 
 @Service
-public class AuthorServiceImpl implements AuthorService {
+public class AuthorServiceImpl extends ServiceBaseImpl implements AuthorService {
 
 	@Autowired
 	private AuthorRepository authorRepository;
@@ -36,29 +35,11 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public List<Author> findByCriteria(AuthorQueryParams authorQueryParams) {
 		// full name
-		String fullname = authorQueryParams.getFullname();
-		if (StringUtils.isEmpty(fullname)) {
-			fullname = "%";
-		} else {
-			fullname = "%" + fullname.toUpperCase()  + "%";
-		}
-		
+		String fullname = buildQueryTextParam(authorQueryParams.getFullname());
 		// id card
-		String idCard = authorQueryParams.getIdCard();
-		if (StringUtils.isEmpty(fullname)) {
-			idCard = "%";
-		} else {
-			idCard = "%" + idCard.toUpperCase()  + "%";
-		}
-		
+		String idCard = buildQueryTextParam(authorQueryParams.getIdCard());
 		// email
-		String email = authorQueryParams.getEmail();
-		if (StringUtils.isEmpty(email)) {
-			email = "%";
-		} else {
-			email = "%" + email.toUpperCase() + "%";
-		}
-
+		String email = buildQueryTextParam(authorQueryParams.getEmail());
 		return authorRepository.findByCriteria(fullname, idCard, email);
 	}
 

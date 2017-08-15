@@ -15,10 +15,9 @@ import org.library.uca.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.thymeleaf.util.StringUtils;
 
 @Service
-public class RecordServiceImpl implements RecordService {
+public class RecordServiceImpl extends ServiceBaseImpl implements RecordService {
 
 	@Autowired
 	private RecordRepository recordRepository;
@@ -61,19 +60,11 @@ public class RecordServiceImpl implements RecordService {
 
 	@Override
 	public List<Record> findByCriteria(RecordQueryParams recordSearch) {
-
-		String descriptionText = recordSearch.getDescriptionText();
-		if (StringUtils.isEmpty(descriptionText)) {
-			descriptionText = "%";
-		} else {
-			descriptionText = "%" + descriptionText.toUpperCase() + "%";
-		}
-
+		String descriptionText = buildQueryTextParam(recordSearch.getDescriptionText());
 		List<RecordType> typeList = recordSearch.getTypes();
 		if (CollectionUtils.isEmpty(typeList)) {
 			typeList = Arrays.asList(RecordType.values());
 		}
-
 		List<RecordStatus> statusList = recordSearch.getStatus();
 		if (CollectionUtils.isEmpty(statusList)) {
 			statusList = Arrays.asList(RecordStatus.values());
