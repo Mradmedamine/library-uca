@@ -5,7 +5,8 @@ import java.util.List;
 
 import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.BookEdition;
-import org.library.uca.model.front.web.dto.BookDetailsDTO;
+import org.library.uca.model.front.web.dto.BookDTO;
+import org.library.uca.model.front.web.queryparams.BookQueryParams;
 import org.library.uca.repository.BookEditionRepository;
 import org.library.uca.repository.BookRepository;
 import org.library.uca.service.AuthorService;
@@ -15,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookServiceImpl implements BookService {
+public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 
 	@Autowired
 	private BookRepository bookRepository;
@@ -27,20 +28,15 @@ public class BookServiceImpl implements BookService {
 	private AuthorService authorService;
 
 	@Override
-	public List<BookDetailsDTO> findAll() {
+	public List<BookDTO> findAll() {
 		List<Book> booksEntity = bookRepository.findAll();
-		List<BookDetailsDTO> books = new ArrayList<>(booksEntity.size());
-		for (Book book : booksEntity) {
-			BookDetailsDTO bookDetails = mapToBookDetails(book);
-			books.add(bookDetails);
-		}
-		return books;
+		return mapToBookDTOList(booksEntity);
 	}
 
 	@Override
-	public BookDetailsDTO findById(Long id) {
-		Book book =  bookRepository.findOne(id);
-		return mapToBookDetails(book);
+	public BookDTO findById(Long id) {
+		Book book = bookRepository.findOne(id);
+		return mapToBookDTO(book);
 	}
 
 	@Override
@@ -48,9 +44,26 @@ public class BookServiceImpl implements BookService {
 		return bookEditionRepository.findByBook_Id(bookId);
 	}
 
-	private BookDetailsDTO mapToBookDetails(Book book) {
-		BookDetailsDTO bookDetails = MappingUtils.map(book, BookDetailsDTO.class);
-		bookDetails.setChainedAuthorNames(authorService.getChainedAuthorNames(book.getAuthors()));
-		return bookDetails;
+	@Override
+	public List<BookDTO> findByCriteria(BookQueryParams bookQuery) {
+		String titleText = buildQueryTextParam(bookQuery.getTitleText());
+		String descriptionText = buildQueryTextParam(bookQuery.getDescriptionText());
+		List<Book> booksEntity = bookRepository.findByCriteria(titleText, descriptionText);
+		return mapToBookDTOList(booksEntity);
+	}
+
+	private List<BookDTO> mapToBookDTOList(List<Book> booksEntity) {
+		List<BookDTO> books = new ArrayList<>(booksEntity.size());
+		for (Book book : booksEntity) {
+			BookDTO bookDetails = mapToBookDTO(book);
+			books.add(bookDetails);
+		}
+		return books;
+	}
+	
+	private BookDTO mapToBookDTO(Book bookEntity) {
+		BookDTO book = MappingUtils.map(bookEntity, BookDTO.class);
+		book.setChainedAuthorNames(authorService.getChainedAuthorNames(bookEntity.getAuthors()));
+		return book;
 	}
 }

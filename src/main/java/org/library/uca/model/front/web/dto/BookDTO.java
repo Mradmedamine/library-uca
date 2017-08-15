@@ -7,7 +7,7 @@ import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.BookEdition;
 
-public class BookDetailsDTO extends BaseDTO {
+public class BookDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 1462937556020898573L;
 
