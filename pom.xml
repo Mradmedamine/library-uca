@@ -45,7 +45,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-				<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -73,8 +73,12 @@
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf.dialect.version}</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-		
-		
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+		</dependency>
+
 		<!-- Data Utils -->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -82,14 +86,14 @@
 			<scope>compile</scope>
 		</dependency>
 
-		
+
 		<!-- Data fake utils -->
 		<dependency>
-    		<groupId>com.github.javafaker</groupId>
-    		<artifactId>javafaker</artifactId>
-    		<version>0.13</version>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>0.13</version>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>

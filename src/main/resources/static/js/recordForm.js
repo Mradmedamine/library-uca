@@ -36,6 +36,7 @@ $(function() {
 					data : JSON.stringify(data),
 					contentType : 'application/json',
 					success : function(data) {
+					    	$(form).find('#recordId').val(data);
 						updateBtnVisibility();
 						toastr["success"](savingSuccessMessage);
 						$('#toast-container .toast-success').show();

@@ -9,14 +9,12 @@
 			<div class="panel-heading">
 	       		<div class="row">
 	                 <div class="col-lg-12">
-	                    <span>
-	                        <strong>
-	                        	<i class="fa fa-users fa-fw"></i>
-		                        <th:block th:text="#{common.__${isNewAuthor ? 'new' : 'edit'}__}"></th:block>
-								<th:block th:text="#{desktop.authors.details.title.label}"></th:block>
-								&nbsp;-&nbsp;
-								<th:block th:text="${ author != null ? author.fullname : ''}"></th:block> 
-							</strong>
+	                    <span class="title">
+                        	<i class="fa fa-users fa-fw"></i>
+	                        <th:block th:text="#{common.__${isNewAuthor ? 'new' : 'edit'}__}"></th:block>
+							<th:block th:text="#{desktop.authors.details.title.label}"></th:block>
+							&nbsp;-&nbsp;
+							<th:block th:text="${ author != null ? author.fullname : ''}"></th:block> 
 	                    </span>
 	                 </div>
 	       		</div>

@@ -7,18 +7,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "book_edition")
 public class BookEdition extends EntityBase {
 
 	private String isbn;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate startDate;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate endDate;
 	private Double price;
 	private Double vat;
 	private Integer pages;
-	private boolean finalized;
-	private boolean finishedCopyright;
+	private boolean settled;
+	private boolean copyright;
 	private Book book;
 
 	public String getIsbn() {
@@ -69,20 +73,20 @@ public class BookEdition extends EntityBase {
 		this.pages = pages;
 	}
 
-	public Boolean getFinalized() {
-		return finalized;
+	public boolean getSettled() {
+		return settled;
 	}
 
-	public void setFinalized(Boolean finalized) {
-		this.finalized = finalized;
+	public void setSettled(boolean settled) {
+		this.settled = settled;
 	}
 
-	public Boolean getFinishedCopyright() {
-		return finishedCopyright;
+	public boolean getCopyright() {
+		return copyright;
 	}
 
-	public void setFinishedCopyright(Boolean finishedCopyright) {
-		this.finishedCopyright = finishedCopyright;
+	public void setCopyright(boolean copyright) {
+		this.copyright = copyright;
 	}
 
 	@ManyToOne

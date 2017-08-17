@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head lang="en">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+ 
+	<th:block th:fragment="content">
+		<table id="editions-table" class="table table-striped table-bordered table-uca" width="100%">
+			<thead>
+				<tr> 
+					<th class="hidden">id</th>
+					<th width="18%" th:text="#{desktop.books.isbn}"></th>
+					<th width="13%">startDate</th>
+					<th width="13%">endDate</th>
+					<th width="10%">Price</th>
+					<th width="9%" th:text="#{desktop.common.vat}">Vat</th>
+					<th width="9%">Pages</th>
+					<th width="10%" th:text="#{desktop.books.settled}"></th>
+					<th width="10%">Copyright</th>
+				</tr>
+			</thead>
+			 <tbody>
+				<tr th:each="edition : ${editions}">
+					<td class="hidden" th:text="${edition.id}"></td>
+				    <td th:text="${edition.isbn}"></td>
+				    <td th:text="${edition.startDate}"></td>
+				    <td th:text="${edition.endDate}"></td>
+				    <td th:text="|${edition.price} €|"></td>
+				    <td th:text="|${edition.vat} %|"></td>
+				    <td th:text="${edition.pages}"></td>
+				    <td><i th:class="|fa ${edition.settled ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
+				    <td><i th:class="|fa ${edition.copyright ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
+				</tr>
+		    </tbody>
+		</table>
+	</th:block>
+</body>
+</html>

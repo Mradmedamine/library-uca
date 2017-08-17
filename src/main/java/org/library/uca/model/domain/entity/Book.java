@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.library.uca.model.domain.BookSubject;
@@ -23,7 +22,6 @@ public class Book extends EntityBase {
 	private String collection;
 	private BookType type;
 	private Set<Author> authors;
-	private Set<BookEdition> editions;
 
 	@Column(columnDefinition = "LONGVARCHAR")
 	public String getDescription() {
@@ -74,15 +72,6 @@ public class Book extends EntityBase {
 
 	public void setAuthors(Set<Author> authors) {
 		this.authors = authors;
-	}
-
-	@OneToMany(mappedBy = "book")
-	public Set<BookEdition> getEditions() {
-		return editions;
-	}
-
-	public void setEditions(Set<BookEdition> editions) {
-		this.editions = editions;
 	}
 
 }

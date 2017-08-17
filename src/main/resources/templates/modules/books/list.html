@@ -7,12 +7,10 @@
         
 <div id="books-container" class="panel panel-default" layout:fragment="desktop-page-content"> 
 	<div class="panel-heading container">
-      	<strong class="title">
-            <span>
-            	<i class="fa fa-book fa-fw"></i> 
- 				<th:block th:text="#{desktop.layout.sidebar.books}"></th:block>
-            </span>
-  		</strong>
+        <span class="title">
+        	<i class="fa fa-book fa-fw"></i> 
+			<th:block th:text="#{desktop.layout.sidebar.books}"></th:block>
+        </span>
       	<a th:href="@{/books/new}" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i><th:block th:text="#{common.new}"/></a>
 	</div>
 	<div class="panel-body">

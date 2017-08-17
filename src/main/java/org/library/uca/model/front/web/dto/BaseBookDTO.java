@@ -4,21 +4,28 @@ import java.util.Set;
 
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
-import org.library.uca.model.domain.entity.Author;
-import org.library.uca.model.domain.entity.BookEdition;
 
-public class BookDTO extends BaseDTO {
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-	private static final long serialVersionUID = 1462937556020898573L;
+public class BaseBookDTO extends BaseDTO {
+
+	private static final long serialVersionUID = -6756086645323382322L;
 
 	private String title;
 	private String description;
 	private BookSubject subject;
 	private String collection;
 	private BookType type;
-	private Set<Author> authors;
-	private Set<BookEdition> editions;
-	private String chainedAuthorNames;
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	private Set<Long> authorIds;
+
+	public Set<Long> getAuthorIds() {
+		return authorIds;
+	}
+
+	public void setAuthorIds(Set<Long> authorIds) {
+		this.authorIds = authorIds;
+	}
 
 	public String getTitle() {
 		return title;
@@ -58,30 +65,6 @@ public class BookDTO extends BaseDTO {
 
 	public void setType(BookType type) {
 		this.type = type;
-	}
-
-	public Set<Author> getAuthors() {
-		return authors;
-	}
-
-	public void setAuthors(Set<Author> authors) {
-		this.authors = authors;
-	}
-
-	public Set<BookEdition> getEditions() {
-		return editions;
-	}
-
-	public void setEditions(Set<BookEdition> editions) {
-		this.editions = editions;
-	}
-
-	public String getChainedAuthorNames() {
-		return chainedAuthorNames;
-	}
-
-	public void setChainedAuthorNames(String chainedAuthorNames) {
-		this.chainedAuthorNames = chainedAuthorNames;
 	}
 
 }
