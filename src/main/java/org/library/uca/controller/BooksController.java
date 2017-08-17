@@ -2,9 +2,11 @@ package org.library.uca.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Book;
+import org.library.uca.model.domain.entity.BookEdition;
 import org.library.uca.model.front.web.dto.BaseBookDTO;
 import org.library.uca.model.front.web.dto.BookDetailsDTO;
 import org.library.uca.model.front.web.queryparams.BookQueryParams;
@@ -39,7 +41,7 @@ public class BooksController {
 	}
 
 	@RequestMapping(path = "/books/search", method = RequestMethod.POST)
-	public String searchBookss(Model model, @RequestBody BookQueryParams bookQuery) {
+	public String searchBooks(@RequestBody BookQueryParams bookQuery, Model model) {
 		logger.debug("searching for books with parameters {}", bookQuery.toString());
 		List<BookDetailsDTO> foundBooks = bookService.findByCriteria(bookQuery);
 		model.addAttribute("books", foundBooks);
@@ -47,7 +49,7 @@ public class BooksController {
 	}
 
 	@RequestMapping("/books/{id}")
-	public String findBook(Model model, @PathVariable Long id) {
+	public String findBook(@PathVariable Long id, Model model) {
 		model.addAttribute("book", bookService.findById(id));
 		model.addAttribute("editions", bookService.findBookEditions(id));
 		return "modules/books/form";
@@ -61,11 +63,18 @@ public class BooksController {
 
 	@ResponseBody
 	@RequestMapping(path = "/books", method = RequestMethod.POST)
-	public String saveBook(Model model, @RequestBody BaseBookDTO book) {
-		bookService.saveBook(book);
-		return "";
+	public Long saveBook(@RequestBody BaseBookDTO book, Model model) {
+		BookDetailsDTO savedBook = bookService.saveBook(book);
+		return savedBook.getId();
 	}
 
+	@ResponseBody
+	@RequestMapping(path = "/books/editions/{bookId}", method = RequestMethod.POST)
+	public String addBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
+		bookService.addBookEdition(bookId, bookEdition);
+		return StringUtils.EMPTY;
+	}
+	
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("bookTypes", BookType.values());

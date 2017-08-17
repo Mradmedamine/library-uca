@@ -18,4 +18,6 @@ public interface BookService {
 	List<BookDetailsDTO> findByCriteria(BookQueryParams bookQuery);
 
 	BookDetailsDTO saveBook(BaseBookDTO book);
+
+	BookEdition addBookEdition(Long bookId, BookEdition bookEdition);
 }

@@ -69,6 +69,13 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 		return MappingUtils.map(entityBook, BookDetailsDTO.class);
 	}
 	
+	@Override
+	public BookEdition addBookEdition(Long bookId, BookEdition bookEdition) {
+		Book book = bookRepository.findOne(bookId);
+		bookEdition.setBook(book);
+		return bookEditionRepository.save(bookEdition);
+	}
+	
 	private List<BookDetailsDTO> mapToBookDTOList(List<Book> booksEntity) {
 		List<BookDetailsDTO> books = new ArrayList<>(booksEntity.size());
 		for (Book book : booksEntity) {

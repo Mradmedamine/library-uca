@@ -68,9 +68,9 @@ public class RecordsController {
 
 	@ResponseBody
 	@RequestMapping(path = "/records", method = RequestMethod.POST)
-	public String saveRecord(Model model, @RequestBody RecordDTO record) {
-		recordService.saveRecord(record);
-		return "";
+	public Long saveRecord(Model model, @RequestBody RecordDTO record) {
+		Record savedRecord = recordService.saveRecord(record);
+		return savedRecord.getId();
 	}
 
 	@ModelAttribute

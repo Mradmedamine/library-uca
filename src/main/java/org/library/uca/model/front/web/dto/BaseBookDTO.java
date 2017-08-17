@@ -5,6 +5,8 @@ import java.util.Set;
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class BaseBookDTO extends BaseDTO {
 
 	private static final long serialVersionUID = -6756086645323382322L;
@@ -14,6 +16,7 @@ public class BaseBookDTO extends BaseDTO {
 	private BookSubject subject;
 	private String collection;
 	private BookType type;
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
 	private Set<Long> authorIds;
 
 	public Set<Long> getAuthorIds() {
