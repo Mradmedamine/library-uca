@@ -1,6 +1,7 @@
 $(function() {
 
     var bookContainer = $('#book-form-container');
+    var editionsDataTable = $('#editions-table');
     initBookForm();
     initEditionsDataTables();
     initEditionModal();
@@ -57,9 +58,8 @@ $(function() {
     }
 
     function initEditionsDataTables() {
-	var editionsDataTable = $('#editions-table');
 	if (editionsDataTable.length) {
-	    $(editionsDataTable).DataTable({
+	    editionsDataTable = $(editionsDataTable).DataTable({
 		language : {
 		    "emptyTable" : emptySearchResultMessage
 		},
@@ -91,23 +91,39 @@ $(function() {
 	    $(modal).hide();
 	});
 
-	$(saveBtn).on('click', function() {
-	    if ($(editionForm).valid()) {
-		var data = $(editionForm).serializeObject();
-		$.ajax({
-		    type : 'POST',
-		    url : bookEditionsUrl,
-		    data : JSON.stringify(data),
-		    contentType : 'application/json',
-		    success : function(data) {
-			// add row
-			$(modal).hide();
-			toastr["success"](savingSuccessMessage);
-			$('#toast-container .toast-success').show();
+	$(saveBtn).on(
+		'click',
+		function() {
+		    if ($(editionForm).valid()) {
+			var data = $(editionForm).serializeObject();
+			$.ajax({
+			    type : 'POST',
+			    url : bookEditionsUrl,
+			    data : JSON.stringify(data),
+			    contentType : 'application/json',
+			    success : function(editionId) {
+				var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
+				var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+				// add row
+				var rowNode = editionsDataTable.row.add(
+						[ editionId,
+						  data['isbn'],
+						  data['startDate'],
+						  data['endDate'],
+						  data['price'] + ' €',
+						  data['vat'] + ' %',
+						  data['pages'],
+						  data['settled'] == 'true' ? trueIcon : falseIcon,
+						  data['copyright'] == 'true' ? trueIcon : falseIcon,	
+						]).draw(false).node();
+				$(rowNode).find('td').first().addClass('hidden');
+				$(modal).hide();
+				toastr["success"](savingSuccessMessage);
+				$('#toast-container .toast-success').show();
+			    }
+			});
 		    }
 		});
-	    }
-	});
 
 	$(window).on('click', function(event) {
 	    if (event.target == modal) {

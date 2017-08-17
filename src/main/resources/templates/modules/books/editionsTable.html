@@ -20,7 +20,7 @@
 					<th width="10%">Price</th>
 					<th width="9%" th:text="#{desktop.common.vat}">Vat</th>
 					<th width="9%">Pages</th>
-					<th width="10%" th:text="#{desktop.books.finalized}"></th>
+					<th width="10%" th:text="#{desktop.books.settled}"></th>
 					<th width="10%">Copyright</th>
 				</tr>
 			</thead>
@@ -33,7 +33,7 @@
 				    <td th:text="|${edition.price} €|"></td>
 				    <td th:text="|${edition.vat} %|"></td>
 				    <td th:text="${edition.pages}"></td>
-				    <td><i th:class="|fa ${edition.finalized ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
+				    <td><i th:class="|fa ${edition.settled ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
 				    <td><i th:class="|fa ${edition.copyright ? 'fa-check-circle' : 'fa-times'}|" aria-hidden="true"></i></td>
 				</tr>
 		    </tbody>

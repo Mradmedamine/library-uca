@@ -21,7 +21,7 @@ public class BookEdition extends EntityBase {
 	private Double price;
 	private Double vat;
 	private Integer pages;
-	private boolean finalized;
+	private boolean settled;
 	private boolean copyright;
 	private Book book;
 
@@ -73,12 +73,12 @@ public class BookEdition extends EntityBase {
 		this.pages = pages;
 	}
 
-	public Boolean getFinalized() {
-		return finalized;
+	public boolean getSettled() {
+		return settled;
 	}
 
-	public void setFinalized(Boolean finalized) {
-		this.finalized = finalized;
+	public void setSettled(boolean settled) {
+		this.settled = settled;
 	}
 
 	public boolean getCopyright() {
