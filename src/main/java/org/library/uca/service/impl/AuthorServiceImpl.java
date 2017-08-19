@@ -2,6 +2,7 @@ package org.library.uca.service.impl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.library.uca.model.domain.entity.Author;
@@ -51,5 +52,10 @@ public class AuthorServiceImpl extends ServiceBaseImpl implements AuthorService 
 	@Override
 	public Author saveAuthor(Author author) {
 		return authorRepository.save(author);
+	}
+
+	@Override
+	public List<Author> findByIds(Set<Long> ids) {
+		return authorRepository.findByIdIn(ids);
 	}
 }

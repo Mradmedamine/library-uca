@@ -3,6 +3,7 @@ package org.library.uca.model.domain.entity;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,7 +18,7 @@ public class Author extends EntityBase {
 	private String street;
 	private String city;
 	private String zipCode;
-
+	private Set<Book> books;
 	private Set<Record> records;
 
 	public String getFullname() {
@@ -75,6 +76,15 @@ public class Author extends EntityBase {
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	@ManyToMany(mappedBy = "authors")
+	public Set<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
 	}
 
 	@OneToMany(mappedBy = "responsible")

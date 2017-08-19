@@ -17,7 +17,7 @@
 		<form id="search-form" class="search-widget">
 			<input type="text" name="titleText" class="form-control search-title" th:placeholder="#{ desktop.common.title }" />
 			<input type="text" name="descriptionText" class="form-control search-description" th:placeholder="#{ desktop.common.description }" />
-			<select name="authors" class="selectpicker search-item" th:title="#{ desktop.common.authors }" data-live-search="true" data-width="300px" multiple>
+			<select name="authorIds" class="selectpicker search-item" th:title="#{ desktop.common.authors }" data-live-search="true" data-width="300px" multiple>
 				  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.fullname}" th:value="${author.id}" th:text="${author.fullname}">
 				  </option>
 			</select>			
