@@ -10,6 +10,7 @@ import org.library.uca.model.front.web.queryparams.AuthorQueryParams;
 import org.library.uca.repository.AuthorRepository;
 import org.library.uca.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -57,5 +58,17 @@ public class AuthorServiceImpl extends ServiceBaseImpl implements AuthorService 
 	@Override
 	public List<Author> findByIds(Set<Long> ids) {
 		return authorRepository.findByIdIn(ids);
+	}
+
+	@Override
+	public Long delete(Long authorId) {
+		try {
+			authorRepository.delete(authorId);
+		} catch (DataIntegrityViolationException err) {
+			return -1L;
+		} catch (Exception err) {
+			return -100L;
+		}
+		return authorId;
 	}
 }
