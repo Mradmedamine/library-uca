@@ -1,6 +1,9 @@
 package org.library.uca.model.front.web.queryparams;
 
 import java.io.Serializable;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BookQueryParams implements Serializable {
 
@@ -8,6 +11,8 @@ public class BookQueryParams implements Serializable {
 
 	private String titleText;
 	private String descriptionText;
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+	private Set<Long> authorIds;
 
 	public String getTitleText() {
 		return titleText;
@@ -23,6 +28,14 @@ public class BookQueryParams implements Serializable {
 
 	public void setDescriptionText(String descriptionText) {
 		this.descriptionText = descriptionText;
+	}
+
+	public Set<Long> getAuthorIds() {
+		return authorIds;
+	}
+
+	public void setAuthorIds(Set<Long> authorIds) {
+		this.authorIds = authorIds;
 	}
 
 }

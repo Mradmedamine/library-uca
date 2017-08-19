@@ -18,6 +18,7 @@ import org.library.uca.service.BookService;
 import org.library.uca.util.MappingUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 @Service
 public class BookServiceImpl extends ServiceBaseImpl implements BookService {
@@ -52,7 +53,12 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 	public List<BookDetailsDTO> findByCriteria(BookQueryParams bookQuery) {
 		String titleText = buildQueryTextParam(bookQuery.getTitleText());
 		String descriptionText = buildQueryTextParam(bookQuery.getDescriptionText());
-		List<Book> booksEntity = bookRepository.findByCriteria(titleText, descriptionText);
+		Set<Long> authorIds = bookQuery.getAuthorIds();
+		List<Author> authors = null;
+		if (!CollectionUtils.isEmpty(authorIds)) {
+			authors = authorService.findByIds(authorIds);
+		}
+		List<Book> booksEntity = bookRepository.findByCriteria(titleText, descriptionText, authors);
 		return mapToBookDTOList(booksEntity);
 	}
 
@@ -60,7 +66,7 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 	public BookDetailsDTO saveBook(BaseBookDTO book) {
 		Book entityBook = MappingUtils.map(book, Book.class);
 		Set<Author> authors = new HashSet<>();
-		for(Long authorId : book.getAuthorIds()) {
+		for (Long authorId : book.getAuthorIds()) {
 			Author author = authorService.findById(authorId);
 			authors.add(author);
 		}
@@ -68,14 +74,14 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 		entityBook = bookRepository.save(entityBook);
 		return MappingUtils.map(entityBook, BookDetailsDTO.class);
 	}
-	
+
 	@Override
 	public BookEdition addBookEdition(Long bookId, BookEdition bookEdition) {
 		Book book = bookRepository.findOne(bookId);
 		bookEdition.setBook(book);
 		return bookEditionRepository.save(bookEdition);
 	}
-	
+
 	private List<BookDetailsDTO> mapToBookDTOList(List<Book> booksEntity) {
 		List<BookDetailsDTO> books = new ArrayList<>(booksEntity.size());
 		for (Book book : booksEntity) {
@@ -84,7 +90,7 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 		}
 		return books;
 	}
-	
+
 	private BookDetailsDTO mapToBookDTO(Book bookEntity) {
 		BookDetailsDTO book = MappingUtils.map(bookEntity, BookDetailsDTO.class);
 		book.setChainedAuthorNames(authorService.getChainedAuthorNames(bookEntity.getAuthors()));
