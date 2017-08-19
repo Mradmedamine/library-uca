@@ -17,11 +17,11 @@
 	    <form id="search-form" class="search-widget">
 			<input type="text" name="descriptionText" class="form-control search-description" th:placeholder="#{ desktop.records.description.label }" />
 			<select name="types" class="selectpicker search-item" th:title="#{ desktop.records.type.label }" data-live-search="true" multiple>
-				  <option th:each="type : ${recordTypeList}" th:attr="data-tokens=${type.value}" th:value="${type.name}" th:text="#{desktop.records.type.__${type.value}__}">
+				  <option th:each="type : ${recordTypeList}" th:with="typeText=#{desktop.records.type.__${type.value}__}" th:attr="data-tokens=${typeText}" th:value="${type.name}" th:text="${typeText}">
 				  </option>
 			</select>
 			<select name="status" class="selectpicker search-item" th:title="#{desktop.records.status.label}" data-live-search="true" multiple>
-				 <option th:each="status : ${recordStatusList}" th:attr="data-tokens=${status.value}" th:value="${status.name}" th:text="#{desktop.records.status.__${status.value}__}">
+				 <option th:each="status : ${recordStatusList}" th:with="statusText=#{desktop.records.status.__${status.value}__}" th:attr="data-tokens=${statusText}" th:value="${status.name}" th:text="${statusText}">
 				  </option>
 			</select>
 			<button class="btn btn-primary btn-block search-btn" type="button"><th:block th:text="#{common.search}"></th:block></button>
