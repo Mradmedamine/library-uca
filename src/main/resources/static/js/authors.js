@@ -1,5 +1,7 @@
 $(function() {
 
+    initAuthorsDataTables();
+
     $('#search-form .search-btn').on('click', function(event) {
 	var authorQueryData = $('#search-form').serializeObject();
 	var data = $('#search-form').serializeObject();
@@ -11,8 +13,16 @@ $(function() {
 	    success : function(data) {
 
 		$('#result-container').html(data);
+		initAuthorsDataTables();
 	    }
 	});
     });
+
+    function initAuthorsDataTables() {
+	var authorsDataTable = $('#authors-dataTables');
+	if (authorsDataTable.length) {
+	    $(authorsDataTable).DataTable(dataTablesConfig);
+	}
+    }
 
 });

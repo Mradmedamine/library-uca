@@ -19,11 +19,7 @@ $(function() {
     function initBooksDataTables() {
 	var booksDataTable = $('#books-datatables');
 	if (booksDataTable.length) {
-	    $(booksDataTable).DataTable({
-		"language" : {
-		    "emptyTable" : emptySearchResultMessage,
-		}
-	    });
+	    $(booksDataTable).DataTable(dataTablesConfig);
 	}
     };
 
