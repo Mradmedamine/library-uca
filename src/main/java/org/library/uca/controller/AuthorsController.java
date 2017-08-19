@@ -40,6 +40,11 @@ public class AuthorsController {
 		return "modules/authors/form";
 	}
 	
+	@RequestMapping(path="/authors/{id}", method = RequestMethod.DELETE)
+	public @ResponseBody Long deleteAuthor(Model model, @PathVariable Long id) {
+		return authorService.delete(id);
+	}
+	
 	@ResponseBody
 	@RequestMapping(path = "/authors", method = RequestMethod.POST)
 	public Long saveAuthor(Model model, @RequestBody Author author) {
