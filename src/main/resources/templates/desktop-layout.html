@@ -108,13 +108,12 @@
     <script th:src="@{/library/datatables-responsive/dataTables.responsive.js}"></script>
     
     <!---- UCA ---->
-    <th:block th:include="fragments/global-texts::content"></th:block>
+    <th:block th:include="i18n::content"></th:block>
     
 	<script th:src="@{/js/jquery.extend.js}" ></script>
 	<script th:src="@{/js/desktop.js}" ></script>
 		
 	<th:block layout:fragment="js-files"></th:block>
-	<th:block th:replace="i18n"></th:block>
 	
 </body>
 

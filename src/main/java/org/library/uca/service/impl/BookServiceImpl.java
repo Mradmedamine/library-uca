@@ -45,7 +45,7 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 	}
 
 	@Override
-	public List<BookEdition> findBookEditions(long bookId) {
+	public List<BookEdition> findEditionsByBookId(Long bookId) {
 		return bookEditionRepository.findByBook_Id(bookId);
 	}
 
@@ -80,6 +80,11 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 		Book book = bookRepository.findOne(bookId);
 		bookEdition.setBook(book);
 		return bookEditionRepository.save(bookEdition);
+	}
+
+	@Override
+	public BookEdition findBookEditionById(Long id) {
+		return bookEditionRepository.findOne(id);
 	}
 
 	private List<BookDetailsDTO> mapToBookDTOList(List<Book> booksEntity) {

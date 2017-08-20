@@ -38,7 +38,7 @@ $(function() {
 		    success : function(data) {
 			$(form).find('#recordId').val(data);
 			updateBtnVisibility();
-			toastr["success"](savingSuccessMessage);
+			toastr["success"](message.common.savingSuccessMessage);
 			$('#toast-container .toast-success').show();
 		    }
 		});

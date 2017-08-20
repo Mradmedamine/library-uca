@@ -11,8 +11,6 @@ public interface BookService {
 
 	List<BookDetailsDTO> findAll();
 
-	List<BookEdition> findBookEditions(long bookId);
-
 	BookDetailsDTO findById(Long id);
 
 	List<BookDetailsDTO> findByCriteria(BookQueryParams bookQuery);
@@ -20,4 +18,9 @@ public interface BookService {
 	BookDetailsDTO saveBook(BaseBookDTO book);
 
 	BookEdition addBookEdition(Long bookId, BookEdition bookEdition);
+	
+	List<BookEdition> findEditionsByBookId(Long bookId);
+	
+	BookEdition findBookEditionById(Long id);
+	
 }

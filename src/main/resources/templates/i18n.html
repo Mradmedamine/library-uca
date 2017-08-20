@@ -3,18 +3,21 @@
 		xmlns:th="http://www.thymeleaf.org" 
 		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 		
-<th:block th:fragment="i18n">
+<th:block th:fragment="content">
 	<script th:inline="javascript">
-	    	
-	    var message = {
-	    		'common': {
-	    			'internalServerError': '[[#{message.common.internalServerError}]]',
-	    			'confirmDeletion': '[[#{message.common.confirmDeletion}]]',
-	    			'dbIntegrityError': '[[#{message.common.referentialIntegrityConstraint}]]'
-	    		},
-	    
-	    }
 	
+	    var message = {
+	    		"common": {
+	    			"internalServerError"		: [[#{message.common.internalServerError}]],
+	    			"confirmDeletion"			: [[#{message.common.confirmDeletion}]],
+	    			"dbIntegrityError"		    : [[#{message.common.referentialIntegrityConstraint}]],
+	    			"savingSuccessMessage"      : [[#{common.message.saving.success}]]
+	    		},
+	    		"datatable" : {
+	    			"emptySearchResultMessage"	: [[#{common.empty.search.result.message}]]
+	    		}
+	    }
+	    
 	</script>
 </th:block>
 

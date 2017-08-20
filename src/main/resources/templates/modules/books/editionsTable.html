@@ -24,8 +24,8 @@
 					<th width="10%">Copyright</th>
 				</tr>
 			</thead>
-			 <tbody>
-				<tr th:each="edition : ${editions}">
+			<tbody>
+				<tr th:each="edition : ${editions}" class="edition" data-href="#">
 					<td class="hidden" th:text="${edition.id}"></td>
 				    <td th:text="${edition.isbn}"></td>
 				    <td th:text="${edition.startDate}"></td>
