@@ -39,7 +39,7 @@ $(function() {
 				success : function(data) {
 				 	$(form).find('#authorId').val(data);
 					updateBtnVisibility();
-					toastr["success"](savingSuccessMessage);
+					toastr["success"](message.common.savingSuccessMessage);
 					$('#toast-container .toast-success').show();
 				}
 			});

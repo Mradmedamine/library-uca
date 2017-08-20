@@ -91,7 +91,7 @@ $(function() {
 });
 
 var dataTablesMessages = {
-	"emptyTable" : emptySearchResultMessage,
+	"emptyTable" : message.datatable.emptySearchResultMessage,
 	// TODO i18n
 	"info" : "Showing _START_ to _END_ of _TOTAL_ entries",
 	"infoEmpty" : "Showing 0 to 0 of 0 entries",

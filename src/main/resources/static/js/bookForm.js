@@ -41,7 +41,7 @@ $(function() {
 		    success : function(data) {
 			$(form).find('#bookId').val(data);
 			updateBtnVisibility();
-			toastr["success"](savingSuccessMessage);
+			toastr["success"](message.common.savingSuccessMessage);
 			$('#toast-container .toast-success').show();
 		    }
 		});
@@ -135,7 +135,7 @@ $(function() {
 						]).draw(false).node();
 				$(rowNode).find('td').first().addClass('hidden');
 				$(modal).hide();
-				toastr["success"](savingSuccessMessage);
+				toastr["success"](message.common.savingSuccessMessage);
 				$('#toast-container .toast-success').show();
 			    }
 			});
