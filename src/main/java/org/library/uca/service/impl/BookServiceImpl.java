@@ -76,7 +76,7 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 	}
 
 	@Override
-	public BookEdition addBookEdition(Long bookId, BookEdition bookEdition) {
+	public BookEdition saveBookEdition(Long bookId, BookEdition bookEdition) {
 		Book book = bookRepository.findOne(bookId);
 		bookEdition.setBook(book);
 		return bookEditionRepository.save(bookEdition);

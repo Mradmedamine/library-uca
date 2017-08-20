@@ -2,7 +2,6 @@ package org.library.uca.controller;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.entity.Book;
@@ -51,7 +50,7 @@ public class BooksController {
 	@RequestMapping("/books/{id}")
 	public String findBook(@PathVariable Long id, Model model) {
 		model.addAttribute("book", bookService.findById(id));
-		model.addAttribute("editions", bookService.findBookEditionById(id));
+		model.addAttribute("editions", bookService.findEditionsByBookId(id));
 		return "modules/books/form";
 	}
 
@@ -77,16 +76,9 @@ public class BooksController {
 	
 	@ResponseBody
 	@RequestMapping(path = "/books/editions/{bookId}", method = RequestMethod.POST)
-	public String addBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
-		bookService.addBookEdition(bookId, bookEdition);
-		return StringUtils.EMPTY;
-	}
-	
-	@ResponseBody
-	@RequestMapping(path = "/books/editions", method = RequestMethod.PUT)
-	public String editBookEdition(@RequestBody BookEdition bookEdition, Model model) {
-//		bookService.addBookEdition(bookId, bookEdition);
-		return StringUtils.EMPTY;
+	public Long saveBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
+		BookEdition saveEdition = bookService.saveBookEdition(bookId, bookEdition);
+		return saveEdition.getId();
 	}
 	
 	@ModelAttribute

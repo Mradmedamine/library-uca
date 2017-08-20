@@ -55,17 +55,17 @@
 					    	</div>
 					    </form>
 					    <hr>
-					    <th:block th:include="~{/modules/books/editionsTable::content}">
+					    <th:block th:include="~{modules/books/editionsTable::content}">
 						</th:block>
 				   	</div>
 				</div>
-				<div th:replace="~{/fragments/panel-footer::content (__${isNewBook}__)}">
+				<div th:replace="~{fragments/panel-footer::content (__${isNewBook}__)}">
 				</div>
 			</th:block>
 		</div>
 	</div>
 	<th:block layout:fragment="modals"> 	
-		<th:block th:include="~{/modules/books/editionModal::content}">
+		<th:block th:include="~{modules/books/editionModal::content}">
 		</th:block>
 	</th:block>
 		
