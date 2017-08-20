@@ -14,7 +14,7 @@ import javax.persistence.PreUpdate;
 import org.library.uca.model.front.web.dto.BaseDTO;
 
 @MappedSuperclass
-public abstract class EntityBase {
+public abstract class BaseEntity {
 
 	private Long id;
 	private LocalDateTime createdAt;

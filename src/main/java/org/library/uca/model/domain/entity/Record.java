@@ -16,7 +16,7 @@ import org.library.uca.model.domain.RecordType;
 
 @Entity
 @Table(name = "record")
-public class Record extends EntityBase {
+public class Record extends BaseEntity {
 
 	private String reference;
 	private String description;

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "book_edition")
-public class BookEdition extends EntityBase {
+public class BookEdition extends BaseEntity {
 
 	private String isbn;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

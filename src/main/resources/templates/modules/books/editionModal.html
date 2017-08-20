@@ -34,31 +34,31 @@
 					    			<input type="text" class="hidden" name="id" th:value="${edition?.id}" />
 						    		<label for="isbn" class="col-sm-2 control-label"><th:block th:text="#{desktop.books.isbn}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="text" name="isbn" class="form-control" th:value="${edition?.isbn}" th:placeholder="#{desktop.books.isbn}" />
+						    			<input type="text" name="isbn" class="form-control" th:value="${edition?.isbn}" th:placeholder="#{desktop.books.isbn}" required/>
 						    		</div>
 						    		<label for="pages" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.pages}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="number" name="pages" th:value="${edition?.pages}" class="form-control" placeholder="0" />
+						    			<input type="number" name="pages" th:value="${edition?.pages}" class="form-control" placeholder="0" required/>
 						    		</div>
 						    	</div>
 						    	<div class="form-group modal-row">
 						    		<label for="startDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.start}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="date" name="startDate" th:value="${edition?.startDate}" class="form-control"/>
+						    			<input type="date" name="startDate" th:value="${edition?.startDate}" class="form-control" required/>
 						    		</div>
 						    		<label for="endDate" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date.end}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="date" name="endDate" th:value="${edition?.endDate}" class="form-control" />
+						    			<input type="date" name="endDate" th:value="${edition?.endDate}" class="form-control" required/>
 						    		</div>
 						    	</div>
 						    	<div class="form-group modal-row">
 						    		<label for="price" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.price}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="number" name="price" th:value="${edition?.price}" class="form-control" placeholder="0.00 €" />
+						    			<input type="number" name="price" th:value="${edition?.price}" class="form-control" placeholder="0.00 €" required/>
 						    		</div>
 						    		<label for="vat" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.vat}"></th:block></label>
 						    		<div class="input col-sm-4">
-						    			<input type="number" name="vat" th:value="${edition?.vat}" class="form-control" placeholder="0.00 %" />
+						    			<input type="number" name="vat" th:value="${edition?.vat}" class="form-control" placeholder="0.00 %" required/>
 						    		</div>
 						    	</div>
 						    	<div class="form-group modal-row">

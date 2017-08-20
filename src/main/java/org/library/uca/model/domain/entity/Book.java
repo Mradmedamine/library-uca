@@ -14,7 +14,7 @@ import org.library.uca.model.domain.BookType;
 
 @Entity
 @Table(name = "book")
-public class Book extends EntityBase {
+public class Book extends BaseEntity {
 
 	private String title;
 	private String description;

@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "role")
-public class Role extends EntityBase {
+public class Role extends BaseEntity {
 	
     private String name;
     private Set<User> users;
