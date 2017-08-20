@@ -26,7 +26,6 @@ $(function() {
 		updateBtnVisibility();
 	});
 	
-
 	$(saveBtn).on('click', function(e) {
 		if ($(form).valid()) {
 			var method = $(form).attr('method');
