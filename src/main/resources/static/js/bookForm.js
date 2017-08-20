@@ -103,10 +103,12 @@ $(function() {
 	});
 
 	$(closeBtn).on('click', function() {
+	    $(editionForm)[0].reset();
 	    $(modal).hide();
 	});
 
 	$(backBtn).on('click', function() {
+	    $(editionForm)[0].reset();
 	    $(modal).hide();
 	});
 
