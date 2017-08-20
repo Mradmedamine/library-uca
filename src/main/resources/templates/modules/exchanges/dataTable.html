@@ -1,0 +1,29 @@
+<!DOCTYPE html>	
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+	<table id="exchanges-dataTables" width="100%" class="table table-striped table-bordered table-hover table-uca">
+	     <thead>
+		     <tr> 
+		     	<th class="hidden">id</th>
+<!-- 				<th width="15%" th:text="#{desktop.authors.idCard.label}"></th> -->
+<!-- 				<th width="45%" th:text="#{desktop.authors.fullname.label}"></th> -->
+<!-- 				<th width="25%" th:text="#{desktop.authors.email.label}"></th> -->
+				<th width="10%"></th>
+		 	 </tr>
+	     </thead>
+	     <tbody>
+			<tr th:each="exchange : ${exchanges}" class="clickable" th:attr="data-href=@{__${ '/exchanges/' + exchange.id}__}">
+				<td class="hidden" th:text="${exchange.id}"></td>
+<!-- 			    <td th:text="${author.idCard}"></td> -->
+<!-- 			    <td th:text="${author.fullname}"></td> -->
+<!-- 			    <td th:text="${author.email}"></td> -->
+			    <td>
+			    	<a class="btn btn-default btn-delete"><i class="fa fa-trash-o"></i>  <th:block th:text="#{common.delete}"></th:block></a>
+			    </td>
+			</tr>
+	    </tbody>
+	</table>
+</th:block>
+</html>
