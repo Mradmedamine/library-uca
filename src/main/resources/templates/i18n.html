@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+		
+<th:block th:fragment="i18n">
+	<script th:inline="javascript">
+	    	
+	    var message = {
+	    		'common': {
+	    			'internalServerError': '[[#{message.common.internalServerError}]]',
+	    			'confirmDeletion': '[[#{message.common.confirmDeletion}]]',
+	    			'dbIntegrityError': '[[#{message.common.referentialIntegrityConstraint}]]'
+	    		},
+	    
+	    }
+	
+	</script>
+</th:block>
+
+</html>

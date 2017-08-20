@@ -6,6 +6,10 @@ $(function() {
 	
 	$(document).on('click', ".table-uca .btn-delete", function(event) {
 		event.stopPropagation();
+		// TODO replace for toastr
+		if (!confirm(message.common.confirmDeletion)) {
+			return 
+		}
 		var tr = $(this).closest('tr');
 		var url = $(tr).data('href');
 		$.ajax({
@@ -13,11 +17,12 @@ $(function() {
 			url :  url,
 			contentType : 'application/json',
 			success : function(data) {
-				// TODO i18n
 				if (data == -1) {
-					alert('Internal error');
+					toastr["error"](message.common.dbIntegrityError);
+					$('#toast-container .toast-error').show();
 				} else if (data == -100) {
-					alert('Referential integrity constraint violation');
+					toastr["error"](message.common.internalServerError);
+					$('#toast-container .toast-error').show();
 				} else {
 					var table = $(tr).closest('table').DataTable();
 					table.row(tr).remove().draw();
@@ -27,11 +32,9 @@ $(function() {
 	});
 	
 	
-	
 	$(document).on('click', ".table-uca tr[class*='clickable']", function(event) {
 		window.location = $(this).data('href')
 	});
-	
 	
 	
 	$(window).bind('load resize', function() {
