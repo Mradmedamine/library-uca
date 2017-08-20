@@ -51,7 +51,7 @@ public class BooksController {
 	@RequestMapping("/books/{id}")
 	public String findBook(@PathVariable Long id, Model model) {
 		model.addAttribute("book", bookService.findById(id));
-		model.addAttribute("editions", bookService.findBookEditions(id));
+		model.addAttribute("editions", bookService.findBookEditionById(id));
 		return "modules/books/form";
 	}
 
@@ -68,10 +68,24 @@ public class BooksController {
 		return savedBook.getId();
 	}
 
+	@RequestMapping(path = "/books/editions/{editionId}", method = RequestMethod.GET)
+	public String getBookEditionModal(@PathVariable Long editionId, Model model) {
+		BookEdition bookEdition = bookService.findBookEditionById(editionId);
+		model.addAttribute("edition", bookEdition);
+		return "modules/books/editionModal::content";
+	}
+	
 	@ResponseBody
 	@RequestMapping(path = "/books/editions/{bookId}", method = RequestMethod.POST)
 	public String addBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
 		bookService.addBookEdition(bookId, bookEdition);
+		return StringUtils.EMPTY;
+	}
+	
+	@ResponseBody
+	@RequestMapping(path = "/books/editions", method = RequestMethod.PUT)
+	public String editBookEdition(@RequestBody BookEdition bookEdition, Model model) {
+//		bookService.addBookEdition(bookId, bookEdition);
 		return StringUtils.EMPTY;
 	}
 	

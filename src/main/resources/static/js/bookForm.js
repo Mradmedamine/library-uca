@@ -1,7 +1,9 @@
 $(function() {
 
     var bookContainer = $('#book-form-container');
-    var editionsDataTable = $('#editions-table');
+    var editionsTable = $('#editions-table');
+    var editionsDataTable;
+    
     initBookForm();
     initEditionsDataTables();
     initEditionModal();
@@ -58,31 +60,47 @@ $(function() {
     }
 
     function initEditionsDataTables() {
-	if (editionsDataTable.length) {
-	    editionsDataTable = $(editionsDataTable).DataTable({
-		language : {
-		    "emptyTable" : emptySearchResultMessage
-		},
-		dom : '<"dt-buttons">frtip'
+	if (editionsTable.length) {
+	    editionsDataTable = $(editionsTable).DataTable({
+		language : dataTablesMessages,
+		dom : '<"dt-buttons">frt'
 	    });
 	}
-	var editionBtn = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>New</button>';
-	$(bookContainer).find('div.dt-buttons').html(editionBtn);
+	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>New</button>';
+	var dtBtns = $(bookContainer).find('.dt-buttons');
+	$(dtBtns).html(newBtnHtml);
+	
+	$(editionsTable).find('.edition').each(function() {
+	    $(this).on('click', function(e) {
+		e.preventDefault();
+		var editionId= $(this).find('td:first').text();
+		$.ajax({
+		    type : 'GET',
+		    url : '/books/editions/' + editionId,
+		    success : function(data) {
+    		    	$('#editionModal').replaceWith(data);
+    		    	initEditionModal();
+    		    	$('#editionModal').show();
+		    }
+		});
+	    });
+	});
+
     }
 
     function initEditionModal() {
-
-	var newBtn = $(bookContainer).find('.dt-buttons button');
+	
 	var modal = $('#page-wrapper').find('#editionModal');
 	var editionForm = $(modal).find('form');
 	var closeBtn = $(modal).find('.close');
 	var backBtn = $(modal).find('.panel-footer .btn-back');
 	var saveBtn = $(modal).find('.panel-footer .btn-save');
-
+	var newBtn = $(bookContainer).find('.dt-buttons button');
+	
 	$(newBtn).on('click', function() {
 	    $(modal).show();
 	});
-
+	
 	$(closeBtn).on('click', function() {
 	    $(modal).hide();
 	});
@@ -91,9 +109,8 @@ $(function() {
 	    $(modal).hide();
 	});
 
-	$(saveBtn).on(
-		'click',
-		function() {
+	$(saveBtn).on('click', function() {
+	    
 		    if ($(editionForm).valid()) {
 			var data = $(editionForm).serializeObject();
 			$.ajax({
