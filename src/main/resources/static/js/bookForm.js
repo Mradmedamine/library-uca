@@ -66,7 +66,7 @@ $(function() {
 		dom : '<"dt-buttons">frt'
 	    });
 	}
-	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>New</button>';
+	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>'+ message.common.newLabel +'</button>';
 	var dtBtns = $(bookContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
 	

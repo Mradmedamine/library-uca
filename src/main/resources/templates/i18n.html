@@ -1,20 +1,35 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-		xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
-		
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
 <th:block th:fragment="content">
 	<script th:inline="javascript">
 	
 	    var message = {
 	    		"common": {
-	    			"internalServerError"		: [[#{message.common.internalServerError}]],
-	    			"confirmDeletion"			: [[#{message.common.confirmDeletion}]],
-	    			"dbIntegrityError"		    : [[#{message.common.referentialIntegrityConstraint}]],
-	    			"savingSuccessMessage"      : [[#{common.message.saving.success}]]
+	    			"internalServerError"		: 	[[#{message.common.internalServerError}]],
+	    			"confirmDeletion"			:	[[#{message.common.confirmDeletion}]],
+	    			"dbIntegrityError"		    : 	[[#{message.common.referentialIntegrityConstraint}]],
+	    			"savingSuccessMessage"      : 	[[#{message.common.saving.success}]],
+	    			"newLabel"      			:   [[#{common.new}]]
 	    		},
 	    		"datatable" : {
-	    			"emptySearchResultMessage"	: [[#{common.empty.search.result.message}]]
+	    			"emptySearchResultMessage"	:   [[#{common.datatable.empty.search.result}]],
+					"info"						:	[[#{common.datatable.info}]],							
+					"infoEmpty"					:	[[#{common.datatable.infoEmpty }]],				
+					"infoFiltered"				:	[[#{common.datatable.infoFiltered}]],				
+					"lengthMenu"				:	[[#{common.datatable.lengthMenu}]],				
+					"loadingRecords"			:	[[#{common.datatable.loadingRecords}]],				
+					"processing"				:	[[#{common.datatable.processing}]], 					
+					"search"					:	[[#{common.datatable.search}]], 					
+					"zeroRecords"				:	[[#{common.datatable.zeroRecords}]], 				
+					"pagination": {
+						"first"					:   [[#{common.datatable.pagination.first}]], 				
+						"last"					:	[[#{common.datatable.pagination.last}]], 				
+						"next"					:	[[#{common.datatable.pagination.next}]], 				
+						"previous"				:	[[#{common.datatable.pagination.previous}]] 
+					}											
 	    		}
 	    }
 	    

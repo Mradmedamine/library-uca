@@ -91,23 +91,20 @@ $(function() {
 });
 
 var dataTablesMessages = {
-	"emptyTable" : message.datatable.emptySearchResultMessage,
-	// TODO i18n
-	"info" : "Showing _START_ to _END_ of _TOTAL_ entries",
-	"infoEmpty" : "Showing 0 to 0 of 0 entries",
-	"infoFiltered" : "(filtered from _MAX_ total entries)",
-	"infoPostFix" : "",
-	"thousands" : ",",
-	"lengthMenu" : "Show _MENU_ entries",
-	"loadingRecords" : "Loading...",
-	"processing" : "Processing...",
-	"search" : "Filter:",
-	"zeroRecords" : "No matching records found",
+	"emptyTable" 		: message.datatable.emptySearchResultMessage,
+	"info" 			: message.datatable.info,
+	"infoEmpty" 		: message.datatable.infoEmpty,
+	"infoFiltered" 		: message.datatable.infoFiltered,
+	"lengthMenu" 		: message.datatable.lengthMenu,
+	"loadingRecords" 	: message.datatable.loadingRecords,
+	"processing" 		: message.datatable.processing,
+	"search" 		: message.datatable.search,
+	"zeroRecords" 		: message.datatable.zeroRecords,
 	"paginate" : {
-	    "first" : "First",
-	    "last" : "Last",
-	    "next" : "Next",
-	    "previous" : "Previous"
+	    "first" 		: message.datatable.pagination.first,
+	    "last" 		: message.datatable.pagination.last,
+	    "next" 		: message.datatable.pagination.next,
+	    "previous"  	: message.datatable.pagination.previous
 	}
 }
 
