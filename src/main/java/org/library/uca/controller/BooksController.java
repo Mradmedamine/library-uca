@@ -77,15 +77,8 @@ public class BooksController {
 	
 	@ResponseBody
 	@RequestMapping(path = "/books/editions/{bookId}", method = RequestMethod.POST)
-	public String addBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
-		bookService.addBookEdition(bookId, bookEdition);
-		return StringUtils.EMPTY;
-	}
-	
-	@ResponseBody
-	@RequestMapping(path = "/books/editions", method = RequestMethod.PUT)
-	public String editBookEdition(@RequestBody BookEdition bookEdition, Model model) {
-//		bookService.addBookEdition(bookId, bookEdition);
+	public String saveBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
+		bookService.saveBookEdition(bookId, bookEdition);
 		return StringUtils.EMPTY;
 	}
 	

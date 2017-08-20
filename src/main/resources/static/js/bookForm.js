@@ -3,7 +3,7 @@ $(function() {
     var bookContainer = $('#book-form-container');
     var editionsTable = $('#editions-table');
     var editionsDataTable;
-    
+
     initBookForm();
     initEditionsDataTables();
     initEditionModal();
@@ -66,21 +66,22 @@ $(function() {
 		dom : '<"dt-buttons">frt'
 	    });
 	}
-	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button"><i class="fa fa-plus fa-fw"></i>'+ message.common.newLabel +'</button>';
+	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button">'
+	    		+'<i class="fa fa-plus fa-fw"></i>'+  message.common.newLabel + '</button>';
 	var dtBtns = $(bookContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
-	
+
 	$(editionsTable).find('.edition').each(function() {
 	    $(this).on('click', function(e) {
 		e.preventDefault();
-		var editionId= $(this).find('td:first').text();
+		var editionId = $(this).find('td:first').text();
 		$.ajax({
 		    type : 'GET',
 		    url : '/books/editions/' + editionId,
 		    success : function(data) {
-    		    	$('#editionModal').replaceWith(data);
-    		    	initEditionModal();
-    		    	$('#editionModal').show();
+			$('#editionModal').replaceWith(data);
+			initEditionModal();
+			$('#editionModal').show();
 		    }
 		});
 	    });
@@ -89,18 +90,18 @@ $(function() {
     }
 
     function initEditionModal() {
-	
+
 	var modal = $('#page-wrapper').find('#editionModal');
 	var editionForm = $(modal).find('form');
 	var closeBtn = $(modal).find('.close');
 	var backBtn = $(modal).find('.panel-footer .btn-back');
 	var saveBtn = $(modal).find('.panel-footer .btn-save');
 	var newBtn = $(bookContainer).find('.dt-buttons button');
-	
+
 	$(newBtn).on('click', function() {
 	    $(modal).show();
 	});
-	
+
 	$(closeBtn).on('click', function() {
 	    $(modal).hide();
 	});
@@ -111,36 +112,48 @@ $(function() {
 
 	$(saveBtn).on('click', function() {
 	    
-		    if ($(editionForm).valid()) {
-			var data = $(editionForm).serializeObject();
-			$.ajax({
-			    type : 'POST',
-			    url : bookEditionsUrl,
-			    data : JSON.stringify(data),
-			    contentType : 'application/json',
-			    success : function(editionId) {
-				var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
-				var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
-				// add row
-				var rowNode = editionsDataTable.row.add(
-						[ editionId,
-						  data['isbn'],
-						  data['startDate'],
-						  data['endDate'],
-						  data['price'] + ' €',
-						  data['vat'] + ' %',
-						  data['pages'],
-						  data['settled'] == 'true' ? trueIcon : falseIcon,
-						  data['copyright'] == 'true' ? trueIcon : falseIcon,	
-						]).draw(false).node();
-				$(rowNode).find('td').first().addClass('hidden');
-				$(modal).hide();
-				toastr["success"](message.common.savingSuccessMessage);
-				$('#toast-container .toast-success').show();
-			    }
-			});
-		    }
-		});
+	    if ($(editionForm).valid()) {
+	        var data = $(editionForm).serializeObject();
+	        $.ajax({
+	            type : 'POST',
+	            url : bookEditionsUrl,
+	            data : JSON.stringify(data),
+	            contentType : 'application/json',
+	            success : function(result) {
+	        	if (data['id'].length) {
+	        	    updateRow(data);
+	        	} else {
+	        	    addRow(data, result);
+	        	}
+		        $(modal).hide();
+		        toastr["success"](message.common.savingSuccessMessage);
+		        $('#toast-container .toast-success').show();
+	            }
+	        });
+	    }
+
+	    function addRow(data, result) {
+	        var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
+	        var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+	        // add row
+	        var rowNode = editionsDataTable.row.add(
+	                [   result, 
+	                    data['isbn'], 
+	                    data['startDate'], 
+	                    data['endDate'],
+	                    data['price'] + ' €', 
+	                    data['vat'] + ' %', 
+	                    data['pages'],
+	                    data['settled'] == 'true' ? trueIcon : falseIcon,
+	                    data['copyright'] == 'true' ? trueIcon : falseIcon
+	                ]).draw(false).node();
+	        $(rowNode).find('td').first().addClass('hidden');
+	    }
+	    
+	    function updateRow(data) {
+		//TODO
+	    }
+        });
 
 	$(window).on('click', function(event) {
 	    if (event.target == modal) {

@@ -17,7 +17,7 @@ public interface BookService {
 
 	BookDetailsDTO saveBook(BaseBookDTO book);
 
-	BookEdition addBookEdition(Long bookId, BookEdition bookEdition);
+	BookEdition saveBookEdition(Long bookId, BookEdition bookEdition);
 	
 	List<BookEdition> findEditionsByBookId(Long bookId);
 	
