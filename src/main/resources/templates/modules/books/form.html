@@ -25,7 +25,7 @@
 				    		<div class="form-group">
 					    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.title}"></th:block></label>
 					    		<div class="col-sm-6">
-					    			<input type="text" name="title" class="form-control"  th:value="${book.title}" th:placeholder="#{desktop.common.title}" />
+					    			<input type="text" name="title" class="form-control"  th:value="${book.title}" th:placeholder="#{desktop.common.title}" th:disabled="${book?.title} ? true : false" required/>
 					    		</div>
 					    	</div>
 					    	<div class="form-group">
