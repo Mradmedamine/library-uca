@@ -10,7 +10,7 @@
 *.exe
 *.o
 *.so
-/src/main/resources/static/css/*.css
+/src/main/resources/static/css/editorial-uca.css
 
 # Packages #
 ############
