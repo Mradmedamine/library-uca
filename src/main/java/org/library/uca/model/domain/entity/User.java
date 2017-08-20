@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "user")
-public class User extends EntityBase {
+public class User extends BaseEntity {
 	
     private String username;
     private String password;

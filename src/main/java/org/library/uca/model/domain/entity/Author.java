@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "author")
-public class Author extends EntityBase {
+public class Author extends BaseEntity {
 
 	private String fullname;
 	private String idCard;
