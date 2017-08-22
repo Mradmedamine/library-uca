@@ -103,12 +103,12 @@ $(function() {
 	});
 
 	$(closeBtn).on('click', function() {
-	    $(editionForm)[0].reset();
+	    $(editionForm).reset();
 	    $(modal).hide();
 	});
 
 	$(backBtn).on('click', function() {
-	    $(editionForm)[0].reset();
+	    $(editionForm).reset();
 	    $(modal).hide();
 	});
 
@@ -123,7 +123,7 @@ $(function() {
 	            contentType : 'application/json',
 	            success : function(result) {
 	        	if (data['id'].length) {
-	        	    updateRow(data);
+	        	    updateRow(data, result);
 	        	} else {
 	        	    addRow(data, result);
 	        	}
@@ -133,13 +133,14 @@ $(function() {
 	            }
 	        });
 	    }
-
-	    function addRow(data, result) {
-	        var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
-	        var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+	    
+	    var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
+	    var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+	        
+	    function addRow(data, id) {
 	        // add row
 	        var rowNode = editionsDataTable.row.add(
-	                [   result, 
+	                [   id, 
 	                    data['isbn'], 
 	                    data['startDate'], 
 	                    data['endDate'],
@@ -152,8 +153,19 @@ $(function() {
 	        $(rowNode).find('td').first().addClass('hidden');
 	    }
 	    
-	    function updateRow(data) {
-		//TODO
+	    function updateRow(data, id) {
+		var row = $(editionsTable).find('tr[data-id="' + id + '"]');
+		editionsDataTable.row(row).data(
+			[   id, 
+	                    data['isbn'], 
+	                    data['startDate'], 
+	                    data['endDate'],
+	                    data['price'] + ' €', 
+	                    data['vat'] + ' %', 
+	                    data['pages'],
+	                    data['settled'] == 'true' ? trueIcon : falseIcon,
+	                    data['copyright'] == 'true' ? trueIcon : falseIcon
+	                ]).draw();
 	    }
         });
 
