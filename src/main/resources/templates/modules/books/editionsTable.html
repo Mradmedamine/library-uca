@@ -25,7 +25,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="edition : ${editions}" class="edition" data-href="#">
+				<tr th:each="edition : ${editions}" class="edition" th:attr="data-id=${edition.id}" data-href="#">
 					<td class="hidden" th:text="${edition.id}"></td>
 				    <td th:text="${edition.isbn}"></td>
 				    <td th:text="${edition.startDate}"></td>

@@ -6,7 +6,9 @@ $.fn.extend({
     show : function() {
 	return this.removeClass('hidden');
     },
-
+    reset : function() {
+	this.find('input').val('');
+    },
     serializeObject : function() {
 	var o = {};
 	var a = this.serializeArray();
