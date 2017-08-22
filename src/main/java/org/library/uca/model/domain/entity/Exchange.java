@@ -5,7 +5,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "exchange")
-public class Exchange extends EntityBase {
+public class Exchange extends BaseEntity {
 
 	
 }
