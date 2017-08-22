@@ -48,7 +48,7 @@ public class AuthorsController {
 	@ResponseBody
 	@RequestMapping(path = "/authors", method = RequestMethod.POST)
 	public Long saveAuthor(Model model, @RequestBody Author author) {
-		Author savedAuthor = authorService.saveAuthor(author);
+		Author savedAuthor = authorService.save(author);
 		return savedAuthor.getId();
 	}
 	
