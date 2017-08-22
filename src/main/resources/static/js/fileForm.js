@@ -1,22 +1,22 @@
 $(function() {
 
-    var recordFormContainer = $('#record-form-container');
-    initRecordForm();
+    var fileFormContainer = $('#file-form-container');
+    initFileForm();
 
-    function initRecordForm() {
+    function initFileForm() {
 
-	var form = $(recordFormContainer).find('form');
+	var form = $(fileFormContainer).find('form');
 	var formFields = $(form).find('input, select, textArea');
 	var selectFields = $(form).find('.selectpicker');
 
-	var panelFooter = $(recordFormContainer).find('.panel-footer');
+	var panelFooter = $(fileFormContainer).find('.panel-footer');
 	var editBtn = $(panelFooter).find('.btn-edit');
 	var saveBtn = $(panelFooter).find('.btn-save');
 	var cancelBtn = $(panelFooter).find('.btn-cancel');
 	var backBtn = $(panelFooter).find('.btn-back');
 
 	$(backBtn).on('click', function(event) {
-	    window.location.href = "/records";
+	    window.location.href = "/files";
 	});
 
 	$(editBtn).on('click', function(e) {
@@ -32,11 +32,11 @@ $(function() {
 
 		$.ajax({
 		    type : 'POST',
-		    url : recordsUrl,
+		    url : filesUrl,
 		    data : JSON.stringify(data),
 		    contentType : 'application/json',
 		    success : function(data) {
-			$(form).find('#recordId').val(data);
+			$(form).find('#fileId').val(data);
 			updateBtnVisibility();
 			toastr["success"](message.common.savingSuccessMessage);
 			$('#toast-container .toast-success').show();

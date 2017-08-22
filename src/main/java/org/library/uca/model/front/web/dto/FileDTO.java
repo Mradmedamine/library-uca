@@ -1,16 +1,16 @@
 package org.library.uca.model.front.web.dto;
 
-import org.library.uca.model.domain.RecordStatus;
-import org.library.uca.model.domain.RecordType;
+import org.library.uca.model.domain.FileStatus;
+import org.library.uca.model.domain.FileType;
 
-public class RecordDTO extends BaseDTO {
+public class FileDTO extends BaseDTO {
 
 	private static final long serialVersionUID = 5797499071965067582L;
 
 	private String reference;
 	private String description;
-	private RecordStatus status;
-	private RecordType type;
+	private FileStatus status;
+	private FileType type;
 	private Long responsibleId;
 	private Long bookId;
 
@@ -38,19 +38,19 @@ public class RecordDTO extends BaseDTO {
 		this.description = description;
 	}
 
-	public RecordStatus getStatus() {
+	public FileStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(RecordStatus status) {
+	public void setStatus(FileStatus status) {
 		this.status = status;
 	}
 
-	public RecordType getType() {
+	public FileType getType() {
 		return type;
 	}
 
-	public void setType(RecordType type) {
+	public void setType(FileType type) {
 		this.type = type;
 	}
 

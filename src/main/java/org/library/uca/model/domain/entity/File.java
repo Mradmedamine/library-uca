@@ -11,17 +11,17 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
-import org.library.uca.model.domain.RecordStatus;
-import org.library.uca.model.domain.RecordType;
+import org.library.uca.model.domain.FileStatus;
+import org.library.uca.model.domain.FileType;
 
 @Entity
-@Table(name = "record")
-public class Record extends BaseEntity {
+@Table(name = "file")
+public class File extends BaseEntity {
 
 	private String reference;
 	private String description;
-	private RecordStatus status;
-	private RecordType type;
+	private FileStatus status;
+	private FileType type;
 	private Author responsible;
 	private Book book;
 
@@ -43,20 +43,20 @@ public class Record extends BaseEntity {
 	}
 
 	@Enumerated(EnumType.STRING)
-	public RecordStatus getStatus() {
+	public FileStatus getStatus() {
 		return status;
 	}
 
-	public void setStatus(RecordStatus status) {
+	public void setStatus(FileStatus status) {
 		this.status = status;
 	}
 
 	@Enumerated(EnumType.STRING)
-	public RecordType getType() {
+	public FileType getType() {
 		return type;
 	}
 
-	public void setType(RecordType type) {
+	public void setType(FileType type) {
 		this.type = type;
 	}
 

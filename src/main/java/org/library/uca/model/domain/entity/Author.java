@@ -19,7 +19,7 @@ public class Author extends BaseEntity {
 	private String city;
 	private String zipCode;
 	private Set<Book> books;
-	private Set<Record> records;
+	private Set<File> files;
 
 	public String getFullname() {
 		return fullname;
@@ -88,11 +88,11 @@ public class Author extends BaseEntity {
 	}
 
 	@OneToMany(mappedBy = "responsible")
-	public Set<Record> getRecords() {
-		return records;
+	public Set<File> getFiles() {
+		return files;
 	}
 
-	public void setRecords(Set<Record> records) {
-		this.records = records;
+	public void setFiles(Set<File> files) {
+		this.files = files;
 	}
 }

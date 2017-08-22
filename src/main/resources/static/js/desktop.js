@@ -96,10 +96,10 @@ var dataTablesMessages = {
 	"infoEmpty" 		: message.datatable.infoEmpty,
 	"infoFiltered" 		: message.datatable.infoFiltered,
 	"lengthMenu" 		: message.datatable.lengthMenu,
-	"loadingRecords" 	: message.datatable.loadingRecords,
+	"loadingFiles" 	: message.datatable.loadingFiles,
 	"processing" 		: message.datatable.processing,
 	"search" 		: message.datatable.search,
-	"zeroRecords" 		: message.datatable.zeroRecords,
+	"zeroFiles" 		: message.datatable.zeroFiles,
 	"paginate" : {
 	    "first" 		: message.datatable.pagination.first,
 	    "last" 		: message.datatable.pagination.last,
