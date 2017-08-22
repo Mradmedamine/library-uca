@@ -50,13 +50,13 @@
 				    	<div class="form-group">
 							<label for="street1_id" class="col-sm-2 control-label"><th:block th:text="#{desktop.authors.address.label}"></th:block></label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="street" name="street" th:placeholder="#{desktop.authors.street.placeholder}" th:disabled="${!isNewAuthor && (author.street != null || #strings.isEmpty(author.street))} ? true : false"/>
+								<input type="text" class="form-control" th:value="${author.street}" id="street" name="street" th:placeholder="#{desktop.authors.street.placeholder}" th:disabled="${!isNewAuthor && (author.street != null || #strings.isEmpty(author.street))} ? true : false"/>
 							</div>
 							<div class="col-sm-2">
-								<input type="text" class="form-control" id="city" name="city" th:placeholder="#{desktop.authors.city.placeholder}" th:disabled="${!isNewAuthor && (author.city != null || #strings.isEmpty(author.city))} ? true : false"/>
+								<input type="text" class="form-control" th:value="${author.city}" id="city" name="city" th:placeholder="#{desktop.authors.city.placeholder}" th:disabled="${!isNewAuthor && (author.city != null || #strings.isEmpty(author.city))} ? true : false"/>
 							</div>
 							<div class="col-sm-2">
-								<input type="text" class="form-control" id="zipCode" name="zipCode" th:placeholder="#{desktop.authors.zipCode.placeholder}" th:disabled="${!isNewAuthor && (author.zipCode != null || #strings.isEmpty(author.zipCode))} ? true : false"/>
+								<input type="text" class="form-control" th:value="${author.zipCode}" id="zipCode" name="zipCode" th:placeholder="#{desktop.authors.zipCode.placeholder}" th:disabled="${!isNewAuthor && (author.zipCode != null || #strings.isEmpty(author.zipCode))} ? true : false"/>
 							</div>
 						</div>					
 				    </form>
