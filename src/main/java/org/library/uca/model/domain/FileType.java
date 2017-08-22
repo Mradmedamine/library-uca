@@ -2,7 +2,7 @@ package org.library.uca.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum RecordType {
+public enum FileType {
 
 	PAPER("paper"),
 	EBOOK("ebook"), 
@@ -11,7 +11,7 @@ public enum RecordType {
 	
 	private String value;
 
-	private RecordType(String value) {
+	private FileType(String value) {
 		this.value = value;
 	}
 	

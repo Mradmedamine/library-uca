@@ -1,0 +1,29 @@
+<!DOCTYPE html>	
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:fragment="content">
+	<table id="files-dataTables" width="100%" class="table table-striped table-bordered table-hover table-uca">
+	     <thead>
+		     <tr>
+		     	<th class="hidden">id</th>
+				<th width="15%" th:text="#{desktop.files.reference.label}"></th>
+				<th width="35%" th:text="#{desktop.files.description.label}"></th>
+				<th width="20%" th:text="#{desktop.files.responsible.label}"></th>
+				<th width="15%" th:text="#{desktop.files.type.label}"></th>
+				<th width="15%" th:text="#{desktop.files.status.label}"></th>
+		 	 </tr>
+	     </thead>
+	     <tbody>
+			<tr th:each="file : ${files}" class="clickable" th:attr="data-href=@{__${ '/files/' + file.id}__}">
+				<td class="hidden" th:text="${file.id}"></td>
+			    <td th:text="${file.reference}"></td>
+			    <td th:text="${file.description}"></td>
+			    <td th:text="${file.responsible.fullname}"></td>
+			    <td th:text="#{desktop.files.type.__${file.type.value}__}"></td>
+			    <td th:text="#{desktop.files.status.__${file.status.value}__}"></td>
+			</tr>
+	    </tbody>
+	</table>
+</th:block>
+</html>

@@ -1,25 +1,25 @@
 $(function() {
 
-	initRecordsDataTables();
+	initFilesDataTables();
 
 	$('#search-form .search-btn').on('click', function(event) {
 		var data = $('#search-form').serializeObject();
 		$.ajax({
 			type : 'POST',
-			url : '/records/search',
+			url : '/files/search',
 			data : JSON.stringify(data),
 			contentType : 'application/json',
 			success : function(data) {
 				$('#result-container').html(data);
-				initRecordsDataTables();
+				initFilesDataTables();
 			}
 		});
 	});
 
-	function initRecordsDataTables() {
-		var recordsDataTable = $('#records-dataTables');
-		if (recordsDataTable.length) {
-			$(recordsDataTable).DataTable(dataTablesConfig);
+	function initFilesDataTables() {
+		var filesDataTable = $('#files-dataTables');
+		if (filesDataTable.length) {
+			$(filesDataTable).DataTable(dataTablesConfig);
 		}
 	}
 

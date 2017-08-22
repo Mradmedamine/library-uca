@@ -2,7 +2,7 @@ package org.library.uca.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum RecordStatus {
+public enum FileStatus {
 
 	CLOSED("closed"), 
 	PRINTED("printed"),
@@ -18,7 +18,7 @@ public enum RecordStatus {
 
 	private String value;
 
-	private RecordStatus(String value) {
+	private FileStatus(String value) {
 		this.value = value;
 	}
 
