@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.library.uca.model.domain.FileStatus;
 import org.library.uca.model.domain.FileType;
+import org.library.uca.model.domain.entity.FileAction;
 import org.library.uca.model.domain.entity.File;
 import org.library.uca.model.front.web.dto.FileDTO;
 import org.library.uca.model.front.web.queryparams.FileQueryParams;
@@ -57,6 +58,7 @@ public class FilesController {
 	@RequestMapping("/files/{id}")
 	public String filePage(Model model, @PathVariable Long id) {
 		model.addAttribute("file", fileService.findById(id));
+		model.addAttribute("actions", fileService.findActionsByFileId(id));
 		return "modules/files/form";
 	}
 
@@ -73,6 +75,21 @@ public class FilesController {
 		return savedFile.getId();
 	}
 
+
+	@RequestMapping(path = "/files/actions/{actionId}", method = RequestMethod.GET)
+	public String getFileActionModal(@PathVariable Long actionId, Model model) {
+		FileAction fileAction = fileService.findFileActionById(actionId);
+		model.addAttribute("action", fileAction);
+		return "modules/files/actionModal::content";
+	}
+	
+	@ResponseBody
+	@RequestMapping(path = "/files/actions/{fileId}", method = RequestMethod.POST)
+	public Long saveFileAction(@PathVariable Long fileId, @RequestBody FileAction fileAction, Model model) {
+		FileAction saveAction = fileService.saveFileAction(fileId, fileAction);
+		return saveAction.getId();
+	}
+	
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("fileStatusList", FileStatus.values());

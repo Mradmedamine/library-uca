@@ -24,7 +24,7 @@
 				    <form class="form-horizontal details-form file-details-form" role="form">
 				    	<input id="fileId" type="hidden" name="id" th:value="${file.id}"/>
 			    		<div class="form-group">
-				    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.description.label}"></th:block></label>
+				    		<label for="description" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.description.label}"></th:block></label>
 				    		<div class="col-sm-8">
 				    			<textarea id="description" name="description" th:text="${file.description}" class="form-control" placeholder="Description" rows="5" th:disabled="${file.description} ? true : false" required></textarea>
 				    		</div>
@@ -34,7 +34,12 @@
 							<select name="responsibleId" class="selectpicker col-sm-3" title="Responsible" th:disabled="${isNewFile} ? false : true" required>
 								  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.fullname}" th:selected="${author.id == file.responsible?.id}" th:value="${author.id}" th:text="${author.fullname}">
 								  </option>
-							</select>			    		
+							</select>
+							<label for="status" class="col-sm-1 control-label"><th:block th:text="#{desktop.files.status.label}"></label>
+				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${file.status} ? true : false" required>
+								  <option th:each="status : ${fileStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == file.status}" th:value="${status.name}" th:text="#{desktop.files.status.__${status.value}__}">
+								  </option>
+							</select>		    		
 				    	</div>
 				    	<div class="form-group">
 				    		<label for="type" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.type.label}"></label>
@@ -42,33 +47,33 @@
 								  <option th:each="type : ${fileTypeList}" th:attr="data-tokens=${type.value}" th:selected="${type == file.type}" th:value="${type.name}" th:text="#{desktop.files.type.__${type.value}__}">
 								  </option>
 							</select>			    		
-				    	</div>
-				    	<div class="form-group">
-				    		<label for="status" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.status.label}"></label>
-				    		<select name="status" class="selectpicker col-sm-3" title="Status" th:disabled="${file.status} ? true : false" required>
-								  <option th:each="status : ${fileStatusList}" th:attr="data-tokens=${status.value}" th:selected="${status == file.status}" th:value="${status.name}" th:text="#{desktop.files.status.__${status.value}__}">
-								  </option>
-							</select>	
-				    	</div>
-				    	<div th:if="${isNewFile || file.book != null}" class="form-group">
-				    		<label for="bookId" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.book}"></label>
-							<select name="bookId" class="selectpicker col-sm-3" title="Book" th:disabled="${isNewFile} ? false : true" required>
-								  <option th:each="book : ${bookList}" th:attr="data-tokens=${book.title}" th:selected="${book.id == file.book?.id}" th:value="${book.id}" th:text="${book.title}">
-								  </option>
-							</select>			    		
+							<th:block th:if="${isNewFile || file.book != null}">
+					    		<label for="bookId" class="col-sm-1 control-label"><th:block th:text="#{desktop.common.book}"></label>
+								<select name="bookId" class="selectpicker col-sm-3" title="Book" th:disabled="${isNewFile} ? false : true" required>
+									  <option th:each="book : ${bookList}" th:attr="data-tokens=${book.title}" th:selected="${book.id == file.book?.id}" th:value="${book.id}" th:text="${book.title}">
+									  </option>
+								</select>			    		
+					    	</th:block>		
 				    	</div>
 				    </form>
+			        <hr>
+				    <th:block th:include="~{modules/files/actionsTable::content}">
+					</th:block>
 			   	</div>
 			</div>
 			<div th:replace="~{fragments/panel-footer::content (__${isNewFile}__)}">
 			</div>
 		</th:block>
 	</div>
-	
+	<th:block layout:fragment="modals"> 	
+		<th:block th:include="~{modules/files/actionModal::content}">
+		</th:block>
+	</th:block>
 	<th:block layout:fragment="js-files"> 	
 		<script th:src="@{/js/fileForm.js}" ></script> 
 		<script th:inline="javascript"> 
 			var filesUrl = [[@{/files}]];
+			var fileActionsUrl = [[@{/files/actions/__${file.id}__}]];
 		</script>
 	</th:block>
 	

@@ -29,7 +29,7 @@
 					    		</div>
 					    	</div>
 					    	<div class="form-group">
-					    		<label for="name" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.description.label}"></th:block></label>
+					    		<label for="description" class="col-sm-2 control-label"><th:block th:text="#{desktop.files.description.label}"></th:block></label>
 					    		<div class="col-sm-8">
 					    			<textarea id="description" name="description" th:text="${book.description}" class="form-control" th:placeholder="#{desktop.files.description.label}" rows="5" th:disabled="${book.description} ? true : false" required></textarea>
 					    		</div>
