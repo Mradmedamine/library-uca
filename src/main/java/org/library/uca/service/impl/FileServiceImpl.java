@@ -8,8 +8,10 @@ import org.library.uca.model.domain.FileType;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.File;
+import org.library.uca.model.domain.entity.FileAction;
 import org.library.uca.model.front.web.dto.FileDTO;
 import org.library.uca.model.front.web.queryparams.FileQueryParams;
+import org.library.uca.repository.FileActionRepository;
 import org.library.uca.repository.FileRepository;
 import org.library.uca.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 	@Autowired
 	private FileRepository fileRepository;
 
+	@Autowired
+	private FileActionRepository fileActionRepository;
+	
 	@Override
 	public List<File> findAll() {
 		return fileRepository.findAll();
@@ -70,6 +75,23 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 			statusList = Arrays.asList(FileStatus.values());
 		}
 		return fileRepository.findByCriteria(descriptionText, statusList, typeList);
+	}
+
+	@Override
+	public List<FileAction> findActionsByFileId(Long fileId) {
+		return fileActionRepository.findByFile_Id(fileId);
+	}
+
+	@Override
+	public FileAction findFileActionById(Long actionId) {
+		return fileActionRepository.findOne(actionId);
+	}
+
+	@Override
+	public FileAction saveFileAction(Long fileId, FileAction fileAction) {
+			File file = fileRepository.findOne(fileId);
+			fileAction.setFile(file);
+			return fileActionRepository.save(fileAction);
 	}
 
 }
