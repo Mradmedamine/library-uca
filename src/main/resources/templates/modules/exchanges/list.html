@@ -5,7 +5,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{desktop-layout}">
 
-	<div id="authors-container" class="panel panel-default" layout:fragment="desktop-page-content">
+	<div id="exchanges-container" class="panel panel-default" layout:fragment="desktop-page-content">
 		<div class="panel-heading container">
 			<span class="title">
 				<i class="fa fa-exchange fa-fw"></i>
@@ -18,7 +18,10 @@
 		</div>
 		<div class="panel-body">
 			<form id="search-form" class="search-widget">
-				
+				<input type="text" name="authorName" class="form-control search-title" th:placeholder="#{ desktop.authors.details.title.label }" />
+				<input type="text" name="bookTitle" class="form-control search-title" th:placeholder="#{ desktop.common.book }" />
+				<input type="date" name="fromDate" class="form-control search-title" th:placeholder="#{ desktop.common.from }" />
+				<input type="date" name="toDate" class="form-control search-title" th:placeholder="#{ desktop.common.to }" />
 				<button class="btn btn-primary btn-block search-btn" type="button">
 					<th:block th:text="#{ common.search }"></th:block>
 				</button>

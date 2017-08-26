@@ -14,6 +14,7 @@ public interface ExchangeService {
 	List<Exchange> findByCriteria(ExchangeQueryParams exchangeQueryParams);
 
 	Exchange save(Exchange exchange);
+	
 	Long delete(Long exchangeId);
 
 }

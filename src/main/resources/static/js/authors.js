@@ -19,7 +19,7 @@ $(function() {
     });
 
     function initAuthorsDataTables() {
-	var authorsDataTable = $('#authors-dataTables').DataTable({
+	var authorsDataTable = $('#authors-datatables').DataTable({
 	    'language'   :  dataTablesMessages,
 	    'columnDefs' : [ {
 		'targets' : [ 4 ],

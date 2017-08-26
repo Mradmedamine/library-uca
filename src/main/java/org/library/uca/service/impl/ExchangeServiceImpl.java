@@ -1,5 +1,6 @@
 package org.library.uca.service.impl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.library.uca.model.domain.entity.Exchange;
@@ -24,7 +25,12 @@ public class ExchangeServiceImpl extends ServiceBaseImpl implements ExchangeServ
 
 	@Override
 	public List<Exchange> findByCriteria(ExchangeQueryParams exchangeQueryParams) {
-		return null;
+		String authorText = buildQueryTextParam(exchangeQueryParams.getAuthorName());
+		String bookText = buildQueryTextParam(exchangeQueryParams.getBookTitle());
+		LocalDate from = exchangeQueryParams.getFromDate();
+		LocalDate to = exchangeQueryParams.getFromDate();
+		List<Exchange> entityExchanges = exchangeRepository.findByCriteria(authorText, bookText, from, to);
+		return entityExchanges;
 	}
 
 	@Override

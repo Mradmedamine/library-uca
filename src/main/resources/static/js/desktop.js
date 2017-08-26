@@ -96,7 +96,7 @@ var dataTablesMessages = {
 	"infoEmpty" 		: message.datatable.infoEmpty,
 	"infoFiltered" 		: message.datatable.infoFiltered,
 	"lengthMenu" 		: message.datatable.lengthMenu,
-	"loadingFiles" 	: message.datatable.loadingFiles,
+	"loadingFiles" 		: message.datatable.loadingFiles,
 	"processing" 		: message.datatable.processing,
 	"search" 		: message.datatable.search,
 	"zeroFiles" 		: message.datatable.zeroFiles,
