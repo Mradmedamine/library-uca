@@ -144,6 +144,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		book3.setSubject(BookSubject.ECONOMIC_BUSINESS_SCIENCES);
 		bookRepository.save(book3);
 		log.info("Saved Book :   id: " + book3.getId());
+		
 		BookEdition edition31 = new BookEdition();
 		edition31.setIsbn("978-84-7786-383-0");
 		edition31.setStartDate(LocalDate.now());
@@ -162,8 +163,9 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition32.setVat(21.1);
 		edition32.setPages(273);
 		edition32.setBook(book3);
-		bookEditionRepository.save(edition32);
-
+		edition32 = bookEditionRepository.save(edition32);
+		log.info("Saved Book Edition :   BookId," + book3.getId() + " EditionId" + edition32.getId());
+		
 		// Book 4
 
 		Book book4 = new Book();
@@ -177,8 +179,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		book4.setType(BookType.MANUAL);
 		book4.setSubject(BookSubject.CHEMISTRY);
 		bookRepository.save(book4);
-
 		log.info("Saved Book :   id: " + book4.getId());
+		
 		BookEdition edition41 = new BookEdition();
 		edition41.setIsbn("978-84-9828-264-1");
 		edition41.setStartDate(LocalDate.now());
@@ -187,8 +189,9 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition41.setVat(4.0);
 		edition41.setPages(240);
 		edition41.setBook(book4);
-		bookEditionRepository.save(edition41);
-
+		edition41 = bookEditionRepository.save(edition41);
+		log.info("Saved Book Edition :   BookId," + book4.getId() + " EditionId" + edition41.getId());
+		
 		BookEdition edition42 = new BookEdition();
 		edition42.setIsbn("978-84-9828-460-7");
 		edition42.setStartDate(LocalDate.now());
@@ -197,7 +200,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		edition42.setVat(21.0);
 		edition42.setPages(240);
 		edition42.setBook(book4);
-		bookEditionRepository.save(edition42);
+		edition42 = bookEditionRepository.save(edition42);
+		log.info("Saved Book Edition :   BookId," + book4.getId() + " EditionId" + edition42.getId());
 
 		// RECORDS
 		File file1 = new File();
@@ -281,7 +285,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		file8.setStatus(FileStatus.ACCEPTED);
 		file8.setType(FileType.PAPER);
 		file8 = fileRepository.save(file8);
-		log.info("Saved Role :   id: " + file8.getId());
+		log.info("Saved File :   id: " + file8.getId());
 
 		File file9 = new File();
 		file9.setDescription("Sistemas operativos");
