@@ -33,7 +33,7 @@ public class File extends BaseEntity {
 		this.reference = reference;
 	}
 
-	@Column(columnDefinition="LONGVARCHAR")
+	@Column(columnDefinition="LONGTEXT")
 	public String getDescription() {
 		return description;
 	}

@@ -23,7 +23,7 @@ public class Book extends BaseEntity {
 	private BookType type;
 	private Set<Author> authors;
 
-	@Column(columnDefinition = "LONGVARCHAR")
+	@Column(columnDefinition = "LONGTEXT")
 	public String getDescription() {
 		return description;
 	}

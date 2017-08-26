@@ -82,13 +82,6 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
 
-		<!-- Data Utils -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>compile</scope>
-		</dependency>
-
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
