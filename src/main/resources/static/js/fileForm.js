@@ -86,25 +86,25 @@ $(function() {
 	    		+'<i class="fa fa-plus fa-fw"></i>'+  message.common.newLabel + '</button>';
 	var dtBtns = $(fileFormContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
-
-	$(actionsTable).find('.action').each(function() {
-	    $(this).on('click', function(e) {
-		e.preventDefault();
-		var actionId = $(this).find('td:first').text();
-		$.ajax({
-		    type : 'GET',
-		    url : '/files/actions/' + actionId,
-		    success : function(data) {
-			$('#actionModal').replaceWith(data);
-			initActionModal();
-			$('#actionModal').show();
-		    }
-		});
-	    });
-	});
-
+	initActionsTable();
     }
 
+    function initActionsTable() {
+	$(actionsTable).on('click','.action', function(e) {
+	    e.preventDefault();
+	    var actionId = $(this).find('td:first').text();
+	    $.ajax({
+		type : 'GET',
+		url : '/files/actions/' + actionId,
+		success : function(data) {
+		    $('#actionModal').replaceWith(data);
+		    initActionModal();
+		    $('#actionModal').show();
+		}
+	    });
+	});
+    }
+    
     function initActionModal() {
 
 	var modal = $('#page-wrapper').find('#actionModal');
@@ -158,6 +158,7 @@ $(function() {
 	                    data['date']
 	                ]).draw(false).node();
 	        $(rowNode).find('td').first().addClass('hidden');
+	        $(rowNode).addClass('action');
 	    }
 	    
 	    function updateRow(data, id) {

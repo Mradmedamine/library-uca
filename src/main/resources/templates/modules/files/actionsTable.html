@@ -19,7 +19,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="action : ${actions}" class="action clickable" th:attr="data-id=${action.id}" data-href="#">
+				<tr th:each="action : ${actions}" class="action" th:attr="data-id=${action.id}" data-href="#">
 					<td class="hidden" th:text="${action.id}"></td>
 				    <td th:text="${action.description}"></td>
 				    <td th:text="${action.date}"></td>

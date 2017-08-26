@@ -71,22 +71,19 @@ $(function() {
 	var dtBtns = $(bookContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
 
-	$(editionsTable).find('.edition').each(function() {
-	    $(this).on('click', function(e) {
-		e.preventDefault();
-		var editionId = $(this).find('td:first').text();
-		$.ajax({
-		    type : 'GET',
-		    url : '/books/editions/' + editionId,
-		    success : function(data) {
-			$('#editionModal').replaceWith(data);
-			initEditionModal();
-			$('#editionModal').show();
-		    }
-		});
+	$(editionsTable).on('click', '.edition', function(e) {
+	    e.preventDefault();
+	    var editionId = $(this).find('td:first').text();
+	    $.ajax({
+		type : 'GET',
+		url : '/books/editions/' + editionId,
+		success : function(data) {
+		    $('#editionModal').replaceWith(data);
+		    initEditionModal();
+		    $('#editionModal').show();
+		}
 	    });
 	});
-
     }
 
     function initEditionModal() {
@@ -151,6 +148,7 @@ $(function() {
 	                    data['copyright'] == 'true' ? trueIcon : falseIcon
 	                ]).draw(false).node();
 	        $(rowNode).find('td').first().addClass('hidden');
+	        $(rowNode).addClass('edition');
 	    }
 	    
 	    function updateRow(data, id) {

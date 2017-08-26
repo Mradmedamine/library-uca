@@ -28,8 +28,11 @@
 		<thymeleaf.version>3.0.0.RELEASE</thymeleaf.version>
 		<thymeleaf.dialect.version>2.0.5</thymeleaf.dialect.version>
 
+		<!-- Utils -->
 		<apache.common.version>3.6</apache.common.version>
 
+		<!-- MySQL -->
+		<mysql.version>5.1.30</mysql.version>
 	</properties>
 
 	<dependencies>
@@ -71,7 +74,7 @@
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>${thymeleaf.dialect.version}</version><!--$NO-MVN-MAN-VER$-->
+			<version>${thymeleaf.dialect.version}</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 
 		<dependency>
@@ -86,6 +89,11 @@
 			<scope>compile</scope>
 		</dependency>
 
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
 
 		<!-- Data fake utils -->
 		<dependency>
