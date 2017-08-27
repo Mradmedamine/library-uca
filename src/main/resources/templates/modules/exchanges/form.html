@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{desktop-layout}">
+
+	<div id="exchange-form-container" class="panel panel-default details-container exchange-details-container" layout:fragment="desktop-page-content"> 
+		<th:block th:with="isNewExchange=${exchange == null}">
+			<div class="panel-heading">
+	       		<div class="row">
+	                 <div class="col-lg-12">
+	                    <span class="title">
+                        	<i class="fa fa-exchanges-o fa-fw"></i>
+	                        <th:block th:text="#{common.__${isNewExchange ? 'new' : 'edit'}__}"></th:block>
+							<th:block th:text="#{desktop.common.exchange}"></th:block>
+	                    </span>
+	                 </div>
+	       		</div>
+			</div>				
+			<div class="panel-body">
+				<div class="col-lg-12">
+				    
+				    <form class="form-horizontal details-form exchange-details-form" role="form">
+				    	<input id="exchangeId" type="hidden" name="id" th:value="${exchange?.id}"/>
+		    			<div class="form-group">
+				    		<label for="authorName" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.authorName}"></th:block></label>
+				    		<div class="col-sm-6">
+				    			<input type="text" name="authorName" class="form-control"  th:value="${exchange?.authorName}" th:placeholder="#{desktop.common.authorName}" th:disabled="${exchange?.authorName} ? true : false" required/>
+				    		</div>
+				    	</div>
+						<div class="form-group">
+				    		<label for="bookTitle" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.book}"></th:block></label>
+				    		<div class="col-sm-6">
+				    			<input type="text" name="bookTitle" class="form-control"  th:value="${exchange?.bookTitle}" th:placeholder="#{desktop.common.book}" th:disabled="${exchange?.bookTitle} ? true : false" required/>
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<label for="date" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.date}"></th:block></label>
+				    		<div class="col-sm-6">
+				    			<input type="date" name="date" class="form-control"  th:value="${exchange?.date}" th:placeholder="#{desktop.common.date}" th:disabled="${exchange?.date} ? true : false" required/>
+				    		</div>
+				    	</div>
+				    </form>
+			   	</div>
+			</div>
+			<div th:replace="~{fragments/panel-footer::content (__${isNewExchange}__)}">
+			</div>
+		</th:block>
+	</div>
+	<th:block layout:fragment="modals"> 	
+
+	</th:block>
+	<th:block layout:fragment="js-exchanges"> 	
+		<script th:src="@{/js/exchangeForm.js}" ></script> 
+		<script th:inline="javascript"> 
+			var exchangesUrl = [[@{/exchanges}]];
+			var exchangeActionsUrl = [[@{/exchanges/actions/__${exchange?.id}__}]];
+		</script>
+	</th:block>
+	
+</html>

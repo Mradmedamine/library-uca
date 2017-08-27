@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
         xmlns:th="http://www.thymeleaf.org"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -26,7 +26,7 @@
 			    		<div class="form-group">
 				    		<label for="idCard" class="col-sm-2 control-label"><th:block th:text="#{desktop.authors.idCard.label}"></th:block></label>
 				    		<div class="col-sm-2">
-				    			<input tpye="text" id="idCard" name="idCard" th:value="${author.idCard}" class="form-control" th:placeholder="#{desktop.authors.idCard.label}" th:disabled="${author.idCard} ? true : false" required/>
+				    			<input type="text" id="idCard" name="idCard" th:value="${author.idCard}" class="form-control" th:placeholder="#{desktop.authors.idCard.label}" th:disabled="${author.idCard} ? true : false" required/>
 				    		</div>
 				    	</div>
 				    	<div class="form-group">

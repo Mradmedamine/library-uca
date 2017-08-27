@@ -17,7 +17,7 @@ $(function() {
 	});
 
 	function initFilesDataTables() {
-		var filesDataTable = $('#files-dataTables');
+		var filesDataTable = $('#files-datatables');
 		if (filesDataTable.length) {
 			$(filesDataTable).DataTable(dataTablesConfig);
 		}

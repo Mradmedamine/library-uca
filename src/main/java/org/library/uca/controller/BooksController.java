@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.library.uca.model.domain.BookSubject;
 import org.library.uca.model.domain.BookType;
-import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.BookEdition;
 import org.library.uca.model.front.web.dto.BaseBookDTO;
 import org.library.uca.model.front.web.dto.BookDetailsDTO;
@@ -56,7 +55,6 @@ public class BooksController {
 
 	@RequestMapping("/books/new")
 	public String newBook(Model model) {
-		model.addAttribute("book", new Book());
 		return "modules/books/form";
 	}
 

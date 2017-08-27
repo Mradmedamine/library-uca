@@ -56,7 +56,6 @@ public class ExchangesController {
 
 	@RequestMapping("/exchanges/new")
 	public String newExchange(Model model) {
-		model.addAttribute("exchange", new Exchange());
 		return "modules/exchanges/form";
 	}
 }

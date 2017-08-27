@@ -1,6 +1,6 @@
 $(function() {
 
-	initBooksDataTables();
+    	initExchangesDataTables();
 
 	$('#search-form .search-btn').on('click', function(event) {
 		var data = $('#search-form').serializeObject();
