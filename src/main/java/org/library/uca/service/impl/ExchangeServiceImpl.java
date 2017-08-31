@@ -28,7 +28,7 @@ public class ExchangeServiceImpl extends ServiceBaseImpl implements ExchangeServ
 		String authorText = buildQueryTextParam(exchangeQueryParams.getAuthorName());
 		String bookText = buildQueryTextParam(exchangeQueryParams.getBookTitle());
 		LocalDate from = exchangeQueryParams.getFromDate();
-		LocalDate to = exchangeQueryParams.getFromDate();
+		LocalDate to = exchangeQueryParams.getToDate();
 		List<Exchange> entityExchanges = exchangeRepository.findByCriteria(authorText, bookText, from, to);
 		return entityExchanges;
 	}

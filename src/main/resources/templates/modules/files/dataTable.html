@@ -7,7 +7,6 @@
 	     <thead>
 		     <tr>
 		     	<th class="hidden">id</th>
-				<th width="15%" th:text="#{desktop.files.reference.label}"></th>
 				<th width="35%" th:text="#{desktop.files.description.label}"></th>
 				<th width="20%" th:text="#{desktop.files.responsible.label}"></th>
 				<th width="15%" th:text="#{desktop.files.type.label}"></th>
@@ -17,7 +16,6 @@
 	     <tbody>
 			<tr th:each="file : ${files}" class="clickable" th:attr="data-href=@{__${ '/files/' + file.id}__}">
 				<td class="hidden" th:text="${file.id}"></td>
-			    <td th:text="${file.reference}"></td>
 			    <td th:text="${file.description}"></td>
 			    <td th:text="${file.responsible.fullname}"></td>
 			    <td th:text="#{desktop.files.type.__${file.type.value}__}"></td>

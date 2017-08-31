@@ -82,11 +82,12 @@
 #page-wrapper {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGklEQVQIW2N89+7dfyEhIUYGJIDCgYlTKAgAmtcEBhJsYjsAAAAASUVORK5CYII=) repeat;
 	background-color: white ! important;
+//	color: #777! important;
 	padding: 1px 0px 1px 0px;
 	min-height: 581px ! important;
 	.panel {
 		margin: 10px;
-		color: #777;
+		color: #000;
 		box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
 		-webkit-box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
 		-moz-box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.25);
@@ -96,7 +97,7 @@
 			width: auto ! important;
 			background-color: #FFF;
 			border-color: #DDD;
-			color: #777;
+			color: #000;
 		}
 
 		.panel-body {
@@ -104,22 +105,26 @@
 			font-size: 12px;
 			.search-widget {
 				margin: 0px 0px 15px 5px;
-				display: flex;
+				display: block;
+				height: 40px;
 				.search-description {
-					width: 500px;
+					width: 33%;
 					margin-left: 10px;
 					margin-right: 10px;
+					float: left;
 				}
 
 				.search-title {
-					width: 300px;
+					width: 20%;
 					margin-left: 10px;
 					margin-right: 10px;
+					float: left;
 				}
 				
 				.search-item {
 					margin-left: 10px;
 					margin-right: 10px;
+					float: left;
 				}
 
 				.search-btn {
