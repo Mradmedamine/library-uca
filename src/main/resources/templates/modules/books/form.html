@@ -75,7 +75,7 @@
 		</th:block>
 	</th:block>
 		
-	<th:block layout:fragment="js-files"> 	
+	<th:block layout:fragment="js-import"> 	
 		<script th:src="@{/js/bookForm.js}" ></script> 
 		<script th:inline="javascript"> 
 			var bookEditionsUrl = [[@{/books/editions/__${book?.id}__}]];
