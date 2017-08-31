@@ -41,6 +41,12 @@
 				    			<input type="date" name="date" class="form-control"  th:value="${exchange?.date}" th:placeholder="#{desktop.common.date}" th:disabled="${exchange?.date} ? true : false" required/>
 				    		</div>
 				    	</div>
+				    	<div class="form-group">
+				    		<label for="destination" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.destination}"></th:block></label>
+				    		<div class="col-sm-6">
+				    			<input type="text" name="destination" class="form-control"  th:value="${exchange?.destination}" th:placeholder="#{desktop.common.destination}" th:disabled="${exchange?.destination} ? true : false" required/>
+				    		</div>
+				    	</div>
 				    </form>
 			   	</div>
 			</div>
@@ -49,13 +55,12 @@
 		</th:block>
 	</div>
 	<th:block layout:fragment="modals"> 	
-
 	</th:block>
-	<th:block layout:fragment="js-exchanges"> 	
+	
+	<th:block layout:fragment="js-import"> 	
 		<script th:src="@{/js/exchangeForm.js}" ></script> 
 		<script th:inline="javascript"> 
 			var exchangesUrl = [[@{/exchanges}]];
-			var exchangeActionsUrl = [[@{/exchanges/actions/__${exchange?.id}__}]];
 		</script>
 	</th:block>
 	

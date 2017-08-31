@@ -7,11 +7,11 @@
 	     <thead>
 		     <tr> 
 		     	<th class="hidden">id</th>
-		     	<th width="10%" th:text="#{desktop.books.isbn}"></th>
+		     	<th width="15%" th:text="#{desktop.books.isbn}"></th>
 		     	<th width="10%" th:text="#{desktop.common.date}"></th>
-		     	<th width="15%" th:text="#{desktop.authors.details.title.label}"></th>
-		     	<th width="15%" th:text="#{desktop.common.book}"></th>
-				<th width="10%"></th>
+		     	<th width="20%" th:text="#{desktop.common.book}"></th>
+		     	<th width="20%" th:text="#{desktop.authors.details.title.label}"></th>
+				<th width="15%" th:text="#{desktop.common.destination}"></th>
 		 	 </tr>
 	     </thead>
 	     <tbody>
@@ -21,9 +21,7 @@
 				<td th:text="${exchange.date}"></td>
 				<td th:text="${exchange.authorName}"></td>
 				<td th:text="${exchange.bookTitle}"></td>
-			    <td>
-			    	<a class="btn btn-default btn-delete"><i class="fa fa-trash-o"></i>  <th:block th:text="#{common.delete}"></th:block></a>
-			    </td>
+				<td th:text="${exchange.destination}"></td>
 			</tr>
 	    </tbody>
 	</table>
