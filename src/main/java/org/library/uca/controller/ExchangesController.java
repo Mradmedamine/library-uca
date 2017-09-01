@@ -2,12 +2,14 @@ package org.library.uca.controller;
 
 import java.util.List;
 
+import org.library.uca.model.domain.LibraryRepo;
 import org.library.uca.model.domain.entity.Exchange;
 import org.library.uca.model.front.web.queryparams.ExchangeQueryParams;
 import org.library.uca.service.ExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,5 +59,10 @@ public class ExchangesController {
 	@RequestMapping("/exchanges/new")
 	public String newExchange(Model model) {
 		return "modules/exchanges/form";
+	}
+	
+	@ModelAttribute
+	public void addAttributes(Model model) {
+		model.addAttribute("libraryList", LibraryRepo.getLibraryList());
 	}
 }

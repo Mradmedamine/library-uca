@@ -319,7 +319,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		exchange.setBookTitle("Compiladores y procesadores de lenguajes");
 		exchange.setAuthorName(authorList.get(0).getFullname());
 		exchange.setDate(LocalDate.now());
-		exchange.setType(ExchangeType.INCOMING);
+		exchange.setType(ExchangeType.RECEIVE);
 		exchange = exchangeRepository.save(exchange);
 		log.info("Saved Exchange :   id: " + exchange.getId());
 
