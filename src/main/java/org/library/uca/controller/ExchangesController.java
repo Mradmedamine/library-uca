@@ -2,6 +2,8 @@ package org.library.uca.controller;
 
 import java.util.List;
 
+import org.library.uca.model.domain.ExchangeType;
+import org.library.uca.model.domain.InstitutionRepo;
 import org.library.uca.model.domain.LibraryRepo;
 import org.library.uca.model.domain.entity.Exchange;
 import org.library.uca.model.front.web.queryparams.ExchangeQueryParams;
@@ -64,5 +66,8 @@ public class ExchangesController {
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("libraryList", LibraryRepo.getLibraryList());
+		model.addAttribute("institutionList", InstitutionRepo.getList());
+		model.addAttribute("SEND", ExchangeType.SEND);
+		model.addAttribute("RECEIVE", ExchangeType.RECEIVE);
 	}
 }

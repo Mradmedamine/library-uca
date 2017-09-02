@@ -18,7 +18,7 @@ public class Exchange extends BaseEntity {
 	private String bookTitle;
 	private String destination;
 	private String sender;
-	private String receptionLibrary;
+	private String library;
 
 	public LocalDate getDate() {
 		return date;
@@ -76,12 +76,12 @@ public class Exchange extends BaseEntity {
 		this.type = type;
 	}
 
-	public String getReceptionLibrary() {
-		return receptionLibrary;
+	public String getLibrary() {
+		return library;
 	}
 
-	public void setReceptionLibrary(String receptionLibrary) {
-		this.receptionLibrary = receptionLibrary;
+	public void setLibrary(String library) {
+		this.library = library;
 	}
 
 }
