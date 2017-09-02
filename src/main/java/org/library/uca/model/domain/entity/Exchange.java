@@ -12,12 +12,13 @@ import org.library.uca.model.domain.ExchangeType;
 public class Exchange extends BaseEntity {
 
 	private String isbn;
+	private ExchangeType type;
 	private LocalDate date;
 	private String authorName;
 	private String bookTitle;
 	private String destination;
 	private String sender;
-	private ExchangeType type;
+	private String library;
 
 	public LocalDate getDate() {
 		return date;
@@ -73,6 +74,14 @@ public class Exchange extends BaseEntity {
 
 	public void setType(ExchangeType type) {
 		this.type = type;
+	}
+
+	public String getLibrary() {
+		return library;
+	}
+
+	public void setLibrary(String library) {
+		this.library = library;
 	}
 
 }

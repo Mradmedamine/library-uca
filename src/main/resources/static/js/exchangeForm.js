@@ -51,4 +51,23 @@ $(function() {
 		$(panelFooter).addClass('readonly');
 	}
 
+	$('#exchangeType a').on('click', function(){
+	    var value = $(this).data('value');
+	    var toggle = $(this).data('toggle');
+	    $('#' + toggle).prop('value', value);
+	    $('a[data-toggle="' + toggle + '"]').not('[data-value="' + value + '"]').removeClass('active').addClass('notActive');
+	    $('a[data-toggle="' + toggle + '"][data-value="' + value + '"]').removeClass('notActive').addClass('active');
+	    var destInput = $('.form-group.destination');
+	    var senderInput = $('.form-group.sender');
+	    var libraryInput = $('.form-group.library');
+	    if(value ==='SEND') {
+		destInput.show();
+		senderInput.hide();
+		libraryInput.hide();
+	    } else {
+		destInput.hide();
+		senderInput.show();
+		libraryInput.show();
+	    }
+	})
 });
