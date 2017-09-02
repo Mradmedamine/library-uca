@@ -28,10 +28,10 @@
 				    		<div class="col-sm-6">
 				    			<div class="input-group">
 				    				<div id="exchangeType" class="btn-group">
-				    					<a class="btn btn-primary btn-sm active" data-toggle="exchangeType" data-value="SEND">Send</a>
-				    					<a class="btn btn-primary btn-sm notActive" data-toggle="exchangeType" data-value="RECEIVE">Receive</a>
+				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == SEND || isNewExchange ? 'active' : ''}|" data-toggle="exchangeType" data-value="SEND">Send</a>
+				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == RECEIVE ? 'active' : ''}|" data-toggle="exchangeType" data-value="RECEIVE">Receive</a>
 				    				</div>
-				    				<input id="exchangeTypeValue" type="hidden" th:value="${exchange?.type}" name="type" >
+				    				<input id="exchangeTypeValue" type="hidden" th:value="${isNewExchange ? SEND : exchange?.type}" name="type">
 				    			</div>
 				    		</div>
 				    	</div>
@@ -53,7 +53,7 @@
 				    			<input type="date" name="date" class="form-control"  th:value="${exchange?.date}" th:placeholder="#{desktop.common.date}" th:disabled="${exchange?.date} ? true : false" required/>
 				    		</div>
 				    	</div>
-				    	<div th:class="|form-group sender ${exchange?.type == SEND ? 'hidden' : ''}|">
+				    	<div th:class="|form-group sender ${exchange?.type == SEND || isNewExchange ? 'hidden' : ''}|">
 				    		<label for="sender" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.sender}"></th:block></label>
 				    		<select name="sender" class="selectpicker col-sm-4" th:title="#{desktop.common.sender}" th:disabled="${exchange?.sender} ? true : false" required>
 							  <option th:each="sender : ${institutionList}" th:selected="${#strings.equals(sender, exchange?.sender)}" th:value="${sender}" th:text="${sender}">
@@ -63,11 +63,11 @@
 				    	<div th:class="|form-group destination ${exchange?.type == RECEIVE ? 'hidden' : ''}|">
 				    		<label for="destination" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.destination}"></th:block></label>
 			    			<select name="destination" class="selectpicker col-sm-4" th:title="#{desktop.common.destination}" th:disabled="${exchange?.destination} ? true : false" required>
-							  <option th:each="destination : ${institutionList}" th:selected="${#strings.equals(destination, exchange?.destination)}" th:value="${destination}" th:text="${destination}">
+							  <option th:each="destination : ${institutionList}" th:selected="${#strings.equals(destination, exchange?.destination)}" th:value="${destination}" th:text="${destination}" >
 							  </option>
 							</select>	
 				    	</div>
-				    	<div th:class="|form-group library ${exchange?.type == SEND ? 'hidden' : ''}|">
+				    	<div th:class="|form-group library ${exchange?.type == SEND || isNewExchange ? 'hidden' : ''}|">
 				    		<label for="library" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.reception.library}"></th:block></label>
 				    		<select name="library" class="selectpicker col-sm-4" th:title="#{desktop.common.destination}" th:disabled="${exchange?.library} ? true : false" required>
 							  <option th:each="library : ${libraryList}" th:selected="${#strings.equals(library.name, exchange?.library)}" th:value="${library.name}" th:text="${library.name}">

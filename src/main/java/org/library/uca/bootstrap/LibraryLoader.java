@@ -12,6 +12,8 @@ import org.library.uca.model.domain.BookType;
 import org.library.uca.model.domain.ExchangeType;
 import org.library.uca.model.domain.FileStatus;
 import org.library.uca.model.domain.FileType;
+import org.library.uca.model.domain.InstitutionRepo;
+import org.library.uca.model.domain.LibraryRepo;
 import org.library.uca.model.domain.entity.Author;
 import org.library.uca.model.domain.entity.Book;
 import org.library.uca.model.domain.entity.BookEdition;
@@ -320,6 +322,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		exchange.setAuthorName(authorList.get(0).getFullname());
 		exchange.setDate(LocalDate.now());
 		exchange.setType(ExchangeType.RECEIVE);
+		exchange.setSender(InstitutionRepo.getList().get(2));
+		exchange.setLibrary(LibraryRepo.getLibraryList().get(1).getName());
 		exchange = exchangeRepository.save(exchange);
 		log.info("Saved Exchange :   id: " + exchange.getId());
 
