@@ -8,6 +8,7 @@ $(function() {
 	var form = $(exchangeFormContainer).find('form');
 	var formFields = $(form).find('input, select, textArea');
 	var selectFields = $(form).find('.selectpicker');
+	var typeRadioBtn = $('#exchangeType a');
 
 	var backBtn = $(panelFooter).find('.btn-back');
 	var editBtn = $(panelFooter).find('.btn-edit');
@@ -21,6 +22,7 @@ $(function() {
 	$(editBtn).on('click', function(event) {
 		$(formFields).prop('disabled', false);
 		$(selectFields).selectpicker('refresh');
+		$(typeRadioBtn).removeClass('disabled');
 		$(panelFooter).removeClass('readonly');
 	});
 
@@ -50,6 +52,7 @@ $(function() {
 
 	function updateBtnVisibility() {
 		$(formFields).prop('disabled', true);
+		$(typeRadioBtn).addClass('disabled');
 		$(selectFields).selectpicker('refresh');
 		$(panelFooter).addClass('readonly');
 	}
