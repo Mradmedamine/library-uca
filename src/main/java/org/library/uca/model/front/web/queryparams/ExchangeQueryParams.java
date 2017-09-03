@@ -11,7 +11,6 @@ public class ExchangeQueryParams implements Serializable {
 	private String bookTitle;
 	private LocalDate fromDate;
 	private LocalDate toDate;
-	private String destination;
 
 	public String getAuthorName() {
 		return authorName;
@@ -43,14 +42,6 @@ public class ExchangeQueryParams implements Serializable {
 
 	public void setToDate(LocalDate toDate) {
 		this.toDate = toDate;
-	}
-
-	public String getDestination() {
-		return destination;
-	}
-
-	public void setDestination(String destination) {
-		this.destination = destination;
 	}
 
 }
