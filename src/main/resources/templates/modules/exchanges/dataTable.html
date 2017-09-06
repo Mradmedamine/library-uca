@@ -12,8 +12,8 @@
 		     	<th width="23%" th:text="#{desktop.common.book}"></th>
 		     	<th width="21%" th:text="#{desktop.common.author}"></th>
 				<th width="14%" th:text="#{desktop.common.institution}"></th>
-				<th width="12%" th:text="#{desktop.common.reception.library}"></th>
 				<th width="9%" th:text="#{desktop.common.date}"></th>
+				<th width="12%" th:text="#{desktop.common.reception.library}"></th>
 		 	 </tr>
 	     </thead>
 	     <tbody>
@@ -24,8 +24,8 @@
 				<td th:text="${exchange.bookTitle}"></td>
 				<td th:text="${exchange.authorName}"></td>
 				<td th:text="${exchange.institution}"></td>
-				<td th:text="${#strings.isEmpty(exchange.library) ? '_' : exchange.library }"></td>
 				<td th:text="${exchange.date}"></td>
+				<td th:text="${#strings.isEmpty(exchange.library) ? '_' : exchange.library }"></td>
 			</tr>
 	    </tbody>
 	</table>
