@@ -28,8 +28,8 @@
 				    		<div class="col-sm-6">
 				    			<div class="input-group">
 				    				<div id="exchangeType" class="btn-group">
-				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == SEND ? 'active' : ''} ${!isNewExchange ? 'disabled' : 'active'}|" data-toggle="exchangeType" data-value="SEND">Send</a>
-				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == RECEIVE ? 'active' : ''} ${!isNewExchange ? 'disabled' : ''}|" data-toggle="exchangeType" data-value="RECEIVE">Receive</a>
+				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == SEND ? 'active' : ''} ${!isNewExchange ? 'disabled' : 'active'}|" data-toggle="exchangeTypeValue" data-value="SEND">Send</a>
+				    					<a th:class="|btn btn-primary btn-sm ${exchange?.type == RECEIVE ? 'active' : ''} ${!isNewExchange ? 'disabled' : ''}|" data-toggle="exchangeTypeValue" data-value="RECEIVE">Receive</a>
 				    				</div>
 				    				<input id="exchangeTypeValue" type="hidden" th:value="${isNewExchange ? SEND : exchange?.type}" name="type">
 				    			</div>
