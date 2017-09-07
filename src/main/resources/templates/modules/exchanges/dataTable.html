@@ -8,11 +8,12 @@
 		     <tr> 
 		     	<th class="hidden">id</th>
 		     	<th width="7%" th:text="#{desktop.common.type}"></th>
-		     	<th width="13%" th:text="#{desktop.books.isbn}"></th>
-		     	<th width="10%" th:text="#{desktop.common.date}"></th>
-		     	<th width="25%" th:text="#{desktop.common.book}"></th>
-		     	<th width="25%" th:text="#{desktop.authors.details.title.label}"></th>
-				<th width="17%" th:text="#{desktop.common.institution}"></th>
+		     	<th width="14%" th:text="#{desktop.books.isbn}"></th>
+		     	<th width="23%" th:text="#{desktop.common.book}"></th>
+		     	<th width="21%" th:text="#{desktop.common.author}"></th>
+				<th width="14%" th:text="#{desktop.common.institution}"></th>
+				<th width="9%" th:text="#{desktop.common.date}"></th>
+				<th width="12%" th:text="#{desktop.common.reception.library}"></th>
 		 	 </tr>
 	     </thead>
 	     <tbody>
@@ -20,10 +21,11 @@
 				<td class="hidden" th:text="${exchange.id}"></td>
 				<td><i th:class="|fa ${exchange?.type == SEND ? 'fa-paper-plane-o' : 'fa-download'}|" aria-hidden="true"></i></td> 
 				<td th:text="${exchange.isbn}"></td>
-				<td th:text="${exchange.date}"></td>
 				<td th:text="${exchange.bookTitle}"></td>
 				<td th:text="${exchange.authorName}"></td>
 				<td th:text="${exchange.institution}"></td>
+				<td th:text="${exchange.date}"></td>
+				<td th:text="${#strings.isEmpty(exchange.library) ? '_' : exchange.library }"></td>
 			</tr>
 	    </tbody>
 	</table>

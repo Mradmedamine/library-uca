@@ -334,7 +334,6 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		exchange2.setDate(LocalDate.now());
 		exchange2.setType(ExchangeType.SEND);
 		exchange2.setInstitution(InstitutionRepo.getList().get(1));
-		exchange2.setLibrary(LibraryRepo.getLibraryList().get(2).getName());
 		exchange2 = exchangeRepository.save(exchange2);
 		log.info("Saved Exchange :   id: " + exchange2.getId());
 		

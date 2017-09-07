@@ -59,10 +59,10 @@ $(function() {
 
 	$('#exchangeType a').on('click', function(){
 	    var value = $(this).data('value');
-	    var toggle = $(this).data('toggle');
-	    $('#' + toggle).prop('value', value);
-	    $('a[data-toggle="' + toggle + '"]').not('[data-value="' + value + '"]').removeClass('active').addClass('notActive');
-	    $('a[data-toggle="' + toggle + '"][data-value="' + value + '"]').removeClass('notActive').addClass('active');
+	    var hiddenInput = $(this).data('toggle');
+	    $('#' + hiddenInput).prop('value', value);
+	    $('a[data-toggle="' + hiddenInput + '"]').not('[data-value="' + value + '"]').removeClass('active');
+	    $('a[data-toggle="' + hiddenInput + '"][data-value="' + value + '"]').addClass('active');
 	    
 	    var libraryInput = $('.form-group.library');
 	    if(value === 'SEND') {

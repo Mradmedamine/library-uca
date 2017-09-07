@@ -2,6 +2,7 @@ package org.library.uca.model.domain.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,6 +27,7 @@ public class FileAction extends BaseEntity {
 		this.date = date;
 	}
 
+	@Column(columnDefinition="LONGVARCHAR")
 	public String getDescription() {
 		return description;
 	}
