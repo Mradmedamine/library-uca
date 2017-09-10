@@ -27,7 +27,7 @@ public class FileAction extends BaseEntity {
 		this.date = date;
 	}
 
-	@Column(columnDefinition="LONGVARCHAR")
+	@Column(columnDefinition = "LONGTEXT")
 	public String getDescription() {
 		return description;
 	}
