@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface FileRepository extends JpaRepository<File, Long> {
 
-	@Query("select u from File u where upper(u.description) like :description and u.status in :statusList and u.type in :typeList")
-	List<File> findByCriteria(@Param("description") String description,
+	@Query("SELECT DISTINCT u FROM File u WHERE UPPER(u.description) LIKE :description AND u.status IN :statusList AND u.type IN :typeList")
+	List<File> findByCriteria( @Param("description") String description,
 								@Param("statusList") List<FileStatus> statusList,
 								@Param("typeList") List<FileType> typeList);
 
