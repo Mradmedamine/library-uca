@@ -67,7 +67,8 @@ public class BookServiceImpl extends ServiceBaseImpl implements BookService {
 		Book entityBook = MappingUtils.map(book, Book.class);
 		Set<Author> authors = new HashSet<>();
 		for (Long authorId : book.getAuthorIds()) {
-			Author author = authorService.findById(authorId);
+			Author author = new Author();
+			author.setId(authorId);
 			authors.add(author);
 		}
 		entityBook.setAuthors(authors);
