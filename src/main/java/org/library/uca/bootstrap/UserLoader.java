@@ -54,9 +54,9 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 		log.info("Saved Role :" + ADMIN_ROLE + " id: " + adminRole.getId());
 		
 		User user = new User();
-		user.setUsername("uca");
-		user.setPassword(bCryptPasswordEncoder.encode("uca"));
-		user.setPasswordConfirm("uca");
+		user.setUsername("editorial");
+		user.setPassword(bCryptPasswordEncoder.encode("editorial"));
+		user.setPasswordConfirm("editorial");
 		user.setRoles(Collections.singleton(userRole));
 		user = userRepository.save(user);
 
