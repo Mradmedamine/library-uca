@@ -14,7 +14,7 @@ public enum BookSubject {
 	ENGINEERING_ARCHITECTURE("engineering_architecture"),
 	ECONOMIC_BUSINESS_SCIENCES("economic_business_sciences"),
 	CELLULAR_MOLECULAR_BIOLOGY("cellular_molecular_biology"),
-	SOCIAL_SCIENCES_BEHAVIORAL_POLICIES_EDUCATION("social_sciences_behavioral_policies_education");
+	SOCIAL_SCIENCES_BEHAVIORAL_POLICIES_EDUCATION("social_political_behavioral_educational_sciences");
 
 	private String value;
 
