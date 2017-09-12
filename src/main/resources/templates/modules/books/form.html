@@ -42,19 +42,19 @@
 					    	</div>
 				    		<div class="form-group">
 					    		<label for="authorIds" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.authors}"></label>
-								<select name="authorIds" class="selectpicker col-sm-5" title="Authors" th:disabled="${isNewBook} ? false : true" required multiple>
+								<select name="authorIds" class="selectpicker col-sm-5" th:title="#{desktop.common.authors}" data-live-search="true" th:disabled="${isNewBook} ? false : true" required multiple>
 									  <option th:each="author : ${authorList}" th:attr="data-tokens=${author.fullname}" th:selected="${isNewBook ? false : #sets.contains(book?.authors, author)}" th:value="${author.id}" th:text="${author.fullname}">
 									  </option>
 								</select>			    		
 					    	</div>
 					    	<div class="form-group">
 					    		<label for="type" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.type}"></label>
-								<select name="type" class="selectpicker col-sm-3" title="Type" th:disabled="${book?.type} ? true : false" required>
+								<select name="type" class="selectpicker col-sm-3" th:title="#{desktop.common.type}" th:disabled="${book?.type} ? true : false" required>
 									  <option th:each="type : ${bookTypes}" th:attr="data-tokens=${type.value}" th:selected="${type == book?.type}" th:value="${type.name}" th:text="#{desktop.books.type.__${type.value}__}">
 									  </option>
 								</select>			    		
 					    		<label for="subject" class="col-sm-1 control-label"><th:block th:text="#{desktop.common.subject}"></label>
-					    		<select name="subject" class="selectpicker col-sm-3" title="Subject" th:disabled="${book?.subject} ? true : false" required>
+					    		<select name="subject" class="selectpicker col-sm-3" th:title="#{desktop.common.subject}" th:disabled="${book?.subject} ? true : false" required>
 									  <option th:each="subject : ${bookSubjects}" th:attr="data-tokens=${subject.value}" th:selected="${subject == book?.subject}" th:value="${subject.name}" th:text="#{desktop.books.subject.__${subject.value}__}">
 									  </option>
 								</select>	
