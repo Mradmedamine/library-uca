@@ -71,14 +71,14 @@ public class BooksController {
 		model.addAttribute("edition", bookEdition);
 		return "modules/books/editionModal::content";
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(path = "/books/editions/{bookId}", method = RequestMethod.POST)
 	public Long saveBookEdition(@PathVariable Long bookId, @RequestBody BookEdition bookEdition, Model model) {
 		BookEdition saveEdition = bookService.saveBookEdition(bookId, bookEdition);
 		return saveEdition.getId();
 	}
-	
+
 	@ModelAttribute
 	public void addAttributes(Model model) {
 		model.addAttribute("bookTypes", BookType.values());

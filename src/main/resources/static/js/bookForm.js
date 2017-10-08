@@ -66,8 +66,6 @@ $(function() {
 		dom : '<"dt-buttons">frt'
 	    });
 	}
-	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button">'
-	    		+'<i class="fa fa-plus fa-fw"></i>'+  message.common.newLabel + '</button>';
 	var dtBtns = $(bookContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
 
@@ -109,63 +107,49 @@ $(function() {
 	    $(modal).hide();
 	});
 
-	$(saveBtn).on('click', function() {
-	    
-	    if ($(editionForm).valid()) {
-	        var data = $(editionForm).serializeObject();
-	        $.ajax({
-	            type : 'POST',
-	            url : bookEditionsUrl,
-	            data : JSON.stringify(data),
-	            contentType : 'application/json',
-	            success : function(result) {
-	        	if (data['id'].length) {
-	        	    updateRow(data, result);
-	        	} else {
-	        	    addRow(data, result);
-	        	}
-		        $(modal).hide();
-		        toastr["success"](message.common.savingSuccessMessage);
-		        $('#toast-container .toast-success').show();
-	            }
+	$(saveBtn).on(
+	        'click',
+	        function() {
+
+		    if ($(editionForm).valid()) {
+		        var data = $(editionForm).serializeObject();
+		        $.ajax({
+		            type : 'POST',
+		            url : bookEditionsUrl,
+		            data : JSON.stringify(data),
+		            contentType : 'application/json',
+		            success : function(result) {
+			        if (data['id'].length) {
+			            updateRow(data, result);
+			        } else {
+			            addRow(data, result);
+			        }
+			        $(modal).hide();
+			        toastr["success"](message.common.savingSuccessMessage);
+			        $('#toast-container .toast-success').show();
+		            }
+		        });
+		    }
+
+		    var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
+		    var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+
+		    function addRow(data, id) {
+		        // add row
+		        var rowNode = editionsDataTable.row.add(
+		                [ id, data['isbn'], data['startDate'], data['endDate'], data['price'] + ' €', data['vat'] + ' %', data['pages'],
+		                        data['settled'] == 'true' ? trueIcon : falseIcon, data['copyright'] == 'true' ? trueIcon : falseIcon ]).draw(false).node();
+		        $(rowNode).find('td').first().addClass('hidden');
+		        $(rowNode).addClass('edition');
+		    }
+
+		    function updateRow(data, id) {
+		        var row = $(editionsTable).find('tr[data-id="' + id + '"]');
+		        editionsDataTable.row(row).data(
+		                [ id, data['isbn'], data['startDate'], data['endDate'], data['price'] + ' €', data['vat'] + ' %', data['pages'],
+		                        data['settled'] == 'true' ? trueIcon : falseIcon, data['copyright'] == 'true' ? trueIcon : falseIcon ]).draw();
+		    }
 	        });
-	    }
-	    
-	    var falseIcon = '<i class="fa fa-times" aria-hidden="true"></i>';
-	    var trueIcon = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
-	        
-	    function addRow(data, id) {
-	        // add row
-	        var rowNode = editionsDataTable.row.add(
-	                [   id, 
-	                    data['isbn'], 
-	                    data['startDate'], 
-	                    data['endDate'],
-	                    data['price'] + ' €', 
-	                    data['vat'] + ' %', 
-	                    data['pages'],
-	                    data['settled'] == 'true' ? trueIcon : falseIcon,
-	                    data['copyright'] == 'true' ? trueIcon : falseIcon
-	                ]).draw(false).node();
-	        $(rowNode).find('td').first().addClass('hidden');
-	        $(rowNode).addClass('edition');
-	    }
-	    
-	    function updateRow(data, id) {
-		var row = $(editionsTable).find('tr[data-id="' + id + '"]');
-		editionsDataTable.row(row).data(
-			[   id, 
-	                    data['isbn'], 
-	                    data['startDate'], 
-	                    data['endDate'],
-	                    data['price'] + ' €', 
-	                    data['vat'] + ' %', 
-	                    data['pages'],
-	                    data['settled'] == 'true' ? trueIcon : falseIcon,
-	                    data['copyright'] == 'true' ? trueIcon : falseIcon
-	                ]).draw();
-	    }
-        });
 
 	$(window).on('click', function(event) {
 	    if (event.target == modal) {

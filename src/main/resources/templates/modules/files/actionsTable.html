@@ -15,8 +15,9 @@
 			<thead>
 				<tr> 
 					<th class="hidden">id</th>
-					<th width="50%" th:text="#{desktop.files.actions.label}"></th>
-					<th width="20%" th:text="#{desktop.common.date}"></th>
+					<th width="40%" th:text="#{desktop.files.actions.label}"></th>
+					<th width="30%" th:text="#{desktop.common.date}"></th>
+					<th width="30%" th:text="#{desktop.common.document}"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,6 +25,7 @@
 					<td class="hidden" th:text="${action.id}"></td>
 				    <td th:text="${action.description}"></td>
 				    <td th:text="${action.date}"></td>
+				    <td><a th:href="@{/files/actions/document/__${action.id}__}" class="action-lock" target="_blank" th:text="${action.physicalFile.fileName}"></a></td>
 				</tr>
 		    </tbody>
 		</table>

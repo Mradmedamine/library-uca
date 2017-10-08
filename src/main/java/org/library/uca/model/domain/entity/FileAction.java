@@ -3,6 +3,7 @@ package org.library.uca.model.domain.entity;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,10 +14,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name = "file_action")
 public class FileAction extends BaseEntity {
-	
+
 	private String description;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	private LocalDate date;
+	private PhysicalFile physicalFile;
 	private File file;
 
 	public LocalDate getDate() {
@@ -34,6 +36,15 @@ public class FileAction extends BaseEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Embedded
+	public PhysicalFile getPhysicalFile() {
+		return physicalFile;
+	}
+
+	public void setPhysicalFile(PhysicalFile physicalFile) {
+		this.physicalFile = physicalFile;
 	}
 
 	@ManyToOne
