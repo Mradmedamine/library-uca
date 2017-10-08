@@ -78,11 +78,13 @@ $(function() {
 	if (actionsTable.length) {
 	    actionsDataTable = $(actionsTable).DataTable({
 		language : dataTablesMessages,
-		dom : '<"dt-buttons">frt'
+		dom : 'Brt',
+		buttons : [ dataTablesPdfBtnLabel ]
 	    });
 	}
 	var dtBtns = $(fileFormContainer).find('.dt-buttons');
-	$(dtBtns).html(newBtnHtml);
+	styleDtPdfButton(dtBtns);
+	$(dtBtns).prepend(dataTablesNewBtnHtml);
 	initActionsTable();
     }
 
@@ -115,7 +117,9 @@ $(function() {
 
 	var fileInput = $(actionForm).find(':file');
 	var fileName = $(fileInput).attr('data-placeholder');
-	$(fileInput).filestyle({ placeholder : fileName });
+	$(fileInput).filestyle({
+	    placeholder : fileName
+	});
 
 	$(newBtn).on('click', function() {
 	    $(modal).show();

@@ -67,7 +67,7 @@ $(function() {
 	    });
 	}
 	var dtBtns = $(bookContainer).find('.dt-buttons');
-	$(dtBtns).html(newBtnHtml);
+	$(dtBtns).html(dataTablesNewBtnHtml);
 
 	$(editionsTable).on('click', '.edition', function(e) {
 	    e.preventDefault();
