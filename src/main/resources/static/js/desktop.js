@@ -1,7 +1,7 @@
 $(function() {
 
 	var desktopPage = $('#page-wrapper');
-
+	
 	$(desktopPage).find('#side-menu').metisMenu();
 	
 	$(document).on('click', ".table-uca .btn-delete", function(event) {
@@ -111,3 +111,6 @@ var dataTablesMessages = {
 var dataTablesConfig = {
     "language" : dataTablesMessages
 }
+
+var newBtnHtml = '<button class="btn btn-primary btn-block" type="button">' + '<i class="fa fa-plus fa-fw"></i>' + message.common.newLabel + '</button>';
+

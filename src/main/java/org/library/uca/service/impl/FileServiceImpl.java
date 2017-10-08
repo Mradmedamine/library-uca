@@ -106,7 +106,7 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 	private PhysicalFile createPhysicalFile(MultipartFile file) {
 		try {
 			PhysicalFile physicalFile = new PhysicalFile();
-			physicalFile.setFileName(file.getName());
+			physicalFile.setFileName(file.getOriginalFilename());
 			physicalFile.setFileContent(file.getBytes());
 			return physicalFile;
 		} catch (IOException e) {

@@ -1,11 +1,20 @@
 package org.library.uca.controller;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 import org.library.uca.model.domain.FileStatus;
 import org.library.uca.model.domain.FileType;
 import org.library.uca.model.domain.entity.File;
 import org.library.uca.model.domain.entity.FileAction;
+import org.library.uca.model.domain.entity.PhysicalFile;
 import org.library.uca.model.front.web.dto.FileActionDTO;
 import org.library.uca.model.front.web.dto.FileDTO;
 import org.library.uca.model.front.web.queryparams.FileQueryParams;
@@ -89,11 +98,27 @@ public class FilesController {
 	@ResponseBody
 	@RequestMapping(path = "/files/actions/{fileId}", method = RequestMethod.POST, consumes = { "multipart/mixed",
 	        MediaType.MULTIPART_FORM_DATA_VALUE })
-	public Long saveFileAction(@PathVariable Long fileId, @RequestPart("physicalFile") MultipartFile physicalFile,
+	public Long saveFileAction(@PathVariable Long fileId, @RequestPart("physicalFile") MultipartFile document,
 	        @RequestPart FileActionDTO fileAction, Model model) {
-		fileAction.setPhysicalFile(physicalFile);
+		fileAction.setPhysicalFile(document);
 		FileAction savedAction = fileService.saveFileAction(fileId, fileAction);
 		return savedAction.getId();
+	}
+
+	@RequestMapping(path = "/files/actions/document/{actionId}", method = RequestMethod.GET)
+	public void downloadActionDocument(@PathVariable Long actionId, HttpServletResponse response) {
+		FileAction fileAction = fileService.findFileActionById(actionId);
+		PhysicalFile physicalFile = fileAction.getPhysicalFile();
+		response.setContentType("application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + physicalFile.getFileName() + "\"");
+		try {
+			OutputStream os = response.getOutputStream();
+			ByteArrayInputStream in = new ByteArrayInputStream(physicalFile.getFileContent());
+			IOUtils.copy(in, os);
+		    response.flushBuffer();
+		} catch (IOException e) {
+			logger.error("error occured while downloading document actionId {}. Ex : {}", actionId, e.getMessage());
+		}
 	}
 
 	@ModelAttribute

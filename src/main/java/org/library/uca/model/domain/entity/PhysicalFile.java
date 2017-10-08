@@ -1,6 +1,10 @@
 package org.library.uca.model.domain.entity;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 
 @Embeddable
 public class PhysicalFile {
@@ -16,6 +20,8 @@ public class PhysicalFile {
 		this.fileName = fileName;
 	}
 
+	@Lob @Basic(fetch = FetchType.LAZY)
+    @Column(name="file_content", nullable=true, columnDefinition="MEDIUMBLOB")
 	public byte[] getFileContent() {
 		return fileContent;
 	}

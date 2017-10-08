@@ -81,7 +81,6 @@ $(function() {
 		dom : '<"dt-buttons">frt'
 	    });
 	}
-	var newBtnHtml = '<button class="btn btn-primary btn-block" type="button">' + '<i class="fa fa-plus fa-fw"></i>' + message.common.newLabel + '</button>';
 	var dtBtns = $(fileFormContainer).find('.dt-buttons');
 	$(dtBtns).html(newBtnHtml);
 	initActionsTable();
@@ -89,17 +88,19 @@ $(function() {
 
     function initActionsTable() {
 	$(actionsTable).on('click', '.action', function(e) {
-	    e.preventDefault();
-	    var actionId = $(this).find('td:first').text();
-	    $.ajax({
-		type : 'GET',
-		url : '/files/actions/' + actionId,
-		success : function(data) {
-		    $('#actionModal').replaceWith(data);
-		    initActionModal();
-		    $('#actionModal').show();
-		}
-	    });
+	    if (!$(e.target).hasClass('action-lock')) {
+		e.preventDefault();
+		var actionId = $(this).find('td:first').text();
+		$.ajax({
+		    type : 'GET',
+		    url : '/files/actions/' + actionId,
+		    success : function(data) {
+			$('#actionModal').replaceWith(data);
+			initActionModal();
+			$('#actionModal').show();
+		    }
+		});
+	    }
 	});
     }
 
@@ -111,6 +112,10 @@ $(function() {
 	var backBtn = $(modal).find('.panel-footer .btn-back');
 	var saveBtn = $(modal).find('.panel-footer .btn-save');
 	var newBtn = $(fileFormContainer).find('.dt-buttons button');
+
+	var fileInput = $(actionForm).find(':file');
+	var fileName = $(fileInput).attr('data-placeholder');
+	$(fileInput).filestyle({ placeholder : fileName });
 
 	$(newBtn).on('click', function() {
 	    $(modal).show();
@@ -131,31 +136,36 @@ $(function() {
 	});
 
 	$(actionForm).submit(function() {
-	    var form = $(this)[0];
-	    var formObject = $(this).serializeObject();
-	    var formData = new FormData();
-	    formData.append("physicalFile", $(form).find('#physicalFile').prop('files')[0]);
-	    formData.append('fileAction', createFileActionJSON(formObject));
-
-	    $.ajax({
-		type : 'POST',
-		url : fileActionsUrl,
-		data : formData,
-		async : false,
-		cache : false,
-		contentType : false,
-		processData : false,
-		success : function(result) {
-		    if (data['id'].length) {
-			updateRow(data, result);
-		    } else {
-			addRow(data, result);
-		    }
-		    $(modal).hide();
-		    toastr["success"](message.common.savingSuccessMessage);
-		    $('#toast-container .toast-success').show();
+	    if ($(actionForm).valid()) {
+		var file = $(actionForm).find('#physicalFile').prop('files')[0];
+		if (file.size > 2048576) {
+		    toastr["error"](message.common.fileSizeError);
+		    $('#toast-container .toast-error').show();
+		    return false;
 		}
-	    });
+		var formObject = $(this).serializeObject();
+		var formData = new FormData();
+		formData.append("physicalFile", file);
+		formData.append('fileAction', createFileActionJSON(formObject));
+
+		$.ajax({
+		    type : 'POST',
+		    url : fileActionsUrl,
+		    data : formData,
+		    async : false,
+		    cache : false,
+		    contentType : false,
+		    processData : false,
+		    success : function(result) {
+			$(modal).hide();
+			toastr['success'](message.common.savingSuccessMessage);
+			$('#toast-container .toast-success').show();
+			timer = setTimeout(function() {
+			    location.reload();
+			}, 1000);
+		    }
+		});
+	    }
 	    return false;
 	});
 
