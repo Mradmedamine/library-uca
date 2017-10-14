@@ -95,6 +95,7 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 	public FileAction saveFileAction(Long fileId, FileActionDTO fileAction) {
 		FileAction entityFileAction = new FileAction();
 		File file = fileRepository.findOne(fileId);
+		entityFileAction.setId(fileAction.getId());
 		entityFileAction.setFile(file);
 		entityFileAction.setDescription(fileAction.getDescription());
 		entityFileAction.setDate(fileAction.getDate());
@@ -105,13 +106,15 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 
 	private PhysicalFile createPhysicalFile(MultipartFile file) {
 		try {
-			PhysicalFile physicalFile = new PhysicalFile();
-			physicalFile.setFileName(file.getOriginalFilename());
-			physicalFile.setFileContent(file.getBytes());
-			return physicalFile;
+			if (file.getSize() > 0) {
+				PhysicalFile physicalFile = new PhysicalFile();
+				physicalFile.setFileName(file.getOriginalFilename());
+				physicalFile.setFileContent(file.getBytes());
+				return physicalFile;
+			}
 		} catch (IOException e) {
 			// ignore
-			return null;
 		}
+		return null;
 	}
 }

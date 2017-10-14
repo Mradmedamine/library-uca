@@ -78,13 +78,11 @@ $(function() {
 	if (actionsTable.length) {
 	    actionsDataTable = $(actionsTable).DataTable({
 		language : dataTablesMessages,
-		dom : 'Brt',
-		buttons : [ dataTablesPdfBtnLabel ]
+		dom : '<"dt-buttons">frt'
 	    });
 	}
 	var dtBtns = $(fileFormContainer).find('.dt-buttons');
-	styleDtPdfButton(dtBtns);
-	$(dtBtns).prepend(dataTablesNewBtnHtml);
+	$(dtBtns).html(dataTablesNewBtnHtml);
 	initActionsTable();
     }
 
@@ -142,10 +140,13 @@ $(function() {
 	$(actionForm).submit(function() {
 	    if ($(actionForm).valid()) {
 		var file = $(actionForm).find('#physicalFile').prop('files')[0];
-		if (file.size > 2048576) {
+		if (file && file.size > 2048576) {
 		    toastr["error"](message.common.fileSizeError);
 		    $('#toast-container .toast-error').show();
 		    return false;
+		}
+		if (!file) {
+		    file = new File([ "" ], "");
 		}
 		var formObject = $(this).serializeObject();
 		var formData = new FormData();

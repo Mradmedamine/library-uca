@@ -25,7 +25,7 @@
 					<td class="hidden" th:text="${action.id}"></td>
 				    <td th:text="${action.description}"></td>
 				    <td th:text="${action.date}"></td>
-				    <td><a th:href="@{/files/actions/document/__${action.id}__}" class="action-lock" target="_blank" th:text="${action.physicalFile.fileName}"></a></td>
+				    <td><a th:if="${action.physicalFile}" th:href="@{/files/actions/document/__${action.id}__}" class="action-lock" target="_blank" th:text="${action?.physicalFile?.fileName}"></a></td>
 				</tr>
 		    </tbody>
 		</table>

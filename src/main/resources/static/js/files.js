@@ -1,5 +1,6 @@
 $(function() {
 
+    var filesContainer = $('#files-container');
     initFilesDataTables();
 
     $('#search-form .search-btn').on('click', function(event) {
@@ -19,7 +20,13 @@ $(function() {
     function initFilesDataTables() {
 	var filesDataTable = $('#files-datatables');
 	if (filesDataTable.length) {
-	    $(filesDataTable).DataTable(dataTablesConfig);
+	    $(filesDataTable).DataTable({
+		language : dataTablesMessages,
+		dom : 'Bfrtip',
+		buttons : [ dataTablesPdfBtnLabel ]
+	    });
+	    var dtBtns = $(filesContainer).find('.dt-buttons');
+	    styleDtPdfButton(dtBtns);
 	}
     }
 

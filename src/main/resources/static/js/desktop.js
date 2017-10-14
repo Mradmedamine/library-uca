@@ -27,9 +27,9 @@ var dataTablesNewBtnHtml = '<button class="btn btn-primary" type="button">' +
 
 function styleDtPdfButton(dtBtns) {
     var pdfBtn = $(dtBtns).find('.buttons-pdf');
-    $(pdfBtn).removeClass('dt-button').addClass('btn btn-default pull-right');
+    $(pdfBtn).removeClass('dt-button').addClass('btn btn-default');
     $(pdfBtn).find('span').prepend('<i class="fa fa-share-square-o fa-fw" aria-hidden="true"></i>');
-    $(dtBtns).addClass('width100pc');
+    $(dtBtns).addClass('uca');
 }
 
 $(function() {
