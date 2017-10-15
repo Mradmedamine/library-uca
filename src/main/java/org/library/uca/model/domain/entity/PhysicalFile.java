@@ -12,6 +12,7 @@ public class PhysicalFile {
 	private String fileName;
 	private byte[] fileContent;
 
+	@Column(nullable=true)
 	public String getFileName() {
 		return fileName;
 	}

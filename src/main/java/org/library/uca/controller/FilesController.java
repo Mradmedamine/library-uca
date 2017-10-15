@@ -115,7 +115,7 @@ public class FilesController {
 			OutputStream os = response.getOutputStream();
 			ByteArrayInputStream in = new ByteArrayInputStream(physicalFile.getFileContent());
 			IOUtils.copy(in, os);
-		    response.flushBuffer();
+			response.flushBuffer();
 		} catch (IOException e) {
 			logger.error("error occured while downloading document actionId {}. Ex : {}", actionId, e.getMessage());
 		}

@@ -1,5 +1,7 @@
 $(function() {
 
+    var authorsContainer = $('#authors-container');
+    
     initAuthorsDataTables();
 
     $('#search-form .search-btn').on('click', function(event) {
@@ -20,13 +22,16 @@ $(function() {
 
     function initAuthorsDataTables() {
 	var authorsDataTable = $('#authors-datatables').DataTable({
-	    'language'   :  dataTablesMessages,
+	    'language' : dataTablesMessages,
 	    'columnDefs' : [ {
-		'targets' : [ 4 ],
-		'sorteable' : false
-
-	    } ]
+	        'targets' : [ 4 ],
+	        'sorteable' : false
+	    } ],
+	    dom : 'Bfrtip',
+	    buttons : [ dataTablesPdfBtnLabel ]
 	});
+	var dtBtns = $(authorsContainer).find('.dt-buttons');
+	styleDtPdfButton(dtBtns);
     }
 
 });

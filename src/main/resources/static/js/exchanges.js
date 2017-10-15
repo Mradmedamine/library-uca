@@ -1,8 +1,10 @@
 $(function() {
 
+    var exchangeContainer = $('#exchanges-container');
+    
     initExchangesDataTables();
 
-    $('#search-form .search-btn').on('click', function(event) {
+    $(exchangeContainer).find('#search-form .search-btn').on('click', function(event) {
 	var data = $('#search-form').serializeObject();
 	$.ajax({
 	    type : 'POST',
@@ -17,7 +19,13 @@ $(function() {
     });
 
     function initExchangesDataTables() {
-	var exchangesDataTable = $('#exchanges-datatables').DataTable(dataTablesConfig);
+	var exchangesDataTable = $('#exchanges-datatables').DataTable({
+	    language : dataTablesMessages,
+	    dom : 'Bfrtip',
+	    buttons : [ dataTablesPdfBtnLabel ]
+	});
+	var dtBtns = $(exchangeContainer).find('.dt-buttons');
+	styleDtPdfButton(dtBtns);
     }
 
 });
