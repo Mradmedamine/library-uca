@@ -12,6 +12,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 	@Query("SELECT DISTINCT b FROM Book b INNER JOIN b.authors a WHERE upper(b.title) like :title AND "
 			+ "upper(b.description) like :description AND (((:authors) is null) OR (a IN (:authors)))")
-	List<Book> findByCriteria(@Param("title") String title, @Param("description") String description, @Param("authors") List<Author> authors);
+	List<Book> findByCriteria(@Param("title") String title, 
+							  @Param("description") String description, 
+							  @Param("authors") List<Author> authors);
 
 }
