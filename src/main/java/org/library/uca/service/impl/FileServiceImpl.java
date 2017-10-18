@@ -1,6 +1,5 @@
 package org.library.uca.service.impl;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,10 +16,10 @@ import org.library.uca.model.front.web.queryparams.FileQueryParams;
 import org.library.uca.repository.FileActionRepository;
 import org.library.uca.repository.FileRepository;
 import org.library.uca.service.FileService;
+import org.library.uca.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileServiceImpl extends ServiceBaseImpl implements FileService {
@@ -99,22 +98,10 @@ public class FileServiceImpl extends ServiceBaseImpl implements FileService {
 		entityFileAction.setFile(file);
 		entityFileAction.setDescription(fileAction.getDescription());
 		entityFileAction.setDate(fileAction.getDate());
-		PhysicalFile physicalFile = createPhysicalFile(fileAction.getPhysicalFile());
+		PhysicalFile physicalFile = FileUtils.createPhysicalFile(fileAction.getPhysicalFile());
 		entityFileAction.setPhysicalFile(physicalFile);
 		return fileActionRepository.save(entityFileAction);
 	}
 
-	private PhysicalFile createPhysicalFile(MultipartFile file) {
-		try {
-			if (file.getSize() > 0) {
-				PhysicalFile physicalFile = new PhysicalFile();
-				physicalFile.setFileName(file.getOriginalFilename());
-				physicalFile.setFileContent(file.getBytes());
-				return physicalFile;
-			}
-		} catch (IOException e) {
-			// ignore
-		}
-		return null;
-	}
+
 }

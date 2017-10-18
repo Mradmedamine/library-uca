@@ -22,6 +22,7 @@ public class AuthorsController {
 
 	@RequestMapping(path = "/authors", method = RequestMethod.GET)
 	public String authorsList(Model model) {
+		model.addAttribute("authors", authorService.findAll());
 		return "modules/authors/list";		
 	}
 	

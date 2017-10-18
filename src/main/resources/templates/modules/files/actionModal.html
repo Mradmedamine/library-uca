@@ -47,7 +47,7 @@
 						    	<div class="form-group modal-row">
 						    		<label for="physicalFile" class="col-sm-2 control-label"><th:block th:text="#{desktop.common.document}"></th:block></label>
 						    		<div class="input col-sm-6">
-						    			<input id="physicalFile" type="file" name="physicalFile" class="form-control filestyle" th:attr="data-placeholder=${action?.physicalFile?.fileName}" data-iconName="glyphicon glyphicon-inbox" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.txt">
+						    			<input id="physicalFile" type="file" name="physicalFile" class="form-control filestyle" th:attr="data-placeholder=${action?.physicalFile?.fileName}, data-buttonText=#{common.chooseFile}" data-iconName="glyphicon glyphicon-inbox" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.txt">
 						    		</div>
 						    	</div>
 						    </form>

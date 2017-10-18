@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+		xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ </head>
+ <body>
+ 
+ <th:block th:fragment="content (template)">
+		<div id="document-container" class="col-lg-3" th:attr="data-template-id=${template.id}">
+	         <div class="panel panel-default">
+	             <div class="panel-body">
+					<div class="centered-text">
+					    <i class="fa fa-file-pdf-o fa-5x"></i>
+					</div>
+					<div class="centered-text">
+						<th:block th:text="${template.physicalFile.fileName}"></th:block>
+					</div>
+	             </div>
+	             <div class="panel-footer">
+	                 <a th:href="@{/templates/__${template.id}__}" target="_blank" class="btn btn-default btn-block">
+	                 	<i class="fa fa-download"></i>  
+	                 	<th:block th:text="#{common.download}"></th:block>
+	                 </a>
+	                 <a href="#" class="btn btn-default btn-block btn-delete">
+	                 	<i class="fa fa-trash-o"></i>
+	                 	<th:block th:text="#{common.delete}"></th:block>
+	                 </a>
+	             </div>
+	         </div>
+	    </div>
+	</th:block>    
+</body>
+</html>

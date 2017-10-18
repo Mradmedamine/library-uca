@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{desktop-layout}">
+        
+<head lang="en">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+ 
+	<div id="templates-container" class="panel panel-default" layout:fragment="desktop-page-content"> 
+		<div class="panel-heading container">
+	        <span class="title">
+	        	<i class="fa fa-file-pdf-o fa-fw"></i> 
+				<th:block th:text="#{desktop.templates.title}"></th:block>
+	        </span>
+	  		<a id="newDocument" class="btn btn-default btn-add pull-right">
+	  			<i class="fa fa-plus fa-fw"></i>
+	  			<th:block th:text="#{common.new}"/>
+	  		</a>
+	  	</div> 
+	  	<div class="panel-body">
+		  	<th:block th:each="template : ${templates}">
+				<th:block th:include="~{modules/templates/documentWidget::content (${template})}"></th:block>
+			</th:block>
+	    </div>
+	</div>
+
+	<th:block layout:fragment="modals"> 	
+		<th:block th:include="~{modules/templates/newDocumentModal::content}">
+		</th:block>
+	</th:block>
+
+	<th:block layout:fragment="js-import"> 	
+		<script th:src="@{/js/templates.js}" ></script> 
+		<script th:inline="javascript"> 
+		</script>
+	</th:block>
+	
+</body>
+</html>
