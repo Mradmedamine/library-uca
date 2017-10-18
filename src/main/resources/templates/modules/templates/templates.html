@@ -15,17 +15,17 @@
 		<div class="panel-heading container">
 	        <span class="title">
 	        	<i class="fa fa-file-pdf-o fa-fw"></i> 
-				<th:block th:text="#{desktop.layout.sidebar.files}"></th:block>
+				<th:block th:text="#{desktop.templates.title}"></th:block>
 	        </span>
-	  		<a id="newDocument" class="btn btn-default btn-add pull-right"><i class="fa fa-plus fa-fw"></i><th:block th:text="#{common.new}"/></a>
+	  		<a id="newDocument" class="btn btn-default btn-add pull-right">
+	  			<i class="fa fa-plus fa-fw"></i>
+	  			<th:block th:text="#{common.new}"/>
+	  		</a>
 	  	</div> 
 	  	<div class="panel-body">
-	
-		  <th:block th:include="~{modules/templates/documentWidget::content}"></th:block>
-		   <th:block th:include="~{modules/templates/documentWidget::content}"></th:block>
-		    <th:block th:include="~{modules/templates/documentWidget::content}"></th:block>
-		     <th:block th:include="~{modules/templates/documentWidget::content}"></th:block>
-		      <th:block th:include="~{modules/templates/documentWidget::content}"></th:block>
+		  	<th:block th:each="template : ${templates}">
+				<th:block th:include="~{modules/templates/documentWidget::content (${template})}"></th:block>
+			</th:block>
 	    </div>
 	</div>
 
@@ -37,7 +37,6 @@
 	<th:block layout:fragment="js-import"> 	
 		<script th:src="@{/js/templates.js}" ></script> 
 		<script th:inline="javascript"> 
-			var fileActionsUrl = [[@{/files/actions/__${file.id}__}]];
 		</script>
 	</th:block>
 	

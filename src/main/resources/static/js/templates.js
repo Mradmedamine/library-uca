@@ -4,6 +4,23 @@ $(function() {
 
     initModal();
 
+    $('.btn-delete').click(function(e) {
+	var documentPanel = $(this).closest('#document-container');
+	var documentId = $(documentPanel).data('template-id');
+	var url = '/templates/' + documentId;
+	$.ajax({
+	    type : 'DELETE',
+	    url : url,
+	    success : function(result) {
+		toastr['success'](message.common.savingSuccessMessage);
+		$('#toast-container .toast-success').show();
+		timer = setTimeout(function() {
+		    location.reload();
+		}, 1000);
+	    }
+	});
+    });
+
     function initModal() {
 
 	var modal = $('#page-wrapper').find('#documentModal');
@@ -54,7 +71,7 @@ $(function() {
 
 		$.ajax({
 		    type : 'POST',
-		    url : fileActionsUrl,
+		    url : "/templates",
 		    data : formData,
 		    async : false,
 		    cache : false,

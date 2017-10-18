@@ -9,22 +9,26 @@
  </head>
  <body>
  
- <th:block th:fragment="content">
-		<div class="col-lg-3">
+ <th:block th:fragment="content (template)">
+		<div id="document-container" class="col-lg-3" th:attr="data-template-id=${template.id}">
 	         <div class="panel panel-default">
 	             <div class="panel-body">
-	             	     <div>
-					       <div class="centered-text">
-					          <i class="fa fa-file-pdf-o fa-5x"></i>
-					      </div>
-					      <div class="centered-text">
-					          Pottery & Ceramics
-					      </div>
-					    </div>
+					<div class="centered-text">
+					    <i class="fa fa-file-pdf-o fa-5x"></i>
+					</div>
+					<div class="centered-text">
+						<th:block th:text="${template.physicalFile.fileName}"></th:block>
+					</div>
 	             </div>
 	             <div class="panel-footer">
-	                 <a href="#" class="btn btn-default btn-block"><i class="fa fa-download"></i>  Download</a>
-	                 <a href="#" class="btn btn-default btn-block"><i class="fa fa-trash-o"></i>  Delete</a>
+	                 <a th:href="@{/templates/__${template.id}__}" target="_blank" class="btn btn-default btn-block">
+	                 	<i class="fa fa-download"></i>  
+	                 	<th:block th:text="#{common.download}"></th:block>
+	                 </a>
+	                 <a href="#" class="btn btn-default btn-block btn-delete">
+	                 	<i class="fa fa-trash-o"></i>
+	                 	<th:block th:text="#{common.delete}"></th:block>
+	                 </a>
 	             </div>
 	         </div>
 	    </div>
