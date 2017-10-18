@@ -17,7 +17,7 @@
 			</a>
 		</div>
 		<div class="panel-body">
-			<form id="search-form" class="search-widget form-horizontal">
+			<form id="search-form" accept-charset="utf-8" action="/exchanges/search" method="GET" class="search-widget form-horizontal">
 				<div class="form-group col-sm-12">
 					<input type="text" name="authorName" class="form-control search-title" th:placeholder="#{ desktop.authors.details.title.label }" />
 					<input type="text" name="bookTitle" class="form-control search-title" th:placeholder="#{ desktop.common.book }" />
@@ -25,7 +25,7 @@
 					<input type="date" name="fromDate" class="form-control search-title" th:placeholder="#{ desktop.common.from }" />
 					<label for="toDate" class="control-label"><th:block th:text="#{ desktop.common.to }"></label>
 					<input type="date" name="toDate" class="form-control search-title" th:placeholder="#{ desktop.common.to }" />
-					<button class="btn btn-primary btn-block search-btn" type="button">
+					<button class="btn btn-primary btn-block search-btn" type="submit">
 						<th:block th:text="#{ common.search }"></th:block>
 					</button>
 				</div>

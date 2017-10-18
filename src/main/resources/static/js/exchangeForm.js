@@ -16,7 +16,7 @@ $(function() {
     var saveBtn = $(panelFooter).find('.btn-save');
 
     $(backBtn).on('click', function(event) {
-	window.location.href = urlExchanges;
+	history.back();
     });
 
     $(editBtn).on('click', function(event) {

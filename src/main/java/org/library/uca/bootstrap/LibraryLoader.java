@@ -319,7 +319,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		Exchange exchange = new Exchange();
 		exchange.setIsbn("978-84-9828-560-4");
 		exchange.setBookTitle("Compiladores y procesadores de lenguajes");
-		exchange.setAuthorName(authorList.get(0).getFullname());
+		exchange.setAuthorName(authorList.get(1).getFullname());
 		exchange.setDate(LocalDate.now());
 		exchange.setType(ExchangeType.RECEIVE);
 		exchange.setInstitution(InstitutionRepo.getList().get(2));
@@ -328,8 +328,8 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 		log.info("Saved Exchange :   id: " + exchange.getId());
 
 		Exchange exchange2 = new Exchange();
-		exchange2.setIsbn("956-84-9828-560-4");
-		exchange2.setBookTitle("Compiladores y procesadores de lenguajes");
+		exchange2.setIsbn("956-84-9828-550-4");
+		exchange2.setBookTitle("Introducción a la programación");
 		exchange2.setAuthorName(authorList.get(0).getFullname());
 		exchange2.setDate(LocalDate.now());
 		exchange2.setType(ExchangeType.SEND);
