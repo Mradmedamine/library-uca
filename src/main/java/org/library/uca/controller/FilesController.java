@@ -55,6 +55,7 @@ public class FilesController {
 
 	@RequestMapping(path = "/files", method = RequestMethod.GET)
 	public String filesList(Model model) {
+		model.addAttribute("files", fileService.findAll());
 		return "modules/files/list";
 	}
 

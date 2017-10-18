@@ -35,6 +35,7 @@ public class BooksController {
 
 	@RequestMapping("/books")
 	public String listBooks(Model model) {
+		model.addAttribute("books", bookService.findAll());
 		return "modules/books/list";
 	}
 

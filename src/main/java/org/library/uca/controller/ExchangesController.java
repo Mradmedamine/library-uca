@@ -26,6 +26,7 @@ public class ExchangesController {
 
 	@RequestMapping(path = "/exchanges", method = RequestMethod.GET)
 	public String exchangesList(Model model) {
+		model.addAttribute("exchanges", exchangeService.findAll());
 		return "modules/exchanges/list";
 	}
 
