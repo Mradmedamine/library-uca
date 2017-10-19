@@ -26,13 +26,13 @@ public class AuthorsController {
 		return "modules/authors/list";		
 	}
 	
-	@RequestMapping(path = "/authors/search", method = RequestMethod.POST)
-	public String searchAuthors(Model model, @RequestBody AuthorQueryParams authorQueryParams) {
+	@RequestMapping(path = "/authors/search", method = RequestMethod.GET)
+	public String searchAuthors(AuthorQueryParams authorQueryParams, Model model) {
 		List<Author> authors = authorService.findByCriteria(authorQueryParams);
 		if (authors != null && authors.size() > 0) {
 			model.addAttribute("authors", authors);
 		}
-		return "modules/authors/dataTable::content";
+		return "modules/authors/list";
 	}
 	
 	@RequestMapping(path="/authors/{id}", method = RequestMethod.GET)

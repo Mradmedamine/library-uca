@@ -54,12 +54,10 @@ public class UserController {
 			String loginFailureMessage = messageSource.getMessage("common.login.failure", args, locale);
 			model.addAttribute("error", loginFailureMessage);
 		}
-
 		if (logout != null) {
 			String logoutSuccessMessage = messageSource.getMessage("common.logout.success", args, locale);
 			model.addAttribute("message", logoutSuccessMessage);
 		}
-
 		return "login";
 	}
 

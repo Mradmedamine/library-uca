@@ -59,12 +59,12 @@ public class FilesController {
 		return "modules/files/list";
 	}
 
-	@RequestMapping(path = "/files/search", method = RequestMethod.POST)
-	public String searchFiles(Model model, @RequestBody FileQueryParams fileSearch) {
+	@RequestMapping(path = "/files/search", method = RequestMethod.GET)
+	public String searchFiles(FileQueryParams fileSearch, Model model) {
 		logger.debug("searching for files with parameters {}", fileSearch.toString());
 		List<File> foundFiles = fileService.findByCriteria(fileSearch);
 		model.addAttribute("files", foundFiles);
-		return "modules/files/dataTable::content";
+		return "modules/files/list";
 	}
 
 	@RequestMapping("/files/{id}")

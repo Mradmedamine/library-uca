@@ -17,11 +17,11 @@
 			</a>
 		</div>
 		<div class="panel-body">
-			<form id="search-form" class="search-widget">
+			<form id="search-form" accept-charset="utf-8" action="/authors/search" method="GET"  class="search-widget">
 				<input type="text" name="fullname" class="form-control search-box fullname" th:placeholder="#{ desktop.authors.fullname.label }" />
 				<input type="text" name="idCard" class="form-control search-box idCard" th:placeholder="#{ desktop.authors.idCard.label }" />
 				<input type="text" name="email" class="form-control search-box email" th:placeholder="#{ desktop.authors.email.label }" />
-				<button class="btn btn-primary btn-block search-btn" type="button">
+				<button class="btn btn-primary btn-block search-btn" type="submit">
 					<th:block th:text="#{ common.search }"></th:block>
 				</button>
 			</form>

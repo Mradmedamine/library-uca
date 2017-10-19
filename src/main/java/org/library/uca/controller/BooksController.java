@@ -39,12 +39,12 @@ public class BooksController {
 		return "modules/books/list";
 	}
 
-	@RequestMapping(path = "/books/search", method = RequestMethod.POST)
-	public String searchBooks(@RequestBody BookQueryParams bookQuery, Model model) {
+	@RequestMapping(path = "/books/search", method = RequestMethod.GET)
+	public String searchBooks(BookQueryParams bookQuery, Model model) {
 		logger.debug("searching for books with parameters {}", bookQuery.toString());
 		List<BookDetailsDTO> foundBooks = bookService.findByCriteria(bookQuery);
 		model.addAttribute("books", foundBooks);
-		return "modules/books/dataTable::content";
+		return "modules/books/list";
 	}
 
 	@RequestMapping("/books/{id}")

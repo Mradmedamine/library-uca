@@ -3,6 +3,8 @@ package org.library.uca.model.front.web.queryparams;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ExchangeQueryParams implements Serializable {
 
 	private static final long serialVersionUID = 3572013661659348645L;
@@ -28,6 +30,7 @@ public class ExchangeQueryParams implements Serializable {
 		this.bookTitle = bookTitle;
 	}
 
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public LocalDate getFromDate() {
 		return fromDate;
 	}
@@ -36,6 +39,7 @@ public class ExchangeQueryParams implements Serializable {
 		this.fromDate = fromDate;
 	}
 
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	public LocalDate getToDate() {
 		return toDate;
 	}
