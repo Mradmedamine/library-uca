@@ -42,7 +42,7 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		populateDate();
+//		populateDate();
 	}
 	private void populateDate() {
 		Role userRole = new Role();
