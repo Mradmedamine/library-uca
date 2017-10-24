@@ -42,7 +42,9 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-
+//		populateDate();
+	}
+	private void populateDate() {
 		Role userRole = new Role();
 		userRole.setName(USER_ROLE);
 		userRole = roleRepository.save(userRole);
@@ -64,6 +66,5 @@ public class UserLoader implements ApplicationListener<ContextRefreshedEvent> {
 
 		userRole.setUsers(Collections.singleton(user));
 		roleRepository.save(userRole);
-
 	}
 }
