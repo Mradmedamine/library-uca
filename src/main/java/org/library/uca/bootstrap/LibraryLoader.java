@@ -49,7 +49,7 @@ public class LibraryLoader implements ApplicationListener<ContextRefreshedEvent>
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-//		populateData();
+		populateData();
 	}
 
 	private void populateData() {
